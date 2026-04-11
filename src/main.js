@@ -7,11 +7,15 @@ import { LocationScene } from './scenes/LocationScene.js';
 import { DialogueScene } from './scenes/DialogueScene.js';
 
 const config = {
-  type: Phaser.AUTO,
+  type: Phaser.CANVAS,
   parent: 'game-container',
   width: 1024,
   height: 768,
   backgroundColor: '#000000',
+  fps: {
+    target: 10,
+    forceSetTimeOut: true,
+  },
   scale: {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
