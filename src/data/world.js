@@ -1,0 +1,40 @@
+export const WORLD = {
+  islands: {
+    'cliff-haven': {
+      name: 'Cliff Haven',
+      description: 'Home of the Tidewatchers and the Verdium mines',
+      mapX: 350, mapY: 350,
+      size: 50,
+      color: 0x667755,
+      defaultLocation: 'mine-entrance',
+      locations: ['mine-entrance', 'mine-shaft', 'tidewatcher-village', 'cliff-overlook'],
+    },
+    'green-root': {
+      name: 'Green Root',
+      description: 'Ancient forests tended by the Korrim',
+      mapX: 200, mapY: 200,
+      size: 45,
+      color: 0x448833,
+      defaultLocation: 'forest-path',
+      locations: ['forest-path', 'elder-grove'],
+    },
+    'spark-cove': {
+      name: 'Spark Cove',
+      description: 'Workshop island of the Velessi inventors',
+      mapX: 700, mapY: 250,
+      size: 35,
+      color: 0x998844,
+      defaultLocation: 'harbor-workshop',
+      locations: ['harbor-workshop', 'inventors-lab'],
+    },
+    'luminara': {
+      name: 'Luminara',
+      description: 'Cultural heart of the Luminari',
+      mapX: 550, mapY: 480,
+      size: 40,
+      color: 0x775599,
+      defaultLocation: 'crystal-plaza',
+      locations: ['crystal-plaza', 'archive-hall'],
+    },
+  },
+};

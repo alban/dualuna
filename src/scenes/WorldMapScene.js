@@ -1,0 +1,171 @@
+import Phaser from 'phaser';
+import { WORLD } from '../data/world.js';
+
+export class WorldMapScene extends Phaser.Scene {
+  constructor() {
+    super({ key: 'WorldMap' });
+  }
+
+  create() {
+    const { width, height } = this.scale;
+    const state = this.registry.get('gameState');
+
+    // Ocean background
+    const bg = this.add.graphics();
+    for (let y = 0; y < height; y++) {
+      const t = y / height;
+      const r = Math.floor(15 + t * 10);
+      const g = Math.floor(40 + t * 30);
+      const b = Math.floor(90 + t * 60);
+      bg.fillStyle(Phaser.Display.Color.GetColor(r, g, b), 1);
+      bg.fillRect(0, y, width, 1);
+    }
+
+    // Wave lines for ocean texture
+    const waves = this.add.graphics();
+    waves.lineStyle(1, 0x3366aa, 0.15);
+    for (let y = 50; y < height; y += 30) {
+      waves.beginPath();
+      for (let x = 0; x < width; x += 5) {
+        const wy = y + Math.sin((x + y * 3) * 0.02) * 8;
+        if (x === 0) waves.moveTo(x, wy);
+        else waves.lineTo(x, wy);
+      }
+      waves.strokePath();
+    }
+
+    // Title
+    this.add.text(width / 2, 30, 'The Islands of Dualuna', {
+      fontSize: '28px', fill: '#88bbdd', fontFamily: 'Georgia, serif',
+    }).setOrigin(0.5);
+
+    // Draw two moons (small, top corners)
+    const moons = this.add.graphics();
+    moons.fillStyle(0xeeeedd, 0.4);
+    moons.fillCircle(80, 50, 15);
+    moons.fillStyle(0xddccbb, 0.3);
+    moons.fillCircle(940, 40, 10);
+
+    // Draw islands
+    const islandGfx = this.add.graphics();
+    for (const [id, island] of Object.entries(WORLD.islands)) {
+      const discovered = state.discoveredIslands.includes(id);
+      const isCurrent = state.currentIsland === id;
+      this.drawIsland(islandGfx, island, discovered, isCurrent);
+
+      if (discovered) {
+        // Island name label
+        const label = this.add.text(island.mapX, island.mapY + island.size + 15, island.name, {
+          fontSize: '14px',
+          fill: isCurrent ? '#ffffff' : '#88aacc',
+          fontFamily: 'Georgia, serif',
+          fontStyle: isCurrent ? 'bold' : 'normal',
+        }).setOrigin(0.5);
+
+        // Make clickable
+        const hitArea = this.add.zone(island.mapX, island.mapY, island.size * 2.5, island.size * 2.5)
+          .setInteractive({ useHandCursor: true });
+
+        hitArea.on('pointerover', () => {
+          label.setStyle({ fill: '#ffffff' });
+        });
+        hitArea.on('pointerout', () => {
+          label.setStyle({ fill: isCurrent ? '#ffffff' : '#88aacc' });
+        });
+        hitArea.on('pointerdown', () => {
+          this.travelToIsland(id, island);
+        });
+      }
+    }
+
+    // Current location info
+    const currentIsland = WORLD.islands[state.currentIsland];
+    this.add.text(width / 2, height - 60, `Current: ${currentIsland.name}`, {
+      fontSize: '18px', fill: '#aaddcc', fontFamily: 'Georgia, serif',
+    }).setOrigin(0.5);
+
+    // Back button
+    const backBtn = this.add.text(60, height - 30, '← Back', {
+      fontSize: '16px', fill: '#88aacc', fontFamily: 'Georgia, serif',
+    }).setInteractive({ useHandCursor: true });
+    backBtn.on('pointerover', () => backBtn.setStyle({ fill: '#ffffff' }));
+    backBtn.on('pointerout', () => backBtn.setStyle({ fill: '#88aacc' }));
+    backBtn.on('pointerdown', () => {
+      this.scene.start('Location', { locationId: state.currentLocation });
+    });
+
+    // Verdium display
+    this.add.text(width - 20, height - 30, `◆ Verdium: ${state.verdium}`, {
+      fontSize: '14px', fill: '#44cc88', fontFamily: 'Georgia, serif',
+    }).setOrigin(1, 0.5);
+  }
+
+  drawIsland(gfx, island, discovered, isCurrent) {
+    const { mapX: x, mapY: y, size, color } = island;
+
+    if (!discovered) {
+      // Fog of war — just a faint shape
+      gfx.fillStyle(0x334455, 0.3);
+      gfx.fillEllipse(x, y, size * 2, size * 1.4);
+      gfx.fillStyle(0x334455, 0.15);
+      this.add.text(x, y, '?', {
+        fontSize: '20px', fill: '#556677', fontFamily: 'Georgia, serif',
+      }).setOrigin(0.5);
+      return;
+    }
+
+    // Island shadow
+    gfx.fillStyle(0x113322, 0.4);
+    gfx.fillEllipse(x + 3, y + 5, size * 2.2, size * 1.5);
+
+    // Island base (beach)
+    gfx.fillStyle(0xccbb88, 1);
+    gfx.fillEllipse(x, y, size * 2.1, size * 1.5);
+
+    // Island main
+    gfx.fillStyle(color, 1);
+    gfx.fillEllipse(x, y - 3, size * 1.8, size * 1.3);
+
+    // Current island glow
+    if (isCurrent) {
+      gfx.lineStyle(2, 0x44ffaa, 0.7);
+      gfx.strokeEllipse(x, y, size * 2.6, size * 1.8);
+    }
+  }
+
+  travelToIsland(islandId, island) {
+    const state = this.registry.get('gameState');
+    if (islandId === state.currentIsland) {
+      // Already here, go to the island's default location
+      this.scene.start('Location', { locationId: island.defaultLocation });
+      return;
+    }
+
+    // Travel animation
+    const { width, height } = this.scale;
+    const overlay = this.add.graphics();
+    overlay.fillStyle(0x000000, 0);
+    overlay.fillRect(0, 0, width, height);
+
+    const travelText = this.add.text(width / 2, height / 2, `Sailing to ${island.name}...`, {
+      fontSize: '22px', fill: '#88ccdd', fontFamily: 'Georgia, serif',
+    }).setOrigin(0.5).setAlpha(0);
+
+    this.tweens.add({
+      targets: travelText,
+      alpha: 1,
+      duration: 500,
+      yoyo: true,
+      hold: 1000,
+      onComplete: () => {
+        state.currentIsland = islandId;
+        state.currentLocation = island.defaultLocation;
+        if (!state.visitedLocations.includes(island.defaultLocation)) {
+          state.visitedLocations.push(island.defaultLocation);
+        }
+        this.registry.set('gameState', state);
+        this.scene.start('Location', { locationId: island.defaultLocation });
+      }
+    });
+  }
+}
