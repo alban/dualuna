@@ -19,7 +19,14 @@ export default {
     "subtitle": "The Verdium Collector",
     "tagline": "A world of islands above, mysteries below",
     "phase": "Phase 1 — Chapter 1: The Mine Problem",
-    "worldMapTitle": "The Islands of Dualuna"
+    "worldMapTitle": "The Islands of Dualuna",
+    "fullscreen": "⛶",
+    "exitFullscreen": "⛶",
+    "github": "Source"
+  },
+  "quests": {
+    "tremors-in-the-deep": "Tremors in the Deep",
+    "the-deep-response": "The Deep Response"
   },
   "dialogues": {
     "intro-mine": {

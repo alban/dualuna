@@ -323,12 +323,42 @@ export class LocationScene extends Phaser.Scene {
       fontSize: '14px', fill: '#44cc88', fontFamily: 'Georgia, serif',
     }).setOrigin(1, 0);
 
-    // Quest log hint
+    // Fullscreen button
+    const fsLabel = document.fullscreenElement ? I18n.t('ui.exitFullscreen') : I18n.t('ui.fullscreen');
+    const fsBtn = this.add.text(width - 20, uiY + 95, fsLabel, btnStyle)
+      .setOrigin(1, 0).setInteractive({ useHandCursor: true });
+    fsBtn.on('pointerover', () => fsBtn.setStyle({ fill: '#ffffff' }));
+    fsBtn.on('pointerout', () => fsBtn.setStyle({ fill: '#88aacc' }));
+    fsBtn.on('pointerdown', () => {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else {
+        document.documentElement.requestFullscreen().catch(() => {});
+      }
+      // Refresh label after toggle
+      this.time.delayedCall(300, () => {
+        fsBtn.setText(document.fullscreenElement ? I18n.t('ui.exitFullscreen') : I18n.t('ui.fullscreen'));
+      });
+    });
+
+    // Quest log hint (translated)
     const activeQuests = QuestManager.getActiveQuests(state);
     if (activeQuests.length > 0) {
-      this.add.text(width / 2, uiY + 95, `📋 ${activeQuests[0].title}`, {
+      const questTitle = I18n.t(`quests.${activeQuests[0].id}`) !== `quests.${activeQuests[0].id}`
+        ? I18n.t(`quests.${activeQuests[0].id}`) : activeQuests[0].title;
+      this.add.text(width / 2, uiY + 95, `📋 ${questTitle}`, {
         fontSize: '12px', fill: '#ccaa66', fontFamily: 'Georgia, serif',
       }).setOrigin(0.5);
     }
+
+    // GitHub source link
+    const ghLink = this.add.text(width - 20, uiY + 108, `${I18n.t('ui.github')} ↗`, {
+      fontSize: '10px', fill: '#445566', fontFamily: 'Georgia, serif',
+    }).setOrigin(1, 0).setInteractive({ useHandCursor: true });
+    ghLink.on('pointerover', () => ghLink.setStyle({ fill: '#88aacc' }));
+    ghLink.on('pointerout', () => ghLink.setStyle({ fill: '#445566' }));
+    ghLink.on('pointerdown', () => {
+      window.open('https://github.com/alban/dualuna', '_blank');
+    });
   }
 }
