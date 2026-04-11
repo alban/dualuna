@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { BootScene } from './scenes/BootScene.js';
+import { LanguageScene } from './scenes/LanguageScene.js';
 import { MenuScene } from './scenes/MenuScene.js';
 import { WorldMapScene } from './scenes/WorldMapScene.js';
 import { LocationScene } from './scenes/LocationScene.js';
@@ -15,7 +16,7 @@ const config = {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
-  scene: [BootScene, MenuScene, WorldMapScene, LocationScene, DialogueScene],
+  scene: [BootScene, LanguageScene, MenuScene, WorldMapScene, LocationScene, DialogueScene],
 };
 
 const game = new Phaser.Game(config);

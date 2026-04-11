@@ -36,6 +36,6 @@ export class BootScene extends Phaser.Scene {
   }
 
   create() {
-    this.scene.start('Menu');
+    this.scene.start('Language');
   }
 }

@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { I18n } from '../systems/I18n.js';
 
 export class MenuScene extends Phaser.Scene {
   constructor() {
@@ -17,13 +18,12 @@ export class MenuScene extends Phaser.Scene {
       stroke: '#224466', strokeThickness: 4,
     }).setOrigin(0.5);
 
-    this.add.text(width / 2, 270, 'The Verdium Collector', {
+    this.add.text(width / 2, 270, I18n.t('ui.subtitle'), {
       fontSize: '28px', fill: '#66aa99', fontFamily: 'Georgia, serif',
       fontStyle: 'italic',
     }).setOrigin(0.5);
 
-    // Subtitle
-    this.add.text(width / 2, 330, 'A world of islands above, mysteries below', {
+    this.add.text(width / 2, 330, I18n.t('ui.tagline'), {
       fontSize: '16px', fill: '#557788', fontFamily: 'Georgia, serif',
     }).setOrigin(0.5);
 
@@ -34,10 +34,10 @@ export class MenuScene extends Phaser.Scene {
     const hoverStyle = { fill: '#ffffff' };
     const normalStyle = { fill: '#aaddcc' };
 
-    const newGame = this.add.text(width / 2, 440, '◆  New Game  ◆', buttonStyle)
+    const newGame = this.add.text(width / 2, 440, `◆  ${I18n.t('ui.newGame')}  ◆`, buttonStyle)
       .setOrigin(0.5).setInteractive({ useHandCursor: true });
 
-    const continueBtn = this.add.text(width / 2, 500, '◆  Continue  ◆', buttonStyle)
+    const continueBtn = this.add.text(width / 2, 500, `◆  ${I18n.t('ui.continue')}  ◆`, buttonStyle)
       .setOrigin(0.5).setInteractive({ useHandCursor: true });
 
     // Check if save exists
@@ -52,22 +52,16 @@ export class MenuScene extends Phaser.Scene {
       btn.on('pointerout', () => btn.setStyle(normalStyle));
     });
 
-    newGame.on('pointerdown', () => {
-      this.startNewGame();
-    });
-
-    continueBtn.on('pointerdown', () => {
-      this.continueGame();
-    });
+    newGame.on('pointerdown', () => this.startNewGame());
+    continueBtn.on('pointerdown', () => this.continueGame());
 
     // Version
-    this.add.text(width / 2, height - 30, 'Phase 1 — Chapter 1: The Mine Problem', {
+    this.add.text(width / 2, height - 30, I18n.t('ui.phase'), {
       fontSize: '12px', fill: '#445566', fontFamily: 'Georgia, serif',
     }).setOrigin(0.5);
   }
 
   startNewGame() {
-    // Initialize fresh game state
     this.registry.set('gameState', {
       chapter: 1,
       currentLocation: 'mine-entrance',

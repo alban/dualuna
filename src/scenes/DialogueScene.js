@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import { DIALOGUES } from '../data/dialogues.js';
 import { CHARACTERS } from '../data/characters.js';
 import { QuestManager } from '../systems/QuestManager.js';
+import { I18n } from '../systems/I18n.js';
 
 export class DialogueScene extends Phaser.Scene {
   constructor() {
@@ -87,10 +88,11 @@ export class DialogueScene extends Phaser.Scene {
     // Show speaker portrait
     this.updatePortrait(node.speaker);
 
-    // Type out the text
+    // Get localized text (fall back to dialogue data)
+    const localizedText = I18n.dialogue(this.dialogueId, nodeId, 'text') || node.text || '';
     this.dialogueText.setText('');
-    this.typeText(node.text, () => {
-      this.showChoices(node);
+    this.typeText(localizedText, () => {
+      this.showChoices(node, nodeId);
     });
   }
 
@@ -146,35 +148,12 @@ export class DialogueScene extends Phaser.Scene {
   }
 
   typeText(fullText, onComplete) {
-    let index = 0;
-    this.dialogueText.setText('');
-
-    // Allow clicking to skip typing
-    const skipHandler = () => {
-      if (index < fullText.length) {
-        index = fullText.length;
-        this.dialogueText.setText(fullText);
-        if (this.typeTimer) this.typeTimer.remove();
-        onComplete();
-      }
-    };
-    this.backdrop.once('pointerdown', skipHandler);
-
-    this.typeTimer = this.time.addEvent({
-      delay: 10,
-      repeat: Math.ceil(fullText.length / 3) - 1,
-      callback: () => {
-        index = Math.min(index + 3, fullText.length);
-        this.dialogueText.setText(fullText.substring(0, index));
-        if (index >= fullText.length) {
-          this.backdrop.off('pointerdown', skipHandler);
-          onComplete();
-        }
-      },
-    });
+    // Show text instantly — no typewriter delay
+    this.dialogueText.setText(fullText);
+    onComplete();
   }
 
-  showChoices(node) {
+  showChoices(node, nodeId) {
     // Clear old choices
     this.choiceTexts.forEach(t => t.destroy());
     this.choiceTexts = [];
@@ -183,16 +162,18 @@ export class DialogueScene extends Phaser.Scene {
     const { width } = this.scale;
 
     if (node.choices && node.choices.length > 0) {
-      // Filter choices by conditions
-      const validChoices = node.choices.filter(c => {
-        if (c.requireFlag && !state.questFlags[c.requireFlag]) return false;
-        if (c.requireItem && !state.inventory.includes(c.requireItem)) return false;
-        return true;
+      // Filter choices by conditions, tracking original indices for i18n
+      const validChoices = [];
+      node.choices.forEach((c, originalIndex) => {
+        if (c.requireFlag && !state.questFlags[c.requireFlag]) return;
+        if (c.requireItem && !state.inventory.includes(c.requireItem)) return;
+        validChoices.push({ ...c, _origIndex: originalIndex });
       });
 
       validChoices.forEach((choice, i) => {
         const y = this.panelY + 170 + i * 30;
-        const text = this.add.text(230, y, `▸ ${choice.text}`, {
+        const choiceLabel = I18n.choice(this.dialogueId, nodeId, choice._origIndex) || choice.text;
+        const text = this.add.text(230, y, `▸ ${choiceLabel}`, {
           fontSize: '14px', fill: '#88ccaa', fontFamily: 'Georgia, serif',
         }).setInteractive({ useHandCursor: true });
 
@@ -213,8 +194,8 @@ export class DialogueScene extends Phaser.Scene {
       });
     } else {
       // No choices — click to continue or end
-      const continueText = this.add.text(width / 2, this.panelY + 200,
-        node.next ? '▸ Continue' : '▸ Close', {
+      const label = node.next ? I18n.t('ui.continueDialogue') : I18n.t('ui.close');
+      const continueText = this.add.text(width / 2, this.panelY + 200, label, {
           fontSize: '15px', fill: '#88ccaa', fontFamily: 'Georgia, serif',
         }).setOrigin(0.5).setInteractive({ useHandCursor: true });
 
@@ -269,7 +250,6 @@ export class DialogueScene extends Phaser.Scene {
   }
 
   closeDialogue() {
-    if (this.typeTimer) this.typeTimer.remove();
     const state = this.registry.get('gameState');
 
     // Check if we should open the world map
