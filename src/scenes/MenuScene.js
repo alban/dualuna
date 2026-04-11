@@ -57,7 +57,7 @@ export class MenuScene extends Phaser.Scene {
 
     // Version
     this.add.text(width / 2, height - 30, I18n.t('ui.phase'), {
-      fontSize: '12px', fill: '#445566', fontFamily: 'Georgia, serif',
+      fontSize: '12px', fill: '#8899aa', fontFamily: 'Georgia, serif',
     }).setOrigin(0.5);
   }
 

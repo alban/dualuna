@@ -23,7 +23,6 @@ export class LanguageScene extends Phaser.Scene {
 
     // Language list — single column, full width, large touch targets
     const langs = Object.entries(I18n.SUPPORTED_LANGUAGES);
-    const savedLang = I18n.getSavedLanguage();
     const totalH = height - 100;
     const rowH = Math.floor(totalH / langs.length);
     const startY = 90;
@@ -31,17 +30,15 @@ export class LanguageScene extends Phaser.Scene {
     langs.forEach(([code, name], i) => {
       const y = startY + i * rowH + rowH / 2;
       const isTranslated = TRANSLATED_LANGUAGES.includes(code);
-      const isSaved = code === savedLang;
 
       // Full-width touch zone
       const zone = this.add.rectangle(width / 2, y, width - 40, rowH - 4, 0x000000, 0)
-        .setStrokeStyle(1, isSaved ? 0x88ccdd : 0x334455, isSaved ? 0.6 : 0.2);
+        .setStrokeStyle(1, 0x334455, 0.2);
 
       const btn = this.add.text(width / 2, y, name, {
         fontSize: '28px',
-        fill: isSaved ? '#ffffff' : isTranslated ? '#88aacc' : '#556677',
+        fill: isTranslated ? '#88aacc' : '#556677',
         fontFamily: 'Georgia, serif',
-        fontStyle: isSaved ? 'bold' : 'normal',
       }).setOrigin(0.5);
 
       if (isTranslated) {
@@ -51,8 +48,8 @@ export class LanguageScene extends Phaser.Scene {
           zone.setStrokeStyle(1, 0x88ccdd, 0.6);
         });
         zone.on('pointerout', () => {
-          btn.setStyle({ fill: isSaved ? '#ffffff' : '#88aacc' });
-          zone.setStrokeStyle(1, isSaved ? 0x88ccdd : 0x334455, isSaved ? 0.6 : 0.2);
+          btn.setStyle({ fill: '#88aacc' });
+          zone.setStrokeStyle(1, 0x334455, 0.2);
         });
         zone.on('pointerdown', () => this.selectLanguage(code));
       } else {
@@ -62,6 +59,16 @@ export class LanguageScene extends Phaser.Scene {
         gfx.lineStyle(1, 0x556677, 0.8);
         gfx.lineBetween(width / 2 - lineW, y + 1, width / 2 + lineW, y + 1);
       }
+    });
+
+    // GitHub source link
+    const ghLink = this.add.text(width - 10, height - 15, 'github.com/alban/dualuna', {
+      fontSize: '11px', fill: '#445566', fontFamily: 'Georgia, serif',
+    }).setOrigin(1, 0.5).setInteractive({ useHandCursor: true });
+    ghLink.on('pointerover', () => ghLink.setStyle({ fill: '#88aacc' }));
+    ghLink.on('pointerout', () => ghLink.setStyle({ fill: '#445566' }));
+    ghLink.on('pointerdown', () => {
+      window.open('https://github.com/alban/dualuna', '_blank');
     });
   }
 

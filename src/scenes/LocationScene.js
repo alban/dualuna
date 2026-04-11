@@ -350,15 +350,5 @@ export class LocationScene extends Phaser.Scene {
         fontSize: '12px', fill: '#ccaa66', fontFamily: 'Georgia, serif',
       });
     }
-
-    // GitHub source link — bottom-right
-    const ghLink = this.add.text(width - 5, uiY + 110, `${I18n.t('ui.github')} ↗`, {
-      fontSize: '9px', fill: '#334455', fontFamily: 'Georgia, serif',
-    }).setOrigin(1, 0).setInteractive({ useHandCursor: true });
-    ghLink.on('pointerover', () => ghLink.setStyle({ fill: '#88aacc' }));
-    ghLink.on('pointerout', () => ghLink.setStyle({ fill: '#445566' }));
-    ghLink.on('pointerdown', () => {
-      window.open('https://github.com/alban/dualuna', '_blank');
-    });
   }
 }
