@@ -55,6 +55,13 @@ export class LanguageScene extends Phaser.Scene {
   async selectLanguage(code) {
     await I18n.load(code);
     I18n.saveLanguage(code);
-    this.scene.start('Menu');
+
+    // If a game is in progress, return to it; otherwise go to Menu
+    const state = this.registry.get('gameState');
+    if (state && state.currentLocation) {
+      this.scene.start('Location', { locationId: state.currentLocation });
+    } else {
+      this.scene.start('Menu');
+    }
   }
 }

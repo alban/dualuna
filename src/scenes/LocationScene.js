@@ -2,6 +2,7 @@ import { LOCATIONS } from '../data/locations.js';
 import { CHARACTERS } from '../data/characters.js';
 import { SaveManager } from '../systems/SaveManager.js';
 import { QuestManager } from '../systems/QuestManager.js';
+import { I18n } from '../systems/I18n.js';
 
 export class LocationScene extends Phaser.Scene {
   constructor() {
@@ -248,7 +249,7 @@ export class LocationScene extends Phaser.Scene {
     if (location.connections) {
       const navY = uiY + 60;
       let navX = 20;
-      this.add.text(navX, navY - 18, 'Go to:', {
+      this.add.text(navX, navY - 18, I18n.t('ui.goTo'), {
         fontSize: '11px', fill: '#556677', fontFamily: 'Georgia, serif',
       });
 
@@ -274,24 +275,35 @@ export class LocationScene extends Phaser.Scene {
     const btnStyle = { fontSize: '14px', fill: '#88aacc', fontFamily: 'Georgia, serif' };
 
     // World Map button
-    const mapBtn = this.add.text(width - 20, uiY + 15, '🗺 Map', btnStyle)
+    const mapBtn = this.add.text(width - 20, uiY + 10, I18n.t('ui.map'), btnStyle)
       .setOrigin(1, 0).setInteractive({ useHandCursor: true });
     mapBtn.on('pointerover', () => mapBtn.setStyle({ fill: '#ffffff' }));
     mapBtn.on('pointerout', () => mapBtn.setStyle({ fill: '#88aacc' }));
     mapBtn.on('pointerdown', () => this.scene.start('WorldMap'));
 
     // Save button
-    const saveBtn = this.add.text(width - 20, uiY + 40, '💾 Save', btnStyle)
+    const saveBtn = this.add.text(width - 20, uiY + 30, I18n.t('ui.save'), btnStyle)
       .setOrigin(1, 0).setInteractive({ useHandCursor: true });
     saveBtn.on('pointerover', () => saveBtn.setStyle({ fill: '#ffffff' }));
     saveBtn.on('pointerout', () => saveBtn.setStyle({ fill: '#88aacc' }));
     saveBtn.on('pointerdown', () => {
       SaveManager.save(state);
-      this.showNotification('Game saved!');
+      this.showNotification(I18n.t('ui.gameSaved'));
+    });
+
+    // Language button
+    const langCode = I18n.currentLanguage.toUpperCase();
+    const langBtn = this.add.text(width - 20, uiY + 50, `🌐 ${langCode}`, btnStyle)
+      .setOrigin(1, 0).setInteractive({ useHandCursor: true });
+    langBtn.on('pointerover', () => langBtn.setStyle({ fill: '#ffffff' }));
+    langBtn.on('pointerout', () => langBtn.setStyle({ fill: '#88aacc' }));
+    langBtn.on('pointerdown', () => {
+      SaveManager.save(state);
+      this.scene.start('Language');
     });
 
     // Verdium display
-    this.add.text(width - 20, uiY + 70, `◆ Verdium: ${state.verdium}`, {
+    this.add.text(width - 20, uiY + 75, `◆ ${I18n.t('ui.verdium')}: ${state.verdium}`, {
       fontSize: '14px', fill: '#44cc88', fontFamily: 'Georgia, serif',
     }).setOrigin(1, 0);
 
