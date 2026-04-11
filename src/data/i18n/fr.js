@@ -1,163 +1,162 @@
-// French — TODO: translate
-// Copy of English, replace values with French translations
+// Français
 export default {
   "ui": {
-    "newGame": "New Game",
-    "continue": "Continue",
-    "save": "💾 Save",
-    "map": "🗺 Map",
-    "back": "← Back",
-    "close": "▸ Close",
-    "continueDialogue": "▸ Continue",
-    "goTo": "Go to:",
+    "newGame": "Nouvelle partie",
+    "continue": "Continuer",
+    "save": "💾 Sauvegarder",
+    "map": "🗺 Carte",
+    "back": "← Retour",
+    "close": "▸ Fermer",
+    "continueDialogue": "▸ Continuer",
+    "goTo": "Aller à :",
     "verdium": "Verdium",
-    "gameSaved": "Game saved!",
-    "found": "Found:",
-    "current": "Current:",
-    "sailingTo": "Sailing to",
-    "loading": "Loading Dualuna...",
-    "chooseLanguage": "Choose your language",
-    "subtitle": "The Verdium Collector",
-    "tagline": "A world of islands above, mysteries below",
-    "phase": "Phase 1 — Chapter 1: The Mine Problem",
-    "worldMapTitle": "The Islands of Dualuna"
+    "gameSaved": "Partie sauvegardée !",
+    "found": "Trouvé :",
+    "current": "Actuel :",
+    "sailingTo": "En route vers",
+    "loading": "Chargement de Dualuna...",
+    "chooseLanguage": "Choisis ta langue",
+    "subtitle": "Le Collecteur de Verdium",
+    "tagline": "Un monde d'îles en surface, de mystères en dessous",
+    "phase": "Phase 1 — Chapitre 1 : Le Problème de la mine",
+    "worldMapTitle": "Les Îles de Dualuna"
   },
   "dialogues": {
     "intro-mine": {
       "start": {
-        "text": "Dawn tremor. Third one this week."
+        "text": "Tremblement à l'aube. Le troisième cette semaine."
       },
       "start2": {
-        "text": "Verdium glints at the tunnel mouth. Without it, Dualuna dies."
+        "text": "Le Verdium scintille à l'entrée du tunnel. Sans lui, Dualuna meurt."
       }
     },
     "foreman-kael-default": {
       "start": {
-        "text": "Third tremor this week. Thirty tides in these mines, never felt anything like it.",
+        "text": "Troisième secousse cette semaine. Trente marées dans ces mines, j'ai jamais senti ça.",
         "choices": [
-          "What's causing them?",
-          "Should we stop mining?",
-          "Anyone hurt?"
+          "Qu'est-ce qui les provoque ?",
+          "On devrait arrêter de miner ?",
+          "Des blessés ?"
         ]
       },
       "cause": {
-        "text": "That's what worries me. Lower shaft's changed — wetter, new cracks. Tap the rock and it sounds... hollow. Something's behind there.",
+        "text": "C'est ça qui m'inquiète. Le puits inférieur a changé — plus humide, nouvelles fissures. Tape la roche et ça sonne... creux. Y'a quelque chose derrière.",
         "choices": [
-          "I'll check the shaft myself.",
-          "Could it be natural?"
+          "Je vais vérifier le puits moi-même.",
+          "Ça pourrait être naturel ?"
         ]
       },
       "stop": {
-        "text": "Stop? Everything needs Verdium. Brin won't allow it without proof. All we've got is shaky ground and worried faces."
+        "text": "Arrêter ? Tout a besoin de Verdium. Brin n'acceptera pas sans preuve. On a juste un sol qui tremble et des visages inquiets."
       },
       "hurt": {
-        "text": "Not yet. But a support beam cracked yesterday. Dera patched it. If these tremors get worse..."
+        "text": "Pas encore. Mais une poutre a craqué hier. Dera l'a réparée. Si les secousses empirent..."
       },
       "natural": {
-        "text": "Thought so at first. Twin moons pull the earth, sure. But this is different. Rhythmic. Almost... deliberate."
+        "text": "C'est ce que je croyais au début. Les lunes jumelles tirent la terre, oui. Mais là c'est différent. Rythmique. Presque... délibéré."
       },
       "examine": {
-        "text": "Get down to the lower shaft. See those cracks. Check the water pooling down there. And talk to Dera — she noticed things I missed."
+        "text": "Descends au puits inférieur. Regarde les fissures. Vérifie l'eau qui stagne en bas. Et parle à Dera — elle a remarqué des trucs que j'ai loupés."
       }
     },
     "dera-default": {
       "start": {
-        "text": "Hey! Feel that one at dawn? Nearly fell off the rope ladder! My Heights-sense went crazy!",
+        "text": "Hé ! T'as senti celle de l'aube ? J'ai failli tomber de l'échelle de corde ! Mon sens des Hauteurs a disjoncté !",
         "choices": [
-          "Kael says the lower shaft's bad.",
-          "What do you think it is?",
-          "You okay?"
+          "Kael dit que le puits inférieur va mal.",
+          "Tu penses que c'est quoi ?",
+          "Ça va ?"
         ]
       },
       "shaft": {
-        "text": "Worse than bad! I pressed my ear to the far wall down there. Heard something. Not rock. Not water. A low hum. Alive.",
+        "text": "Pire que mal ! J'ai collé mon oreille au mur du fond en bas. Entendu quelque chose. Pas la roche. Pas l'eau. Un bourdonnement grave. Vivant.",
         "choices": [
-          "Alive?!",
-          "We should consult other islands."
+          "Vivant ?!",
+          "On devrait consulter les autres îles."
         ]
       },
       "theory": {
-        "text": "Okay, this'll sound crazy. The cliffs go way deeper than we mine. What if something's down there? Something that doesn't like the digging?"
+        "text": "OK, ça va paraître dingue. Les falaises descendent bien plus profond que nos galeries. Et si y'avait quelque chose là-dessous ? Quelque chose qui n'aime pas qu'on creuse ?"
       },
       "okay": {
-        "text": "Ha! Takes more than a quake to shake a Heights-born! But... something feels wrong in the rock. Can't explain it."
+        "text": "Ha ! Faut plus qu'un séisme pour déstabiliser une fille des Hauteurs ! Mais... quelque chose cloche dans la roche. J'arrive pas à l'expliquer."
       },
       "alive": {
-        "text": "Like a heartbeat! Deep, slow, from the sea side. Never heard anything like it. I wasn't imagining it."
+        "text": "Comme un battement de cœur ! Profond, lent, côté mer. Jamais entendu un truc pareil. J'ai pas rêvé."
       },
       "consult": {
-        "text": "We're miners, not scholars! We need help. Tink on Spark Cove knows geology. Elder Mossa on Green Root can sense things we can't. And the Luminari might have records.",
+        "text": "On est des mineurs, pas des érudits ! On a besoin d'aide. Tink sur Spark Cove connaît la géologie. L'Ancienne Mossa sur Green Root peut sentir des choses qu'on ne peut pas. Et les Luminari ont peut-être des archives.",
         "choices": [
-          "Good idea. I'll visit them all.",
-          "That's a lot of sailing."
+          "Bonne idée. Je vais tous les voir.",
+          "Ça fait beaucoup de navigation."
         ]
       },
       "govisit": {
-        "text": "Be careful! And come back with answers. I don't wanna be here when whatever's down there pushes harder."
+        "text": "Fais attention ! Et reviens avec des réponses. J'ai pas envie d'être là quand le truc d'en bas poussera plus fort."
       },
       "sailing": {
-        "text": "Ha! Sea air'll do you good, cave-dweller! Use the harbor. Brin can arrange boats. Go talk to everyone!"
+        "text": "Ha ! L'air marin te fera du bien, rat de galerie ! Passe par le port. Brin peut organiser un bateau. Va parler à tout le monde !"
       }
     },
     "examine-verdium-crate": {
       "start": {
-        "text": "Crates of fresh Verdium, glinting green. Powers the lamps, feeds the soil, keeps Dualuna alive."
+        "text": "Des caisses de Verdium frais, aux reflets verts. Alimente les lampes, nourrit le sol, maintient Dualuna en vie."
       }
     },
     "examine-cracks": {
       "start": {
-        "text": "Wide cracks across the tunnel wall. The rock feels warm. Through the biggest crack... a faint, rhythmic sound. Like breathing."
+        "text": "De larges fissures traversent le mur du tunnel. La roche est chaude. À travers la plus grande... un son faible, rythmique. Comme une respiration."
       }
     },
     "examine-water": {
       "start": {
-        "text": "Salt water. Sea water. Deep in the cliff, far from the ocean. It shimmers strangely in the lantern light."
+        "text": "De l'eau salée. De l'eau de mer. Au cœur de la falaise, loin de l'océan. Elle miroite étrangement à la lumière de la lanterne."
       }
     },
     "examine-vein": {
       "start": {
-        "text": "A thick Verdium vein pulses green. Near the cracks, the glow flickers. Something's drawing energy from the other side."
+        "text": "Un épais filon de Verdium pulse de vert. Près des fissures, la lueur vacille. Quelque chose aspire l'énergie de l'autre côté."
       }
     },
     "brin-default": {
       "start": {
-        "text": "There you are. Felt the tremor too. Whole village is worried. What does Kael say?",
+        "text": "Te voilà. J'ai senti la secousse aussi. Tout le village s'inquiète. Qu'est-ce que Kael dit ?",
         "choices": [
-          "Cracks and salt water in the lower shaft.",
-          "He's worried. We need to investigate.",
-          "Haven't talked to him yet."
+          "Des fissures et de l'eau salée dans le puits inférieur.",
+          "Il est inquiet. On doit enquêter.",
+          "Je ne lui ai pas encore parlé."
         ]
       },
       "report": {
-        "text": "Salt water? In the deep shaft? We've mined these cliffs for generations. Never hit seawater. If the rock between us and the ocean is cracking...",
+        "text": "De l'eau salée ? Dans le puits profond ? On mine ces falaises depuis des générations. Jamais touché l'eau de mer. Si la roche entre nous et l'océan se fissure...",
         "choices": [
-          "Dera says we should consult the other islands.",
-          "Should we stop mining?"
+          "Dera dit qu'on devrait consulter les autres îles.",
+          "On devrait arrêter de miner ?"
         ]
       },
       "worried": {
-        "text": "Then go see it yourself. Check the cracks, touch the rock. I need your Tidewatcher instincts on this."
+        "text": "Alors va voir par toi-même. Vérifie les fissures, touche la roche. J'ai besoin de ton instinct de Tidewatcher."
       },
       "gofirst": {
-        "text": "Mine first. Talk to Kael, examine the shaft. I need a report. The village needs Verdium, but not at the cost of lives."
+        "text": "La mine d'abord. Parle à Kael, examine le puits. J'ai besoin d'un rapport. Le village a besoin de Verdium, mais pas au prix de vies."
       },
       "agree": {
-        "text": "Smart girl. Go — Spark Cove, Green Root, Luminara. Velessi know engineering, Korrim know the earth, Luminari keep the old records. Use the harbor. Tell them Brin sent you."
+        "text": "Bien vu, petite. Va — Spark Cove, Green Root, Luminara. Les Velessi connaissent l'ingénierie, les Korrim connaissent la terre, les Luminari gardent les anciens récits. Passe par le port. Dis-leur que Brin t'envoie."
       },
       "stopmine": {
-        "text": "Can't. Not yet. Village needs Verdium. But I'll have Kael pull back from the deep shaft. Go consult the other islands. Find out what we're dealing with."
+        "text": "Impossible. Pas encore. Le village a besoin de Verdium. Mais je vais dire à Kael de se retirer du puits profond. Va consulter les autres îles. Découvre à quoi on a affaire."
       }
     },
     "harbor-travel": {
       "start": {
-        "text": "Cliff Haven harbor. Boats rock gently in the swell. You can sail to any known island.",
+        "text": "Le port de Cliff Haven. Les bateaux se balancent doucement dans la houle. Tu peux naviguer vers n'importe quelle île connue.",
         "choices": [
-          "Open the world map",
-          "Not right now"
+          "Ouvrir la carte du monde",
+          "Pas maintenant"
         ]
       },
       "map": {
-        "text": "You study the sailing charts..."
+        "text": "Tu étudies les cartes marines..."
       },
       "end": {
         "text": ""
@@ -165,160 +164,160 @@ export default {
     },
     "examine-telescope": {
       "start": {
-        "text": "Green Root to the north — forests. Spark Cove east — workshop smoke. Luminara south — crystal spires catching both moons."
+        "text": "Green Root au nord — des forêts. Spark Cove à l'est — fumée d'ateliers. Luminara au sud — des flèches de cristal captant les deux lunes."
       },
       "start2": {
-        "text": "The ocean between the islands is vast. No one knows what lies beneath. At least... that's what everyone believes."
+        "text": "L'océan entre les îles est immense. Personne ne sait ce qui se cache en dessous. Du moins... c'est ce que tout le monde croit."
       }
     },
     "roothold-default": {
       "start": {
-        "text": "Halt. Elder Grove is sacred. What brings a Tidewatcher here?",
+        "text": "Halte. Le Bosquet des Anciens est sacré. Qu'est-ce qui amène un Tidewatcher ici ?",
         "choices": [
-          "I need to see Elder Mossa. About the tremors.",
-          "Our mines are in trouble."
+          "Je dois voir l'Ancienne Mossa. Au sujet des secousses.",
+          "Nos mines ont des problèmes."
         ]
       },
       "tremors": {
-        "text": "Tremors... We've felt them too. Even the Great Tree's roots are restless. Go. Mossa will want to hear this."
+        "text": "Les secousses... On les a senties aussi. Même les racines du Grand Arbre sont agitées. Va. Mossa voudra entendre ça."
       },
       "learn": {
-        "text": "The earth's been louder these past days. Speak with Mossa. The Elder knows more."
+        "text": "La terre gronde plus fort ces derniers jours. Parle à Mossa. L'Ancienne en sait plus."
       }
     },
     "elder-mossa-default": {
       "start": {
-        "text": "I felt your footsteps, Tidewatcher. The earth carries all things. Lately... it carries distress.",
+        "text": "J'ai senti tes pas, Tidewatcher. La terre porte toutes choses. Ces temps-ci... elle porte la détresse.",
         "choices": [
-          "Salt water in our mines. Where it shouldn't be.",
-          "Can you sense what's causing the tremors?"
+          "De l'eau salée dans nos mines. Là où elle ne devrait pas être.",
+          "Tu peux sentir ce qui cause les secousses ?"
         ]
       },
       "mining": {
-        "text": "Salt water... The Verdium energy I feel through every root — it falters. The earth isn't just shaking. It's resisting."
+        "text": "De l'eau salée... L'énergie du Verdium que je ressens dans chaque racine — elle faiblit. La terre ne tremble pas seulement. Elle résiste."
       },
       "sense": {
-        "text": "The tremors don't come from your rock. They come from below. Deeper than the cliffs. Deeper than the ocean floor."
+        "text": "Les secousses ne viennent pas de ta roche. Elles viennent d'en bas. Plus profond que les falaises. Plus profond que le fond de l'océan."
       },
       "deeper": {
-        "text": "The earth beneath Dualuna's oceans... breathes. A slow rhythm, like a sleeping giant. But lately, the breathing quickens. Something stirs.",
+        "text": "La terre sous les océans de Dualuna... respire. Un rythme lent, comme un géant endormi. Mais ces derniers temps, la respiration s'accélère. Quelque chose remue.",
         "choices": [
-          "Could our mining have disturbed it?",
-          "What do you think is down there?"
+          "Notre extraction aurait pu le déranger ?",
+          "Qu'est-ce que tu crois qu'il y a là-dessous ?"
         ]
       },
       "mining-cause": {
-        "text": "Perhaps. Verdium veins connect to... something. When you mine, you sever old bonds. What if those bonds matter to something other than us?"
+        "text": "Peut-être. Les filons de Verdium sont connectés à... quelque chose. Quand tu mines, tu romps d'anciens liens. Et si ces liens comptaient pour autre chose que nous ?"
       },
       "whatis": {
-        "text": "Our oldest songs speak of \"the world beneath the water.\" We thought them poetry. What if they were truth?"
+        "text": "Nos plus anciens chants parlent du « monde sous les eaux ». On les croyait poétiques. Et s'ils disaient la vérité ?"
       },
       "advice": {
-        "text": "Try Luminara — their archives hold what we only remember as song. And that Velessi, Tink? Engineer eyes see what spirit ones miss."
+        "text": "Essaie Luminara — leurs archives conservent ce que nous ne gardons qu'en chansons. Et ce Velessi, Tink ? Les yeux d'ingénieur voient ce que ceux de l'esprit manquent."
       }
     },
     "examine-flora": {
       "start": {
-        "text": "Glowing moss and ferns, green as Verdium. But in places, the glow is fading. The plants look... tired."
+        "text": "Mousse et fougères luminescentes, vertes comme le Verdium. Mais par endroits, la lueur s'estompe. Les plantes semblent... fatiguées."
       }
     },
     "examine-great-root": {
       "start": {
-        "text": "The Great Root Tree. Trunk wider than three houses, roots spanning the island. Press your ear to the bark — you hear a slow, steady thrum. A heartbeat."
+        "text": "Le Grand Arbre-Racine. Un tronc plus large que trois maisons, des racines couvrant l'île entière. Colle ton oreille à l'écorce — tu entends un bourdonnement lent et régulier. Un battement de cœur."
       }
     },
     "tink-default": {
       "start": {
-        "text": "A Tidewatcher! Been dying to study your cliff Verdium — totally different crystal structure! Wait. You've got that worried look. What broke?",
+        "text": "Un Tidewatcher ! Je rêvais d'étudier ton Verdium de falaise — structure cristalline complètement différente ! Attends. T'as cette tête inquiète. Qu'est-ce qui a cassé ?",
         "choices": [
-          "Mine's cracking. Filling with seawater.",
-          "Strange tremors on Cliff Haven."
+          "La mine se fissure. Elle se remplit d'eau de mer.",
+          "Des secousses étranges à Cliff Haven."
         ]
       },
       "problem": {
-        "text": "Seawater?! That's forty meters of solid basalt! If water's getting through, something breached the barrier from the OTHER side. Not your mining."
+        "text": "De l'eau de mer ?! C'est quarante mètres de basalte massif ! Si l'eau passe, quelque chose a percé la barrière de l'AUTRE côté. Pas ton extraction."
       },
       "tremors": {
-        "text": "Tremors! Periodic? ...Periodic! That rules out tectonics. Periodic means a SOURCE. Something generating them. Hmm..."
+        "text": "Des secousses ! Périodiques ? ...Périodiques ! Ça élimine la tectonique. Périodique veut dire une SOURCE. Quelque chose les génère. Hmm..."
       },
       "analysis": {
-        "text": "I've got a half-built resonance sensor! Measures rock vibrations. The periodicity, the salt water, the cracking — something's pushing against your cliff from the ocean side!",
+        "text": "J'ai un capteur de résonance à moitié construit ! Mesure les vibrations de la roche. La périodicité, l'eau salée, les fissures — quelque chose pousse contre ta falaise depuis le côté océan !",
         "choices": [
-          "Could something alive cause this?",
-          "Can you build something to help?"
+          "Quelque chose de vivant pourrait causer ça ?",
+          "Tu peux construire quelque chose pour aider ?"
         ]
       },
       "alive": {
-        "text": "I'm an engineer, not a storyteller! But... pressure doesn't pulse. Water doesn't intrude rhythmically. Something's either pushing or trying to get through. The physics says it's not random."
+        "text": "Je suis ingénieur, pas conteur ! Mais... la pression ne pulse pas. L'eau ne s'infiltre pas de façon rythmique. Quelque chose pousse ou essaie de passer. La physique dit que c'est pas aléatoire."
       },
       "build": {
-        "text": "Already on it! Calibrate my sensor to Verdium frequencies and — YES! — I can trace the vibrations to their source! Give me a few days. Check the Luminari archives in the meantime!"
+        "text": "Déjà dessus ! Je calibre mon capteur sur les fréquences du Verdium et — OUI ! — je peux tracer les vibrations jusqu'à leur source ! Donne-moi quelques jours. Va voir les archives Luminari en attendant !"
       }
     },
     "examine-machinery": {
       "start": {
-        "text": "Half-finished inventions everywhere. A wind-mill, a twin-moon tide clock, self-mending nets, and... a brass octopus. Sign says: \"Don't touch. ESPECIALLY the octopus.\""
+        "text": "Des inventions inachevées partout. Un moulin à vent, une horloge à marée bi-lunaire, des filets auto-réparants, et... un poulpe en laiton. L'écriteau dit : « Ne pas toucher. SURTOUT PAS le poulpe. »"
       }
     },
     "examine-blueprints": {
       "start": {
-        "text": "Cliff Haven cross-section on the wall. Tink's notes: \"Veins extend below sea level. How deep?\" And smaller: \"Why do the deepest veins curve toward the ocean?\""
+        "text": "Une coupe transversale de Cliff Haven au mur. Notes de Tink : « Les filons descendent sous le niveau de la mer. Jusqu'où ? » Et en plus petit : « Pourquoi les filons les plus profonds courbent-ils vers l'océan ? »"
       }
     },
     "examine-prototype": {
       "start": {
-        "text": "Crystal probes, a Verdium oscillator. Label: \"Resonance Sensor v3 — CLIFF HAVEN.\" Tiny gears, hand-wound coils. Tink's already on it."
+        "text": "Des sondes de cristal, un oscillateur à Verdium. Étiquette : « Capteur de Résonance v3 — CLIFF HAVEN. » Minuscules engrenages, bobines remontées à la main. Tink est déjà dessus."
       }
     },
     "scholar-elyn-default": {
       "start": {
-        "text": "Your bioluminescence betrays your worry, Tidewatcher. What brings you to the Crystal Plaza?",
+        "text": "Ta bioluminescence trahit ton inquiétude, Tidewatcher. Qu'est-ce qui t'amène sur la Place de Cristal ?",
         "choices": [
-          "Tremors in our mines. I need answers.",
-          "I need the archives. Geological records."
+          "Des secousses dans nos mines. J'ai besoin de réponses.",
+          "J'ai besoin des archives. Les relevés géologiques."
         ]
       },
       "research": {
-        "text": "Tremors near the Verdium mines... I've seen records of this before. Crystal tablets from the first settlers — they mention \"the voice of the deep.\" We called it mythology."
+        "text": "Des secousses près des mines de Verdium... J'ai déjà vu des mentions de ça. Des tablettes de cristal des premiers colons — elles parlent de « la voix des profondeurs ». On appelait ça de la mythologie."
       },
       "archives": {
-        "text": "The archives are open. But let me guide you — I've been cross-referencing geological surveys with old myths. I found correlations that shouldn't exist."
+        "text": "Les archives sont ouvertes. Mais laisse-moi te guider — j'ai recoupé les relevés géologiques avec les anciens mythes. J'ai trouvé des corrélations qui ne devraient pas exister."
       },
       "reveal": {
-        "text": "The first settlers described Verdium as \"bridges between worlds.\" Surface to something below. We assumed metaphor. But what if it's literal?",
+        "text": "Les premiers colons décrivaient le Verdium comme des « ponts entre les mondes ». La surface vers quelque chose en dessous. On pensait que c'était une métaphore. Et si c'était littéral ?",
         "choices": [
-          "Something exists beneath the ocean?!",
-          "Are we severing those connections by mining?"
+          "Quelque chose existe sous l'océan ?!",
+          "On rompt ces connexions en minant ?"
         ]
       },
       "beneath": {
-        "text": "One damaged tablet speaks of \"those who build below the water\" and \"cities where no moon shines.\" Filed under mythology. But your tremors, the seawater, the pulsing sounds... what if it's real?"
+        "text": "Une tablette endommagée parle de « ceux qui bâtissent sous les eaux » et de « cités où aucune lune ne brille ». Classé en mythologie. Mais tes secousses, l'eau de mer, les sons pulsés... et si c'était réel ?"
       },
       "severing": {
-        "text": "Exactly what I fear. If Verdium connects surface and depth, we've been severing it for generations. And if something intelligent lives below... they might see our mining as an attack."
+        "text": "C'est exactement ce que je crains. Si le Verdium relie surface et profondeurs, on le coupe depuis des générations. Et si quelque chose d'intelligent vit en dessous... ils pourraient voir notre extraction comme une attaque."
       },
       "conclude": {
-        "text": "Take this knowledge to Cliff Haven. But tread carefully. The idea that our Verdium harvest harms someone we didn't know existed... not everyone will accept that."
+        "text": "Rapporte ces connaissances à Cliff Haven. Mais avance prudemment. L'idée que notre récolte de Verdium nuit à quelqu'un dont on ignorait l'existence... tout le monde n'acceptera pas ça."
       }
     },
     "examine-mural": {
       "start": {
-        "text": "A crystal mural — four races arriving, Verdium discovered, villages built. But in the corner... shapes beneath waves, glowing in the dark ocean."
+        "text": "Une fresque de cristal — quatre races qui arrivent, le Verdium découvert, des villages construits. Mais dans le coin... des formes sous les vagues, luminescentes dans l'océan obscur."
       }
     },
     "examine-geology-archives": {
       "start": {
-        "text": "Centuries of geological surveys. The oldest note: \"Veins originate from beneath the ocean floor, not from the island rock itself.\" Someone underlined it in luminescent ink."
+        "text": "Des siècles de relevés géologiques. La plus ancienne note : « Les filons proviennent du fond de l'océan, pas de la roche insulaire elle-même. » Quelqu'un l'a souligné à l'encre luminescente."
       }
     },
     "examine-ancient-records": {
       "start": {
-        "text": "The oldest records. One fragment: \"...heard again the singing from below. A planet does not sing in harmonies. Only thinking beings sing in harmonies...\""
+        "text": "Les plus anciens registres. Un fragment : « ...entendu à nouveau le chant venu d'en bas. Une planète ne chante pas en harmonies. Seuls des êtres pensants chantent en harmonies... »"
       }
     },
     "examine-pedestal": {
       "start": {
-        "text": "A reading pedestal, humming with Verdium energy. Even here, far from the mines — everything on Dualuna is connected."
+        "text": "Un pupitre de lecture, vibrant d'énergie de Verdium. Même ici, loin des mines — tout sur Dualuna est connecté."
       }
     }
   }
