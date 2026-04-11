@@ -320,5 +320,108 @@ export default {
         "text": "A reading pedestal, humming with Verdium energy. Even here, far from the mines — everything on Dualuna is connected."
       }
     }
+  },
+  "locations": {
+  "mine-entrance": {
+    "name": "Verdium Mine Entrance",
+    "description": "The main entrance to the cliff-face Verdium mines",
+    "hotspots": {
+      "kael": "Foreman Kael",
+      "dera": "Dera",
+      "mine-entry": "Enter the mine",
+      "verdium-crate": "Verdium crate"
+    }
+  },
+  "mine-shaft": {
+    "name": "Lower Mine Shaft",
+    "description": "Deep inside the cliff — the Verdium extraction tunnels",
+    "hotspots": {
+      "cracks": "Examine the cracks",
+      "water-puddle": "Strange water",
+      "verdium-vein": "Glowing Verdium vein"
+    }
+  },
+  "tidewatcher-village": {
+    "name": "Tidewatcher Village",
+    "description": "A cozy village perched between cliff tops and the sea",
+    "hotspots": {
+      "brin": "Elder Brin",
+      "harbor": "Harbor (travel to other islands)"
+    }
+  },
+  "cliff-overlook": {
+    "name": "Cliff Overlook",
+    "description": "A breathtaking view of the ocean and distant islands",
+    "hotspots": {
+      "telescope": "Look through the telescope"
+    }
+  },
+  "forest-path": {
+    "name": "Forest Path",
+    "description": "A winding path through ancient, Verdium-nourished forests",
+    "hotspots": {
+      "roothold": "Roothold the Warden",
+      "flora": "Examine the flora"
+    }
+  },
+  "elder-grove": {
+    "name": "Elder Grove",
+    "description": "Sacred gathering place of the Korrim elders, under the Great Root Tree",
+    "hotspots": {
+      "mossa": "Elder Mossa",
+      "great-root": "The Great Root Tree"
+    }
+  },
+  "harbor-workshop": {
+    "name": "Harbor Workshop",
+    "description": "A bustling harbor filled with Velessi inventions and half-finished projects",
+    "hotspots": {
+      "tink": "Tink the Inventor",
+      "machinery": "Examine machinery"
+    }
+  },
+  "inventors-lab": {
+    "name": "Tink's Laboratory",
+    "description": "A chaotic but brilliant workshop filled with prototypes and blueprints",
+    "hotspots": {
+      "blueprints": "Examine blueprints",
+      "prototype": "Strange prototype"
+    }
+  },
+  "crystal-plaza": {
+    "name": "Crystal Plaza",
+    "description": "The luminous heart of Luminari culture, aglow with bioluminescent patterns",
+    "hotspots": {
+      "elyn": "Scholar Elyn",
+      "mural": "Ancient mural"
+    }
+  },
+  "archive-hall": {
+    "name": "Archive Hall",
+    "description": "Rows of crystal tablets containing the collected knowledge of Dualuna",
+    "hotspots": {
+      "geology-section": "Geology archives",
+      "ancient-section": "Ancient records",
+      "pedestal": "Reading pedestal"
+    }
   }
+},
+  "islands": {
+  "cliff-haven": {
+    "name": "Cliff Haven",
+    "description": "Home of the Tidewatchers and the Verdium mines"
+  },
+  "green-root": {
+    "name": "Green Root",
+    "description": "Ancient forests tended by the Korrim"
+  },
+  "spark-cove": {
+    "name": "Spark Cove",
+    "description": "Workshop island of the Velessi inventors"
+  },
+  "luminara": {
+    "name": "Luminara",
+    "description": "Cultural heart of the Luminari"
+  }
+}
 };

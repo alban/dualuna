@@ -320,5 +320,108 @@ export default {
         "text": "Un pupitre de lecture, vibrant d'énergie de Verdium. Même ici, loin des mines — tout sur Dualuna est connecté."
       }
     }
+  },
+  "locations": {
+    "mine-entrance": {
+      "name": "Entrée de la mine de Verdium",
+      "description": "L'entrée principale des mines de Verdium dans la falaise",
+      "hotspots": {
+        "kael": "Contremaître Kael",
+        "dera": "Dera",
+        "mine-entry": "Entrer dans la mine",
+        "verdium-crate": "Caisse de Verdium"
+      }
+    },
+    "mine-shaft": {
+      "name": "Puits inférieur",
+      "description": "Au cœur de la falaise — les tunnels d'extraction de Verdium",
+      "hotspots": {
+        "cracks": "Examiner les fissures",
+        "water-puddle": "Eau étrange",
+        "verdium-vein": "Veine de Verdium luminescente"
+      }
+    },
+    "tidewatcher-village": {
+      "name": "Village Tidewatcher",
+      "description": "Un village chaleureux perché entre les falaises et la mer",
+      "hotspots": {
+        "brin": "Ancien Brin",
+        "harbor": "Port (voyager vers d'autres îles)"
+      }
+    },
+    "cliff-overlook": {
+      "name": "Belvédère de la falaise",
+      "description": "Une vue imprenable sur l'océan et les îles lointaines",
+      "hotspots": {
+        "telescope": "Regarder dans le télescope"
+      }
+    },
+    "forest-path": {
+      "name": "Sentier forestier",
+      "description": "Un chemin sinueux à travers les forêts anciennes nourries au Verdium",
+      "hotspots": {
+        "roothold": "Roothold le Gardien",
+        "flora": "Examiner la flore"
+      }
+    },
+    "elder-grove": {
+      "name": "Bosquet des Anciens",
+      "description": "Lieu sacré des anciens Korrim, sous le Grand Arbre-Racine",
+      "hotspots": {
+        "mossa": "Ancien Mossa",
+        "great-root": "Le Grand Arbre-Racine"
+      }
+    },
+    "harbor-workshop": {
+      "name": "Atelier du port",
+      "description": "Un port animé rempli d'inventions Velessi et de projets inachevés",
+      "hotspots": {
+        "tink": "Tink l'Inventeur",
+        "machinery": "Examiner les machines"
+      }
+    },
+    "inventors-lab": {
+      "name": "Laboratoire de Tink",
+      "description": "Un atelier chaotique mais brillant, plein de prototypes et de plans",
+      "hotspots": {
+        "blueprints": "Examiner les plans",
+        "prototype": "Prototype étrange"
+      }
+    },
+    "crystal-plaza": {
+      "name": "Place de Cristal",
+      "description": "Le cœur lumineux de la culture Luminari, scintillant de motifs bioluminescents",
+      "hotspots": {
+        "elyn": "Érudite Elyn",
+        "mural": "Fresque ancienne"
+      }
+    },
+    "archive-hall": {
+      "name": "Salle des Archives",
+      "description": "Des rangées de tablettes de cristal contenant le savoir collecté de Dualuna",
+      "hotspots": {
+        "geology-section": "Archives géologiques",
+        "ancient-section": "Archives anciennes",
+        "pedestal": "Pupitre de lecture"
+      }
+    }
+  },
+  "islands": {
+    "cliff-haven": {
+      "name": "Cliff Haven",
+      "description": "Foyer des Tidewatchers et des mines de Verdium"
+    },
+    "green-root": {
+      "name": "Green Root",
+      "description": "Forêts anciennes entretenues par les Korrim"
+    },
+    "spark-cove": {
+      "name": "Spark Cove",
+      "description": "Île-atelier des inventeurs Velessi"
+    },
+    "luminara": {
+      "name": "Luminara",
+      "description": "Cœur culturel des Luminari"
+    }
   }
 };

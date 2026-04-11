@@ -61,15 +61,19 @@ export class LocationScene extends Phaser.Scene {
     // Pre-rendered background image
     this.add.image(0, 0, `bg-${this.locationId}`).setOrigin(0, 0);
 
-    // Location name watermark
-    this.add.text(width / 2, 30, location.name, {
+    // Location name watermark (localized)
+    const locName = I18n.t(`locations.${this.locationId}.name`) !== `locations.${this.locationId}.name`
+      ? I18n.t(`locations.${this.locationId}.name`) : location.name;
+    this.add.text(width / 2, 30, locName, {
       fontSize: '24px', fill: '#ffffff', fontFamily: 'Georgia, serif',
       stroke: '#000000', strokeThickness: 3,
     }).setOrigin(0.5).setAlpha(0.7);
 
-    // Description
-    if (location.description) {
-      this.add.text(width / 2, 60, location.description, {
+    // Description (localized)
+    const locDesc = I18n.t(`locations.${this.locationId}.description`) !== `locations.${this.locationId}.description`
+      ? I18n.t(`locations.${this.locationId}.description`) : location.description;
+    if (locDesc) {
+      this.add.text(width / 2, 60, locDesc, {
         fontSize: '14px', fill: '#aabbcc', fontFamily: 'Georgia, serif',
         stroke: '#000000', strokeThickness: 2,
       }).setOrigin(0.5).setAlpha(0.8);
@@ -110,14 +114,16 @@ export class LocationScene extends Phaser.Scene {
       const zone = this.add.zone(hotspot.x, hotspot.y, hotspot.width, hotspot.height)
         .setInteractive({ useHandCursor: true });
 
-      // Visual indicator
-      const indicator = this.add.graphics();
-      const labelText = this.add.text(hotspot.x, hotspot.y - hotspot.height / 2 - 12, hotspot.label, {
+      // Visual indicator — localized label
+      const hsLabel = I18n.t(`locations.${this.locationId}.hotspots.${hotspot.id}`) !== `locations.${this.locationId}.hotspots.${hotspot.id}`
+        ? I18n.t(`locations.${this.locationId}.hotspots.${hotspot.id}`) : hotspot.label;
+      const labelText = this.add.text(hotspot.x, hotspot.y - hotspot.height / 2 - 12, hsLabel, {
         fontSize: '13px', fill: '#aaddcc', fontFamily: 'Georgia, serif',
         stroke: '#000000', strokeThickness: 2,
         backgroundColor: '#00000066', padding: { x: 6, y: 3 },
       }).setOrigin(0.5).setAlpha(0);
 
+      const indicator = this.add.graphics();
       // Character portrait marker
       if (hotspot.action === 'dialogue' && hotspot.character) {
         const char = CHARACTERS[hotspot.character];
@@ -236,8 +242,10 @@ export class LocationScene extends Phaser.Scene {
     uiBg.lineStyle(1, 0x334455, 1);
     uiBg.lineBetween(0, uiY, width, uiY);
 
-    // Location name and island
-    this.add.text(20, uiY + 10, `${location.name}`, {
+    // Location name and island (localized)
+    const uiLocName = I18n.t(`locations.${this.locationId}.name`) !== `locations.${this.locationId}.name`
+      ? I18n.t(`locations.${this.locationId}.name`) : location.name;
+    this.add.text(20, uiY + 10, uiLocName, {
       fontSize: '16px', fill: '#88ccdd', fontFamily: 'Georgia, serif',
       fontStyle: 'bold',
     });
@@ -257,7 +265,9 @@ export class LocationScene extends Phaser.Scene {
         const connLoc = LOCATIONS[connId];
         if (!connLoc) continue;
 
-        const btn = this.add.text(navX, navY, `▸ ${connLoc.name}`, {
+        const connName = I18n.t(`locations.${connId}.name`) !== `locations.${connId}.name`
+          ? I18n.t(`locations.${connId}.name`) : connLoc.name;
+        const btn = this.add.text(navX, navY, `▸ ${connName}`, {
           fontSize: '13px', fill: '#88aacc', fontFamily: 'Georgia, serif',
         }).setInteractive({ useHandCursor: true });
 
