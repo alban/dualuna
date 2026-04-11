@@ -1,4 +1,3 @@
-import Phaser from 'phaser';
 import { LOCATIONS } from '../data/locations.js';
 import { CHARACTERS } from '../data/characters.js';
 import { SaveManager } from '../systems/SaveManager.js';
@@ -57,26 +56,9 @@ export class LocationScene extends Phaser.Scene {
 
   drawBackground(location) {
     const { width, height } = this.scale;
-    const bg = this.add.graphics();
-    const uiHeight = 120;
-    const sceneH = height - uiHeight;
 
-    // Use procedural background based on location type
-    const colors = location.palette || { top: [30, 50, 80], bottom: [20, 35, 55] };
-
-    for (let y = 0; y < sceneH; y++) {
-      const t = y / sceneH;
-      const r = Math.floor(colors.top[0] + t * (colors.bottom[0] - colors.top[0]));
-      const g = Math.floor(colors.top[1] + t * (colors.bottom[1] - colors.top[1]));
-      const b = Math.floor(colors.top[2] + t * (colors.bottom[2] - colors.top[2]));
-      bg.fillStyle(Phaser.Display.Color.GetColor(r, g, b), 1);
-      bg.fillRect(0, y, width, 1);
-    }
-
-    // Draw location-specific elements
-    if (location.drawFunc) {
-      location.drawFunc(bg, this, width, sceneH);
-    }
+    // Pre-rendered background image
+    this.add.image(0, 0, `bg-${this.locationId}`).setOrigin(0, 0);
 
     // Location name watermark
     this.add.text(width / 2, 30, location.name, {
@@ -95,7 +77,6 @@ export class LocationScene extends Phaser.Scene {
 
   drawDayNight(phase) {
     const { width, height } = this.scale;
-    const overlay = this.add.graphics();
     const alphaMap = {
       morning: 0.05,
       day: 0,
@@ -111,8 +92,7 @@ export class LocationScene extends Phaser.Scene {
     const alpha = alphaMap[phase] || 0;
     const color = colorMap[phase] || 0x000000;
     if (alpha > 0) {
-      overlay.fillStyle(color, alpha);
-      overlay.fillRect(0, 0, width, height - 120);
+      this.add.rectangle(width / 2, (height - 120) / 2, width, height - 120, color, alpha);
     }
   }
 

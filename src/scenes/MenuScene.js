@@ -8,23 +8,8 @@ export class MenuScene extends Phaser.Scene {
   create() {
     const { width, height } = this.scale;
 
-    // Background gradient
-    const bg = this.add.graphics();
-    for (let y = 0; y < height; y++) {
-      const t = y / height;
-      const r = Math.floor(10 + t * 20);
-      const g = Math.floor(15 + t * 40);
-      const b = Math.floor(40 + t * 80);
-      bg.fillStyle(Phaser.Display.Color.GetColor(r, g, b), 1);
-      bg.fillRect(0, y, width, 1);
-    }
-
-    // Two moons
-    const moonGfx = this.add.graphics();
-    moonGfx.fillStyle(0xeeeedd, 0.8);
-    moonGfx.fillCircle(300, 120, 35);
-    moonGfx.fillStyle(0xddccbb, 0.6);
-    moonGfx.fillCircle(720, 90, 25);
+    // Pre-rendered background
+    this.add.image(0, 0, 'bg-menu').setOrigin(0, 0);
 
     // Title
     this.add.text(width / 2, 200, 'DUALUNA', {

@@ -161,10 +161,10 @@ export class DialogueScene extends Phaser.Scene {
     this.backdrop.once('pointerdown', skipHandler);
 
     this.typeTimer = this.time.addEvent({
-      delay: 25,
-      repeat: fullText.length - 1,
+      delay: 10,
+      repeat: Math.ceil(fullText.length / 3) - 1,
       callback: () => {
-        index++;
+        index = Math.min(index + 3, fullText.length);
         this.dialogueText.setText(fullText.substring(0, index));
         if (index >= fullText.length) {
           this.backdrop.off('pointerdown', skipHandler);

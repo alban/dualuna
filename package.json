@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "generate-art": "node scripts/generate-backgrounds.js",
     "preview": "vite preview"
   },
   "keywords": [],
@@ -15,6 +16,7 @@
     "phaser": "^3.90.0"
   },
   "devDependencies": {
+    "canvas": "^3.2.3",
     "vite": "^8.0.8"
   }
 }

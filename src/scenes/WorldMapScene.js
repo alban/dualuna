@@ -10,48 +10,31 @@ export class WorldMapScene extends Phaser.Scene {
     const { width, height } = this.scale;
     const state = this.registry.get('gameState');
 
-    // Ocean background
-    const bg = this.add.graphics();
-    for (let y = 0; y < height; y++) {
-      const t = y / height;
-      const r = Math.floor(15 + t * 10);
-      const g = Math.floor(40 + t * 30);
-      const b = Math.floor(90 + t * 60);
-      bg.fillStyle(Phaser.Display.Color.GetColor(r, g, b), 1);
-      bg.fillRect(0, y, width, 1);
-    }
+    // Pre-rendered ocean background
+    this.add.image(0, 0, 'bg-worldmap').setOrigin(0, 0);
 
-    // Wave lines for ocean texture
-    const waves = this.add.graphics();
-    waves.lineStyle(1, 0x3366aa, 0.15);
-    for (let y = 50; y < height; y += 30) {
-      waves.beginPath();
-      for (let x = 0; x < width; x += 5) {
-        const wy = y + Math.sin((x + y * 3) * 0.02) * 8;
-        if (x === 0) waves.moveTo(x, wy);
-        else waves.lineTo(x, wy);
-      }
-      waves.strokePath();
+    // Draw island shapes (lightweight — just a few ellipses)
+    const islandGfx = this.make.graphics({ x: 0, y: 0, add: false });
+    for (const [id, island] of Object.entries(WORLD.islands)) {
+      const discovered = state.discoveredIslands.includes(id);
+      const isCurrent = state.currentIsland === id;
+      this.drawIsland(islandGfx, island, discovered, isCurrent);
     }
+    const texKey = 'worldmap-islands';
+    if (this.textures.exists(texKey)) this.textures.remove(texKey);
+    islandGfx.generateTexture(texKey, width, height);
+    islandGfx.destroy();
+    this.add.image(0, 0, texKey).setOrigin(0, 0);
 
     // Title
     this.add.text(width / 2, 30, 'The Islands of Dualuna', {
       fontSize: '28px', fill: '#88bbdd', fontFamily: 'Georgia, serif',
     }).setOrigin(0.5);
 
-    // Draw two moons (small, top corners)
-    const moons = this.add.graphics();
-    moons.fillStyle(0xeeeedd, 0.4);
-    moons.fillCircle(80, 50, 15);
-    moons.fillStyle(0xddccbb, 0.3);
-    moons.fillCircle(940, 40, 10);
-
-    // Draw islands
-    const islandGfx = this.add.graphics();
+    // Add interactive labels and hit zones (these need to stay as live objects)
     for (const [id, island] of Object.entries(WORLD.islands)) {
       const discovered = state.discoveredIslands.includes(id);
       const isCurrent = state.currentIsland === id;
-      this.drawIsland(islandGfx, island, discovered, isCurrent);
 
       if (discovered) {
         // Island name label
@@ -107,10 +90,6 @@ export class WorldMapScene extends Phaser.Scene {
       // Fog of war — just a faint shape
       gfx.fillStyle(0x334455, 0.3);
       gfx.fillEllipse(x, y, size * 2, size * 1.4);
-      gfx.fillStyle(0x334455, 0.15);
-      this.add.text(x, y, '?', {
-        fontSize: '20px', fill: '#556677', fontFamily: 'Georgia, serif',
-      }).setOrigin(0.5);
       return;
     }
 

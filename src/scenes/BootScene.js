@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { generatePlaceholderArt } from '../utils/artGenerator.js';
+import { LOCATIONS } from '../data/locations.js';
 
 export class BootScene extends Phaser.Scene {
   constructor() {
@@ -7,7 +7,6 @@ export class BootScene extends Phaser.Scene {
   }
 
   preload() {
-    // Show loading bar
     const { width, height } = this.scale;
     const barW = 400, barH = 30;
     const barX = (width - barW) / 2;
@@ -24,12 +23,16 @@ export class BootScene extends Phaser.Scene {
       fill.fillRect(barX + 2, barY + 2, (barW - 4) * val, barH - 4);
     });
 
-    const title = this.add.text(width / 2, barY - 40, 'Loading Dualuna...', {
+    this.add.text(width / 2, barY - 40, 'Loading Dualuna...', {
       fontSize: '20px', fill: '#aaccff', fontFamily: 'Georgia, serif',
     }).setOrigin(0.5);
 
-    // Generate all placeholder art as textures
-    generatePlaceholderArt(this);
+    // Load all pre-rendered background images
+    this.load.image('bg-menu', 'assets/backgrounds/menu.png');
+    this.load.image('bg-worldmap', 'assets/backgrounds/worldmap.png');
+    for (const id of Object.keys(LOCATIONS)) {
+      this.load.image(`bg-${id}`, `assets/backgrounds/${id}.png`);
+    }
   }
 
   create() {
