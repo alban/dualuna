@@ -57,9 +57,11 @@ export class LocationScene extends Phaser.Scene {
 
   drawBackground(location) {
     const { width, height } = this.scale;
+    const uiH = 140;
 
-    // Pre-rendered background image
-    this.add.image(0, 0, `bg-${this.locationId}`).setOrigin(0, 0);
+    // Pre-rendered background image — scale to fill scene area above UI bar
+    const bg = this.add.image(0, 0, `bg-${this.locationId}`).setOrigin(0, 0);
+    bg.setDisplaySize(width, height - uiH);
 
     // Location name watermark (localized)
     const locName = I18n.t(`locations.${this.locationId}.name`) !== `locations.${this.locationId}.name`
@@ -117,10 +119,10 @@ export class LocationScene extends Phaser.Scene {
       // Visual indicator — localized label
       const hsLabel = I18n.t(`locations.${this.locationId}.hotspots.${hotspot.id}`) !== `locations.${this.locationId}.hotspots.${hotspot.id}`
         ? I18n.t(`locations.${this.locationId}.hotspots.${hotspot.id}`) : hotspot.label;
-      const labelText = this.add.text(hotspot.x, hotspot.y - hotspot.height / 2 - 12, hsLabel, {
-        fontSize: '13px', fill: '#aaddcc', fontFamily: 'Georgia, serif',
+      const labelText = this.add.text(hotspot.x, hotspot.y - hotspot.height / 2 - 16, hsLabel, {
+        fontSize: '16px', fill: '#aaddcc', fontFamily: 'Georgia, serif',
         stroke: '#000000', strokeThickness: 2,
-        backgroundColor: '#00000066', padding: { x: 6, y: 3 },
+        backgroundColor: '#00000088', padding: { x: 8, y: 5 },
       }).setOrigin(0.5).setAlpha(0);
 
       const indicator = this.add.graphics();
@@ -136,12 +138,12 @@ export class LocationScene extends Phaser.Scene {
 
           // Simple character sprite: circle with initial
           indicator.fillStyle(color, 0.8);
-          indicator.fillCircle(hotspot.x, hotspot.y, 20);
+          indicator.fillCircle(hotspot.x, hotspot.y, 22);
           indicator.fillStyle(0xffffff, 0.9);
-          indicator.fillCircle(hotspot.x, hotspot.y - 2, 8); // head
+          indicator.fillCircle(hotspot.x, hotspot.y - 2, 9); // head
 
-          this.add.text(hotspot.x, hotspot.y + 20, char.name, {
-            fontSize: '11px', fill: '#dddddd', fontFamily: 'Georgia, serif',
+          this.add.text(hotspot.x, hotspot.y + 24, char.name, {
+            fontSize: '14px', fill: '#dddddd', fontFamily: 'Georgia, serif',
             stroke: '#000000', strokeThickness: 2,
           }).setOrigin(0.5);
         }
@@ -257,10 +259,15 @@ export class LocationScene extends Phaser.Scene {
       fontStyle: 'bold',
     });
 
-    // Navigation buttons for connected locations — large touch targets
+    // Verdium display
+    this.add.text(20, uiY + 34, `◆ ${state.verdium}`, {
+      fontSize: '16px', fill: '#44cc88', fontFamily: 'Georgia, serif',
+    });
+
+    // Navigation buttons for connected locations
     if (location.connections) {
       let navX = 20;
-      const navY = uiY + 40;
+      const navY = uiY + 62;
 
       for (const connId of location.connections) {
         const connLoc = LOCATIONS[connId];
@@ -283,52 +290,6 @@ export class LocationScene extends Phaser.Scene {
       }
     }
 
-    // Right side icon buttons — large touch targets
-    const iconStyle = { fontSize: '26px', fill: '#88aacc', fontFamily: 'Georgia, serif' };
-    const btnY = uiY + 10;
-    const btnSize = 55;
-    const btnSpacing = 62;
-    let btnX = width - 35;
-
-    const makeIconBtn = (x, y, label, onClick) => {
-      const bg = this.add.rectangle(x, y + btnSize / 2, btnSize, btnSize, 0x1a2a3a, 0.8)
-        .setInteractive({ useHandCursor: true });
-      const txt = this.add.text(x, y + 10, label, iconStyle).setOrigin(0.5, 0);
-      bg.on('pointerover', () => txt.setStyle({ fill: '#ffffff' }));
-      bg.on('pointerout', () => txt.setStyle({ fill: '#88aacc' }));
-      bg.on('pointerdown', onClick);
-      return { bg, txt };
-    };
-
-    makeIconBtn(btnX, btnY, '⛶', () => {
-      if (document.fullscreenElement) {
-        document.exitFullscreen();
-      } else {
-        document.documentElement.requestFullscreen().catch(() => {});
-      }
-    });
-    btnX -= btnSpacing;
-
-    makeIconBtn(btnX, btnY, '🌐', () => {
-      SaveManager.save(state);
-      this.scene.start('Language');
-    });
-    btnX -= btnSpacing;
-
-    makeIconBtn(btnX, btnY, '💾', () => {
-      SaveManager.save(state);
-      this.showNotification(I18n.t('ui.gameSaved'));
-    });
-    btnX -= btnSpacing;
-
-    makeIconBtn(btnX, btnY, '🗺', () => this.scene.start('WorldMap'));
-    btnX -= btnSpacing;
-
-    // Verdium display
-    this.add.text(btnX, btnY + 15, `◆ ${state.verdium}`, {
-      fontSize: '18px', fill: '#44cc88', fontFamily: 'Georgia, serif',
-    }).setOrigin(0.5, 0);
-
     // Quest log hint (translated)
     const activeQuests = QuestManager.getActiveQuests(state);
     if (activeQuests.length > 0) {
@@ -338,5 +299,93 @@ export class LocationScene extends Phaser.Scene {
         fontSize: '14px', fill: '#ccaa66', fontFamily: 'Georgia, serif',
       });
     }
+
+    // Right side: Map (left) + Config (right), side by side, full height
+    const bigBtnStyle = { fontSize: '48px', fill: '#88aacc', fontFamily: 'Georgia, serif' };
+    const btnW = 90;
+    const btnH = uiH - 10;
+    const btnCenterY = uiY + uiH / 2;
+
+    // Map button (left of the two)
+    const mapBg = this.add.rectangle(width - btnW - btnW / 2 - 10, btnCenterY, btnW, btnH, 0x1a2a3a, 0.8)
+      .setInteractive({ useHandCursor: true });
+    const mapTxt = this.add.text(width - btnW - btnW / 2 - 10, btnCenterY, '🗺', bigBtnStyle).setOrigin(0.5);
+    mapBg.on('pointerover', () => mapTxt.setStyle({ fill: '#ffffff' }));
+    mapBg.on('pointerout', () => mapTxt.setStyle({ fill: '#88aacc' }));
+    mapBg.on('pointerdown', () => this.scene.start('WorldMap'));
+
+    // Config button (right of the two)
+    const cfgBg = this.add.rectangle(width - btnW / 2 - 5, btnCenterY, btnW, btnH, 0x1a2a3a, 0.8)
+      .setInteractive({ useHandCursor: true });
+    const cfgTxt = this.add.text(width - btnW / 2 - 5, btnCenterY, '⚙', bigBtnStyle).setOrigin(0.5);
+    cfgBg.on('pointerover', () => cfgTxt.setStyle({ fill: '#ffffff' }));
+    cfgBg.on('pointerout', () => cfgTxt.setStyle({ fill: '#88aacc' }));
+    cfgBg.on('pointerdown', () => this.openConfigMenu(state));
+  }
+
+  openConfigMenu(state) {
+    const { width, height } = this.scale;
+
+    const backdrop = this.add.rectangle(width / 2, height / 2, width, height, 0x000000, 0.7)
+      .setInteractive();
+
+    const panelW = 450, panelH = 380;
+    const panelX = width / 2, panelY = height / 2;
+    const panel = this.add.graphics();
+    panel.fillStyle(0x0a1520, 0.95);
+    panel.fillRoundedRect(panelX - panelW / 2, panelY - panelH / 2, panelW, panelH, 12);
+    panel.lineStyle(1, 0x334455, 1);
+    panel.strokeRoundedRect(panelX - panelW / 2, panelY - panelH / 2, panelW, panelH, 12);
+
+    const elements = [backdrop, panel];
+
+    const makeCfgBtn = (y, label, onClick) => {
+      const bg = this.add.rectangle(panelX, y, panelW - 40, 60, 0x1a2a3a, 0.8)
+        .setInteractive({ useHandCursor: true });
+      const txt = this.add.text(panelX, y, label, {
+        fontSize: '22px', fill: '#88aacc', fontFamily: 'Georgia, serif',
+      }).setOrigin(0.5);
+      bg.on('pointerover', () => txt.setStyle({ fill: '#ffffff' }));
+      bg.on('pointerout', () => txt.setStyle({ fill: '#88aacc' }));
+      bg.on('pointerdown', onClick);
+      elements.push(bg, txt);
+    };
+
+    const closeMenu = () => elements.forEach(el => el.destroy());
+
+    makeCfgBtn(panelY - 115, '💾  ' + I18n.t('ui.saveLabel'), () => {
+      SaveManager.save(state);
+      closeMenu();
+      this.showNotification(I18n.t('ui.gameSaved'));
+    });
+
+    makeCfgBtn(panelY - 45, '🌐  ' + I18n.t('ui.languageLabel'), () => {
+      SaveManager.save(state);
+      closeMenu();
+      this.scene.start('Language');
+    });
+
+    const fsLabel = document.fullscreenElement ? I18n.t('ui.exitFullscreenLabel') : I18n.t('ui.fullscreenLabel');
+    makeCfgBtn(panelY + 25, '⛶  ' + fsLabel, () => {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else {
+        document.documentElement.requestFullscreen().catch(() => {});
+      }
+      closeMenu();
+    });
+
+    makeCfgBtn(panelY + 95, '↻  ' + I18n.t('ui.restart'), () => {
+      window.location.reload();
+    });
+
+    // Close button
+    const closeBtn = this.add.text(panelX + panelW / 2 - 15, panelY - panelH / 2 + 8, '✕', {
+      fontSize: '22px', fill: '#667788', fontFamily: 'Georgia, serif',
+    }).setOrigin(0.5, 0).setInteractive({ useHandCursor: true });
+    closeBtn.on('pointerdown', closeMenu);
+    elements.push(closeBtn);
+
+    backdrop.on('pointerdown', closeMenu);
   }
 }

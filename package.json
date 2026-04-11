@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "generate-art": "node scripts/generate-backgrounds.js",
+    "screenshots": "node scripts/screenshots.js",
     "preview": "vite preview"
   },
   "keywords": [],

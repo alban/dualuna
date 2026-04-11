@@ -12,7 +12,7 @@ const OUT_DIR = join(__dirname, '..', 'public', 'assets', 'backgrounds');
 mkdirSync(OUT_DIR, { recursive: true });
 
 const W = 1024;
-const H_SCENE = 648; // 768 - 120 (UI bar)
+const H_SCENE = 628; // 768 - 140 (UI bar)
 const H_FULL = 768;
 
 function save(canvas, name) {
@@ -106,12 +106,14 @@ const locations = {
     gradient(ctx, w, h, [60, 70, 90], [40, 45, 50]);
     ctx.fillStyle = '#554a3a'; ctx.fillRect(0, h * 0.7, w, h * 0.3);
     drawCliffs(ctx, w, h);
+    // Mine entrance: black hole with wooden frame
+    const doorX = w * 0.73, doorY = h * 0.32, doorW = 80, doorH = 130;
     ctx.fillStyle = '#111111';
-    roundRect(ctx, w * 0.73, h * 0.35, 80, 120, 8);
+    roundRect(ctx, doorX, doorY, doorW, doorH, 8);
     ctx.fillStyle = '#885533';
-    ctx.fillRect(w * 0.73, h * 0.33, 6, 125);
-    ctx.fillRect(w * 0.73 + 76, h * 0.33, 6, 125);
-    ctx.fillRect(w * 0.73, h * 0.33, 82, 6);
+    ctx.fillRect(doorX - 4, doorY - 4, 6, doorH + 8);
+    ctx.fillRect(doorX + doorW - 2, doorY - 4, 6, doorH + 8);
+    ctx.fillRect(doorX - 4, doorY - 4, doorW + 8, 6);
     ctx.fillStyle = 'rgba(102,85,68,0.5)'; ctx.fillRect(0, h * 0.75, w * 0.5, 30);
     drawOcean(ctx, 0, h * 0.5, w * 0.5, h * 0.2);
     ctx.fillStyle = '#886633'; ctx.fillRect(w * 0.55, h * 0.65, 25, 20); ctx.fillRect(w * 0.60, h * 0.63, 20, 22);

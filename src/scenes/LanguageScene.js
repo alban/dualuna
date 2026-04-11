@@ -66,10 +66,10 @@ export class LanguageScene extends Phaser.Scene {
       }
     });
 
-    // Fullscreen button — bottom left
-    const fsBtn = this.add.text(15, height - 40, '⛶', {
-      fontSize: '28px', fill: '#88aacc', fontFamily: 'Georgia, serif',
-      backgroundColor: '#1a2a3a', padding: { x: 10, y: 4 },
+    // Fullscreen button — bottom left, large
+    const fsBtn = this.add.text(15, height - 55, '⛶', {
+      fontSize: '40px', fill: '#88aacc', fontFamily: 'Georgia, serif',
+      backgroundColor: '#1a2a3a', padding: { x: 12, y: 6 },
     }).setInteractive({ useHandCursor: true });
     fsBtn.on('pointerover', () => fsBtn.setStyle({ fill: '#ffffff' }));
     fsBtn.on('pointerout', () => fsBtn.setStyle({ fill: '#88aacc' }));

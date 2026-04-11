@@ -22,7 +22,12 @@ export default {
     "worldMapTitle": "The Islands of Dualuna",
     "fullscreen": "⛶",
     "exitFullscreen": "⛶",
-    "github": "Source"
+    "github": "Source",
+    "fullscreenLabel": "Fullscreen",
+    "exitFullscreenLabel": "Exit fullscreen",
+    "saveLabel": "Save",
+    "languageLabel": "Language",
+    "restart": "Restart"
   },
   "quests": {
     "tremors-in-the-deep": "Tremors in the Deep",

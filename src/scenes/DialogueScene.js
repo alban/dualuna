@@ -37,26 +37,27 @@ export class DialogueScene extends Phaser.Scene {
       Phaser.Geom.Rectangle.Contains
     );
 
-    // Dialogue panel
-    this.panelY = height - 300;
+    // Dialogue panel — large, covers bottom half
+    this.panelY = height - 380;
+    const panelH = 350;
     this.panel = this.add.graphics();
     this.panel.fillStyle(0x0a1520, 0.95);
-    this.panel.fillRoundedRect(40, this.panelY, width - 80, 270, 8);
+    this.panel.fillRoundedRect(20, this.panelY, width - 40, panelH, 8);
     this.panel.lineStyle(1, 0x334455, 1);
-    this.panel.strokeRoundedRect(40, this.panelY, width - 80, 270, 8);
+    this.panel.strokeRoundedRect(20, this.panelY, width - 40, panelH, 8);
 
     // Portrait area (left side)
     this.portraitArea = this.add.graphics();
-    this.portraitNameText = this.add.text(130, this.panelY + 140, '', {
-      fontSize: '13px', fill: '#88ccdd', fontFamily: 'Georgia, serif',
+    this.portraitNameText = this.add.text(110, this.panelY + 140, '', {
+      fontSize: '14px', fill: '#88ccdd', fontFamily: 'Georgia, serif',
       fontStyle: 'bold',
     }).setOrigin(0.5);
 
     // Dialogue text area
-    this.dialogueText = this.add.text(230, this.panelY + 20, '', {
-      fontSize: '16px', fill: '#ccddee', fontFamily: 'Georgia, serif',
-      wordWrap: { width: width - 300 },
-      lineSpacing: 6,
+    this.dialogueText = this.add.text(210, this.panelY + 20, '', {
+      fontSize: '24px', fill: '#ccddee', fontFamily: 'Georgia, serif',
+      wordWrap: { width: width - 270 },
+      lineSpacing: 10,
     });
 
     // Choices container
@@ -115,13 +116,13 @@ export class DialogueScene extends Phaser.Scene {
       coralline: 0xcc6677, deepkin: 0x4466aa, shellborn: 0x887744,
     };
     const color = raceColors[char.race] || 0x888888;
-    const cx = 130, cy = this.panelY + 75;
+    const cx = 110, cy = this.panelY + 80;
 
     // Portrait background
     this.portraitArea.fillStyle(0x0d1a25, 1);
-    this.portraitArea.fillRoundedRect(70, this.panelY + 15, 120, 115, 6);
+    this.portraitArea.fillRoundedRect(40, this.panelY + 15, 140, 130, 6);
     this.portraitArea.lineStyle(1, color, 0.6);
-    this.portraitArea.strokeRoundedRect(70, this.panelY + 15, 120, 115, 6);
+    this.portraitArea.strokeRoundedRect(40, this.panelY + 15, 140, 130, 6);
 
     // Simple character face
     this.portraitArea.fillStyle(color, 0.4);
@@ -171,10 +172,11 @@ export class DialogueScene extends Phaser.Scene {
       });
 
       validChoices.forEach((choice, i) => {
-        const y = this.panelY + 170 + i * 30;
+        const y = this.panelY + 200 + i * 45;
         const choiceLabel = I18n.choice(this.dialogueId, nodeId, choice._origIndex) || choice.text;
-        const text = this.add.text(230, y, `▸ ${choiceLabel}`, {
-          fontSize: '14px', fill: '#88ccaa', fontFamily: 'Georgia, serif',
+        const text = this.add.text(210, y, `▸ ${choiceLabel}`, {
+          fontSize: '22px', fill: '#88ccaa', fontFamily: 'Georgia, serif',
+          backgroundColor: '#0a151f', padding: { x: 8, y: 6 },
         }).setInteractive({ useHandCursor: true });
 
         text.on('pointerover', () => text.setStyle({ fill: '#ffffff' }));
@@ -195,8 +197,9 @@ export class DialogueScene extends Phaser.Scene {
     } else {
       // No choices — click to continue or end
       const label = node.next ? I18n.t('ui.continueDialogue') : I18n.t('ui.close');
-      const continueText = this.add.text(width / 2, this.panelY + 200, label, {
-          fontSize: '15px', fill: '#88ccaa', fontFamily: 'Georgia, serif',
+      const continueText = this.add.text(width / 2, this.panelY + 250, label, {
+          fontSize: '24px', fill: '#88ccaa', fontFamily: 'Georgia, serif',
+          backgroundColor: '#0a151f', padding: { x: 14, y: 8 },
         }).setOrigin(0.5).setInteractive({ useHandCursor: true });
 
       continueText.on('pointerover', () => continueText.setStyle({ fill: '#ffffff' }));

@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { LOCATIONS } from '../data/locations.js';
+import { I18n } from '../systems/I18n.js';
 
 export class BootScene extends Phaser.Scene {
   constructor() {
@@ -35,7 +36,10 @@ export class BootScene extends Phaser.Scene {
     }
   }
 
-  create() {
+  async create() {
+    // Pre-load saved language so I18n is ready for all scenes
+    const savedLang = I18n.getSavedLanguage();
+    await I18n.load(savedLang);
     this.scene.start('Language');
   }
 }
