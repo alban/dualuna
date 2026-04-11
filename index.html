@@ -30,7 +30,7 @@
     #rotate-hint {
       display: none;
       position: fixed; inset: 0;
-      background: #000d;
+      background: #000;
       color: #88ccdd;
       font-family: Georgia, serif;
       font-size: 20px;
@@ -40,14 +40,14 @@
       z-index: 9999;
       padding: 2em;
     }
-    #rotate-hint span { font-size: 48px; display: block; margin-bottom: 16px; }
+    #rotate-hint .icon { font-size: 48px; display: block; margin-bottom: 16px; }
     @media (max-width: 900px) and (orientation: portrait) {
       #rotate-hint { display: flex; flex-direction: column; }
     }
   </style>
 </head>
 <body>
-  <div id="rotate-hint"><span>📱↔️</span>Rotate your device to landscape</div>
+  <div id="rotate-hint"><div class="icon">&#x21BB;</div>Rotate your device to landscape</div>
   <div id="game-container"></div>
   <script type="module" src="/src/main.js"></script>
 </body>

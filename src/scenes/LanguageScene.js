@@ -1,6 +1,9 @@
 import Phaser from 'phaser';
 import { I18n } from '../systems/I18n.js';
 
+// Languages with completed translations
+const TRANSLATED_LANGUAGES = ['en', 'fr'];
+
 export class LanguageScene extends Phaser.Scene {
   constructor() {
     super({ key: 'Language' });
@@ -9,7 +12,7 @@ export class LanguageScene extends Phaser.Scene {
   create() {
     const { width, height } = this.scale;
 
-    // Background — reuse menu bg
+    // Background
     this.add.image(0, 0, 'bg-menu').setOrigin(0, 0);
 
     // Title
@@ -18,15 +21,11 @@ export class LanguageScene extends Phaser.Scene {
       stroke: '#224466', strokeThickness: 3,
     }).setOrigin(0.5);
 
-    this.add.text(width / 2, 130, 'Choose your language', {
-      fontSize: '18px', fill: '#667788', fontFamily: 'Georgia, serif',
-    }).setOrigin(0.5);
-
     // Language grid (2 columns)
     const langs = Object.entries(I18n.SUPPORTED_LANGUAGES);
     const colW = 260;
     const startX = width / 2 - colW;
-    const startY = 190;
+    const startY = 160;
     const rowH = 48;
     const savedLang = I18n.getSavedLanguage();
 
@@ -36,19 +35,29 @@ export class LanguageScene extends Phaser.Scene {
       const x = startX + col * colW + colW / 2;
       const y = startY + row * rowH;
 
+      const isTranslated = TRANSLATED_LANGUAGES.includes(code);
       const isSaved = code === savedLang;
-      const label = `${name}`;
 
-      const btn = this.add.text(x, y, label, {
+      const btn = this.add.text(x, y, name, {
         fontSize: '22px',
-        fill: isSaved ? '#ffffff' : '#88aacc',
+        fill: isSaved ? '#ffffff' : isTranslated ? '#88aacc' : '#556677',
         fontFamily: 'Georgia, serif',
         fontStyle: isSaved ? 'bold' : 'normal',
-      }).setOrigin(0.5).setInteractive({ useHandCursor: true });
+      }).setOrigin(0.5);
 
-      btn.on('pointerover', () => btn.setStyle({ fill: '#ffffff' }));
-      btn.on('pointerout', () => btn.setStyle({ fill: isSaved ? '#ffffff' : '#88aacc' }));
-      btn.on('pointerdown', () => this.selectLanguage(code));
+      if (isTranslated) {
+        btn.setInteractive({ useHandCursor: true });
+        btn.on('pointerover', () => btn.setStyle({ fill: '#ffffff' }));
+        btn.on('pointerout', () => btn.setStyle({ fill: isSaved ? '#ffffff' : '#88aacc' }));
+        btn.on('pointerdown', () => this.selectLanguage(code));
+      } else {
+        // Strikethrough for untranslated languages
+        const lineY = y + 1;
+        const lineW = btn.width * 0.55;
+        const gfx = this.add.graphics();
+        gfx.lineStyle(1, 0x556677, 0.8);
+        gfx.lineBetween(x - lineW, lineY, x + lineW, lineY);
+      }
     });
   }
 
@@ -56,7 +65,6 @@ export class LanguageScene extends Phaser.Scene {
     await I18n.load(code);
     I18n.saveLanguage(code);
 
-    // If a game is in progress, return to it; otherwise go to Menu
     const state = this.registry.get('gameState');
     if (state && state.currentLocation) {
       this.scene.start('Location', { locationId: state.currentLocation });
