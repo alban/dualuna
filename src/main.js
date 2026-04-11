@@ -24,3 +24,9 @@ const config = {
 };
 
 const game = new Phaser.Game(config);
+
+// Force immediate render on user input so clicks feel instant at 1fps
+const forceRender = () => game.loop.tick();
+document.addEventListener('pointerdown', forceRender);
+document.addEventListener('pointerup', forceRender);
+document.addEventListener('pointermove', forceRender);
