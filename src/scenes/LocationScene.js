@@ -57,11 +57,9 @@ export class LocationScene extends Phaser.Scene {
 
   drawBackground(location) {
     const { width, height } = this.scale;
-    const uiH = 140;
 
-    // Pre-rendered background image — scale to fill scene area above UI bar
-    const bg = this.add.image(0, 0, `bg-${this.locationId}`).setOrigin(0, 0);
-    bg.setDisplaySize(width, height - uiH);
+    // Pre-rendered background image — full canvas size, UI bar draws on top
+    this.add.image(0, 0, `bg-${this.locationId}`).setOrigin(0, 0);
 
     // Location name watermark (localized)
     const locName = I18n.t(`locations.${this.locationId}.name`) !== `locations.${this.locationId}.name`
