@@ -2,15 +2,52 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="screen-orientation" content="landscape">
   <title>Dualuna: The Verdium Collector</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #000; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
-    #game-container { width: 1024px; height: 768px; }
+    body {
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow: hidden;
+      touch-action: none;
+    }
+    #game-container {
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      max-width: 1024px;
+      max-height: 768px;
+    }
+    /* Landscape hint overlay for portrait mobile */
+    #rotate-hint {
+      display: none;
+      position: fixed; inset: 0;
+      background: #000d;
+      color: #88ccdd;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 9999;
+      padding: 2em;
+    }
+    #rotate-hint span { font-size: 48px; display: block; margin-bottom: 16px; }
+    @media (max-width: 900px) and (orientation: portrait) {
+      #rotate-hint { display: flex; flex-direction: column; }
+    }
   </style>
 </head>
 <body>
+  <div id="rotate-hint"><span>📱↔️</span>Rotate your device to landscape</div>
   <div id="game-container"></div>
   <script type="module" src="/src/main.js"></script>
 </body>

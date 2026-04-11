@@ -163,14 +163,20 @@ export class LocationScene extends Phaser.Scene {
         indicator.fillCircle(hotspot.x, hotspot.y, 6);
       }
 
-      zone.on('pointerover', () => {
-        labelText.setAlpha(1);
-        this.tweens.add({ targets: labelText, y: hotspot.y - hotspot.height / 2 - 16, duration: 150 });
-      });
-      zone.on('pointerout', () => {
-        labelText.setAlpha(0);
-        labelText.y = hotspot.y - hotspot.height / 2 - 12;
-      });
+      // On touch devices, always show labels; on desktop, show on hover
+      const isTouch = this.sys.game.device.input.touch;
+      if (isTouch) {
+        labelText.setAlpha(0.8);
+      } else {
+        zone.on('pointerover', () => {
+          labelText.setAlpha(1);
+          this.tweens.add({ targets: labelText, y: hotspot.y - hotspot.height / 2 - 16, duration: 150 });
+        });
+        zone.on('pointerout', () => {
+          labelText.setAlpha(0);
+          labelText.y = hotspot.y - hotspot.height / 2 - 12;
+        });
+      }
       zone.on('pointerdown', () => this.handleHotspot(hotspot));
     }
   }
