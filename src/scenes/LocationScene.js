@@ -287,73 +287,73 @@ export class LocationScene extends Phaser.Scene {
       }
     }
 
-    // Right side buttons
-    const btnStyle = { fontSize: '14px', fill: '#88aacc', fontFamily: 'Georgia, serif' };
+    // Right side buttons — arranged as a row of icon buttons for better touch targets
+    const iconStyle = { fontSize: '22px', fill: '#88aacc', fontFamily: 'Georgia, serif' };
+    const iconHover = { fill: '#ffffff' };
+    const iconNormal = { fill: '#88aacc' };
 
-    // World Map button
-    const mapBtn = this.add.text(width - 20, uiY + 10, I18n.t('ui.map'), btnStyle)
-      .setOrigin(1, 0).setInteractive({ useHandCursor: true });
-    mapBtn.on('pointerover', () => mapBtn.setStyle({ fill: '#ffffff' }));
-    mapBtn.on('pointerout', () => mapBtn.setStyle({ fill: '#88aacc' }));
-    mapBtn.on('pointerdown', () => this.scene.start('WorldMap'));
-
-    // Save button
-    const saveBtn = this.add.text(width - 20, uiY + 30, I18n.t('ui.save'), btnStyle)
-      .setOrigin(1, 0).setInteractive({ useHandCursor: true });
-    saveBtn.on('pointerover', () => saveBtn.setStyle({ fill: '#ffffff' }));
-    saveBtn.on('pointerout', () => saveBtn.setStyle({ fill: '#88aacc' }));
-    saveBtn.on('pointerdown', () => {
-      SaveManager.save(state);
-      this.showNotification(I18n.t('ui.gameSaved'));
-    });
-
-    // Language button
-    const langCode = I18n.currentLanguage.toUpperCase();
-    const langBtn = this.add.text(width - 20, uiY + 50, `🌐 ${langCode}`, btnStyle)
-      .setOrigin(1, 0).setInteractive({ useHandCursor: true });
-    langBtn.on('pointerover', () => langBtn.setStyle({ fill: '#ffffff' }));
-    langBtn.on('pointerout', () => langBtn.setStyle({ fill: '#88aacc' }));
-    langBtn.on('pointerdown', () => {
-      SaveManager.save(state);
-      this.scene.start('Language');
-    });
-
-    // Verdium display
-    this.add.text(width - 20, uiY + 75, `◆ ${I18n.t('ui.verdium')}: ${state.verdium}`, {
-      fontSize: '14px', fill: '#44cc88', fontFamily: 'Georgia, serif',
-    }).setOrigin(1, 0);
+    // Button layout: evenly spaced across the right side of the UI bar
+    const btnY = uiY + 20;
+    const btnSpacing = 70;
+    let btnX = width - 30;
 
     // Fullscreen button
-    const fsLabel = document.fullscreenElement ? I18n.t('ui.exitFullscreen') : I18n.t('ui.fullscreen');
-    const fsBtn = this.add.text(width - 20, uiY + 95, fsLabel, btnStyle)
-      .setOrigin(1, 0).setInteractive({ useHandCursor: true });
-    fsBtn.on('pointerover', () => fsBtn.setStyle({ fill: '#ffffff' }));
-    fsBtn.on('pointerout', () => fsBtn.setStyle({ fill: '#88aacc' }));
-    fsBtn.on('pointerdown', () => {
+    const makeIconBtn = (x, y, label, onClick) => {
+      const bg = this.add.rectangle(x, y + 12, 50, 40, 0x1a2a3a, 0.8)
+        .setInteractive({ useHandCursor: true });
+      const txt = this.add.text(x, y, label, iconStyle).setOrigin(0.5, 0);
+      bg.on('pointerover', () => txt.setStyle(iconHover));
+      bg.on('pointerout', () => txt.setStyle(iconNormal));
+      bg.on('pointerdown', onClick);
+      return { bg, txt };
+    };
+
+    const fsBtn = makeIconBtn(btnX, btnY, '⛶', () => {
       if (document.fullscreenElement) {
         document.exitFullscreen();
       } else {
         document.documentElement.requestFullscreen().catch(() => {});
       }
-      // Refresh label after toggle
-      this.time.delayedCall(300, () => {
-        fsBtn.setText(document.fullscreenElement ? I18n.t('ui.exitFullscreen') : I18n.t('ui.fullscreen'));
-      });
     });
+    btnX -= btnSpacing;
 
-    // Quest log hint (translated)
+    // Language button
+    const langCode = I18n.currentLanguage.toUpperCase();
+    makeIconBtn(btnX, btnY, `🌐`, () => {
+      SaveManager.save(state);
+      this.scene.start('Language');
+    });
+    btnX -= btnSpacing;
+
+    // Save button
+    makeIconBtn(btnX, btnY, '💾', () => {
+      SaveManager.save(state);
+      this.showNotification(I18n.t('ui.gameSaved'));
+    });
+    btnX -= btnSpacing;
+
+    // World Map button
+    makeIconBtn(btnX, btnY, '🗺', () => this.scene.start('WorldMap'));
+    btnX -= btnSpacing;
+
+    // Verdium display
+    this.add.text(btnX, btnY + 5, `◆ ${state.verdium}`, {
+      fontSize: '16px', fill: '#44cc88', fontFamily: 'Georgia, serif',
+    }).setOrigin(0.5, 0);
+
+    // Quest log hint (translated) — bottom row of UI
     const activeQuests = QuestManager.getActiveQuests(state);
     if (activeQuests.length > 0) {
       const questTitle = I18n.t(`quests.${activeQuests[0].id}`) !== `quests.${activeQuests[0].id}`
         ? I18n.t(`quests.${activeQuests[0].id}`) : activeQuests[0].title;
-      this.add.text(width / 2, uiY + 95, `📋 ${questTitle}`, {
+      this.add.text(20, uiY + 75, `📋 ${questTitle}`, {
         fontSize: '12px', fill: '#ccaa66', fontFamily: 'Georgia, serif',
-      }).setOrigin(0.5);
+      });
     }
 
-    // GitHub source link
-    const ghLink = this.add.text(width - 20, uiY + 108, `${I18n.t('ui.github')} ↗`, {
-      fontSize: '10px', fill: '#445566', fontFamily: 'Georgia, serif',
+    // GitHub source link — bottom-right
+    const ghLink = this.add.text(width - 5, uiY + 110, `${I18n.t('ui.github')} ↗`, {
+      fontSize: '9px', fill: '#334455', fontFamily: 'Georgia, serif',
     }).setOrigin(1, 0).setInteractive({ useHandCursor: true });
     ghLink.on('pointerover', () => ghLink.setStyle({ fill: '#88aacc' }));
     ghLink.on('pointerout', () => ghLink.setStyle({ fill: '#445566' }));
