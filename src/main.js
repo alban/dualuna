@@ -13,7 +13,7 @@ const config = {
   height: 768,
   backgroundColor: '#000000',
   fps: {
-    target: 10,
+    target: 1,
     forceSetTimeOut: true,
   },
   scale: {

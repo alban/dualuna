@@ -239,33 +239,28 @@ export class LocationScene extends Phaser.Scene {
 
   createUI(location, state) {
     const { width, height } = this.scale;
-    const uiY = height - 120;
+    const uiH = 140;
+    const uiY = height - uiH;
 
     // UI background
     const uiBg = this.add.graphics();
     uiBg.fillStyle(0x112233, 0.95);
-    uiBg.fillRect(0, uiY, width, 120);
+    uiBg.fillRect(0, uiY, width, uiH);
     uiBg.lineStyle(1, 0x334455, 1);
     uiBg.lineBetween(0, uiY, width, uiY);
 
-    // Location name and island (localized)
+    // Location name (localized)
     const uiLocName = I18n.t(`locations.${this.locationId}.name`) !== `locations.${this.locationId}.name`
       ? I18n.t(`locations.${this.locationId}.name`) : location.name;
-    this.add.text(20, uiY + 10, uiLocName, {
-      fontSize: '16px', fill: '#88ccdd', fontFamily: 'Georgia, serif',
+    this.add.text(20, uiY + 8, uiLocName, {
+      fontSize: '18px', fill: '#88ccdd', fontFamily: 'Georgia, serif',
       fontStyle: 'bold',
     });
-    this.add.text(20, uiY + 32, `${location.island || ''} — ${state.dayPhase}`, {
-      fontSize: '12px', fill: '#667788', fontFamily: 'Georgia, serif',
-    });
 
-    // Navigation buttons for connected locations
+    // Navigation buttons for connected locations — large touch targets
     if (location.connections) {
-      const navY = uiY + 60;
       let navX = 20;
-      this.add.text(navX, navY - 18, I18n.t('ui.goTo'), {
-        fontSize: '11px', fill: '#556677', fontFamily: 'Georgia, serif',
-      });
+      const navY = uiY + 40;
 
       for (const connId of location.connections) {
         const connLoc = LOCATIONS[connId];
@@ -274,7 +269,8 @@ export class LocationScene extends Phaser.Scene {
         const connName = I18n.t(`locations.${connId}.name`) !== `locations.${connId}.name`
           ? I18n.t(`locations.${connId}.name`) : connLoc.name;
         const btn = this.add.text(navX, navY, `▸ ${connName}`, {
-          fontSize: '13px', fill: '#88aacc', fontFamily: 'Georgia, serif',
+          fontSize: '16px', fill: '#88aacc', fontFamily: 'Georgia, serif',
+          backgroundColor: '#1a2a3a', padding: { x: 8, y: 6 },
         }).setInteractive({ useHandCursor: true });
 
         btn.on('pointerover', () => btn.setStyle({ fill: '#ffffff' }));
@@ -283,32 +279,28 @@ export class LocationScene extends Phaser.Scene {
           this.scene.start('Location', { locationId: connId });
         });
 
-        navX += btn.width + 20;
+        navX += btn.width + 10;
       }
     }
 
-    // Right side buttons — arranged as a row of icon buttons for better touch targets
-    const iconStyle = { fontSize: '22px', fill: '#88aacc', fontFamily: 'Georgia, serif' };
-    const iconHover = { fill: '#ffffff' };
-    const iconNormal = { fill: '#88aacc' };
+    // Right side icon buttons — large touch targets
+    const iconStyle = { fontSize: '26px', fill: '#88aacc', fontFamily: 'Georgia, serif' };
+    const btnY = uiY + 10;
+    const btnSize = 55;
+    const btnSpacing = 62;
+    let btnX = width - 35;
 
-    // Button layout: evenly spaced across the right side of the UI bar
-    const btnY = uiY + 20;
-    const btnSpacing = 70;
-    let btnX = width - 30;
-
-    // Fullscreen button
     const makeIconBtn = (x, y, label, onClick) => {
-      const bg = this.add.rectangle(x, y + 12, 50, 40, 0x1a2a3a, 0.8)
+      const bg = this.add.rectangle(x, y + btnSize / 2, btnSize, btnSize, 0x1a2a3a, 0.8)
         .setInteractive({ useHandCursor: true });
-      const txt = this.add.text(x, y, label, iconStyle).setOrigin(0.5, 0);
-      bg.on('pointerover', () => txt.setStyle(iconHover));
-      bg.on('pointerout', () => txt.setStyle(iconNormal));
+      const txt = this.add.text(x, y + 10, label, iconStyle).setOrigin(0.5, 0);
+      bg.on('pointerover', () => txt.setStyle({ fill: '#ffffff' }));
+      bg.on('pointerout', () => txt.setStyle({ fill: '#88aacc' }));
       bg.on('pointerdown', onClick);
       return { bg, txt };
     };
 
-    const fsBtn = makeIconBtn(btnX, btnY, '⛶', () => {
+    makeIconBtn(btnX, btnY, '⛶', () => {
       if (document.fullscreenElement) {
         document.exitFullscreen();
       } else {
@@ -317,37 +309,33 @@ export class LocationScene extends Phaser.Scene {
     });
     btnX -= btnSpacing;
 
-    // Language button
-    const langCode = I18n.currentLanguage.toUpperCase();
-    makeIconBtn(btnX, btnY, `🌐`, () => {
+    makeIconBtn(btnX, btnY, '🌐', () => {
       SaveManager.save(state);
       this.scene.start('Language');
     });
     btnX -= btnSpacing;
 
-    // Save button
     makeIconBtn(btnX, btnY, '💾', () => {
       SaveManager.save(state);
       this.showNotification(I18n.t('ui.gameSaved'));
     });
     btnX -= btnSpacing;
 
-    // World Map button
     makeIconBtn(btnX, btnY, '🗺', () => this.scene.start('WorldMap'));
     btnX -= btnSpacing;
 
     // Verdium display
-    this.add.text(btnX, btnY + 5, `◆ ${state.verdium}`, {
-      fontSize: '16px', fill: '#44cc88', fontFamily: 'Georgia, serif',
+    this.add.text(btnX, btnY + 15, `◆ ${state.verdium}`, {
+      fontSize: '18px', fill: '#44cc88', fontFamily: 'Georgia, serif',
     }).setOrigin(0.5, 0);
 
-    // Quest log hint (translated) — bottom row of UI
+    // Quest log hint (translated)
     const activeQuests = QuestManager.getActiveQuests(state);
     if (activeQuests.length > 0) {
       const questTitle = I18n.t(`quests.${activeQuests[0].id}`) !== `quests.${activeQuests[0].id}`
         ? I18n.t(`quests.${activeQuests[0].id}`) : activeQuests[0].title;
-      this.add.text(20, uiY + 75, `📋 ${questTitle}`, {
-        fontSize: '12px', fill: '#ccaa66', fontFamily: 'Georgia, serif',
+      this.add.text(20, uiY + uiH - 28, `📋 ${questTitle}`, {
+        fontSize: '14px', fill: '#ccaa66', fontFamily: 'Georgia, serif',
       });
     }
   }
