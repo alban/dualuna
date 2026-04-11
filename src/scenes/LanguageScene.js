@@ -16,27 +16,33 @@ export class LanguageScene extends Phaser.Scene {
     this.add.image(0, 0, 'bg-menu').setOrigin(0, 0);
 
     // Title
-    this.add.text(width / 2, 40, 'DUALUNA', {
+    this.add.text(width / 2, 30, 'DUALUNA', {
       fontSize: '36px', fill: '#88ccff', fontFamily: 'Georgia, serif',
       stroke: '#224466', strokeThickness: 3,
     }).setOrigin(0.5);
 
-    // Language list — single column, full width, large touch targets
+    // Language grid — 2 columns, large touch targets
     const langs = Object.entries(I18n.SUPPORTED_LANGUAGES);
-    const totalH = height - 100;
-    const rowH = Math.floor(totalH / langs.length);
-    const startY = 90;
+    const cols = 2;
+    const rows = Math.ceil(langs.length / cols);
+    const colW = (width - 60) / cols;
+    const startY = 85;
+    const availH = height - startY - 50;
+    const rowH = Math.floor(availH / rows);
 
     langs.forEach(([code, name], i) => {
-      const y = startY + i * rowH + rowH / 2;
+      const col = i % cols;
+      const row = Math.floor(i / cols);
+      const x = 30 + col * colW + colW / 2;
+      const y = startY + row * rowH + rowH / 2;
       const isTranslated = TRANSLATED_LANGUAGES.includes(code);
 
-      // Full-width touch zone
-      const zone = this.add.rectangle(width / 2, y, width - 40, rowH - 4, 0x000000, 0)
+      // Touch zone
+      const zone = this.add.rectangle(x, y, colW - 10, rowH - 6, 0x000000, 0)
         .setStrokeStyle(1, 0x334455, 0.2);
 
-      const btn = this.add.text(width / 2, y, name, {
-        fontSize: '28px',
+      const btn = this.add.text(x, y, name, {
+        fontSize: '26px',
         fill: isTranslated ? '#88aacc' : '#556677',
         fontFamily: 'Georgia, serif',
       }).setOrigin(0.5);
@@ -53,16 +59,30 @@ export class LanguageScene extends Phaser.Scene {
         });
         zone.on('pointerdown', () => this.selectLanguage(code));
       } else {
-        // Strikethrough
         const lineW = btn.width * 0.55;
         const gfx = this.add.graphics();
         gfx.lineStyle(1, 0x556677, 0.8);
-        gfx.lineBetween(width / 2 - lineW, y + 1, width / 2 + lineW, y + 1);
+        gfx.lineBetween(x - lineW, y + 1, x + lineW, y + 1);
       }
     });
 
-    // GitHub source link
-    const ghLink = this.add.text(width - 10, height - 15, 'github.com/alban/dualuna', {
+    // Fullscreen button — bottom left
+    const fsBtn = this.add.text(15, height - 40, '⛶', {
+      fontSize: '28px', fill: '#88aacc', fontFamily: 'Georgia, serif',
+      backgroundColor: '#1a2a3a', padding: { x: 10, y: 4 },
+    }).setInteractive({ useHandCursor: true });
+    fsBtn.on('pointerover', () => fsBtn.setStyle({ fill: '#ffffff' }));
+    fsBtn.on('pointerout', () => fsBtn.setStyle({ fill: '#88aacc' }));
+    fsBtn.on('pointerdown', () => {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else {
+        document.documentElement.requestFullscreen().catch(() => {});
+      }
+    });
+
+    // GitHub source link — bottom right
+    const ghLink = this.add.text(width - 10, height - 20, 'github.com/alban/dualuna', {
       fontSize: '11px', fill: '#445566', fontFamily: 'Georgia, serif',
     }).setOrigin(1, 0.5).setInteractive({ useHandCursor: true });
     ghLink.on('pointerover', () => ghLink.setStyle({ fill: '#88aacc' }));

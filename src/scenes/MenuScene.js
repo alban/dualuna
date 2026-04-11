@@ -55,6 +55,21 @@ export class MenuScene extends Phaser.Scene {
     newGame.on('pointerdown', () => this.startNewGame());
     continueBtn.on('pointerdown', () => this.continueGame());
 
+    // Fullscreen button — bottom left
+    const fsBtn = this.add.text(15, height - 40, '⛶', {
+      fontSize: '28px', fill: '#88aacc', fontFamily: 'Georgia, serif',
+      backgroundColor: '#1a2a3a', padding: { x: 10, y: 4 },
+    }).setInteractive({ useHandCursor: true });
+    fsBtn.on('pointerover', () => fsBtn.setStyle({ fill: '#ffffff' }));
+    fsBtn.on('pointerout', () => fsBtn.setStyle({ fill: '#88aacc' }));
+    fsBtn.on('pointerdown', () => {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else {
+        document.documentElement.requestFullscreen().catch(() => {});
+      }
+    });
+
     // Version
     this.add.text(width / 2, height - 30, I18n.t('ui.phase'), {
       fontSize: '12px', fill: '#8899aa', fontFamily: 'Georgia, serif',
