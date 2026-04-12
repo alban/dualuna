@@ -11,9 +11,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT_DIR = join(__dirname, '..', 'public', 'assets', 'backgrounds');
 mkdirSync(OUT_DIR, { recursive: true });
 
-const W = 1024;
-const H_SCENE = 768; // Full height — UI bar draws on top
-const H_FULL = 768;
+const W = 1280;
+const H_SCENE = 720;
+const H_FULL = 720;
 
 function save(canvas, name) {
   const buf = canvas.toBuffer('image/png');

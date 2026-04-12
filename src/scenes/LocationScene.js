@@ -57,27 +57,9 @@ export class LocationScene extends Phaser.Scene {
 
   drawBackground(location) {
     const { width, height } = this.scale;
-
-    // Pre-rendered background image — full canvas size, UI bar draws on top
-    this.add.image(0, 0, `bg-${this.locationId}`).setOrigin(0, 0);
-
-    // Location name watermark (localized)
-    const locName = I18n.t(`locations.${this.locationId}.name`) !== `locations.${this.locationId}.name`
-      ? I18n.t(`locations.${this.locationId}.name`) : location.name;
-    this.add.text(width / 2, 30, locName, {
-      fontSize: '24px', fill: '#ffffff', fontFamily: 'Georgia, serif',
-      stroke: '#000000', strokeThickness: 3,
-    }).setOrigin(0.5).setAlpha(0.7);
-
-    // Description (localized)
-    const locDesc = I18n.t(`locations.${this.locationId}.description`) !== `locations.${this.locationId}.description`
-      ? I18n.t(`locations.${this.locationId}.description`) : location.description;
-    if (locDesc) {
-      this.add.text(width / 2, 60, locDesc, {
-        fontSize: '14px', fill: '#aabbcc', fontFamily: 'Georgia, serif',
-        stroke: '#000000', strokeThickness: 2,
-      }).setOrigin(0.5).setAlpha(0.8);
-    }
+    // Full-screen background image — scale to fill canvas exactly
+    const bg = this.add.image(0, 0, `bg-${this.locationId}`).setOrigin(0, 0);
+    bg.setDisplaySize(width, height);
   }
 
   drawDayNight(phase) {
@@ -239,33 +221,23 @@ export class LocationScene extends Phaser.Scene {
 
   createUI(location, state) {
     const { width, height } = this.scale;
-    const uiH = 140;
-    const uiY = height - uiH;
 
-    // UI background
-    const uiBg = this.add.graphics();
-    uiBg.fillStyle(0x112233, 0.95);
-    uiBg.fillRect(0, uiY, width, uiH);
-    uiBg.lineStyle(1, 0x334455, 1);
-    uiBg.lineBetween(0, uiY, width, uiY);
-
-    // Location name (localized)
+    // Floating overlay: location name + verdium (top-left)
     const uiLocName = I18n.t(`locations.${this.locationId}.name`) !== `locations.${this.locationId}.name`
       ? I18n.t(`locations.${this.locationId}.name`) : location.name;
-    this.add.text(20, uiY + 8, uiLocName, {
-      fontSize: '18px', fill: '#88ccdd', fontFamily: 'Georgia, serif',
-      fontStyle: 'bold',
+    this.add.text(15, height - 55, uiLocName, {
+      fontSize: '16px', fill: '#ffffff', fontFamily: 'Georgia, serif',
+      stroke: '#000000', strokeThickness: 3,
+    });
+    this.add.text(15, height - 32, `◆ ${state.verdium}`, {
+      fontSize: '14px', fill: '#44cc88', fontFamily: 'Georgia, serif',
+      stroke: '#000000', strokeThickness: 2,
     });
 
-    // Verdium display
-    this.add.text(20, uiY + 34, `◆ ${state.verdium}`, {
-      fontSize: '16px', fill: '#44cc88', fontFamily: 'Georgia, serif',
-    });
-
-    // Navigation buttons for connected locations
+    // Navigation buttons (bottom-left, stacked above location name)
     if (location.connections) {
-      let navX = 20;
-      const navY = uiY + 62;
+      let navX = 15;
+      const navY = height - 90;
 
       for (const connId of location.connections) {
         const connLoc = LOCATIONS[connId];
@@ -274,50 +246,50 @@ export class LocationScene extends Phaser.Scene {
         const connName = I18n.t(`locations.${connId}.name`) !== `locations.${connId}.name`
           ? I18n.t(`locations.${connId}.name`) : connLoc.name;
         const btn = this.add.text(navX, navY, `▸ ${connName}`, {
-          fontSize: '16px', fill: '#88aacc', fontFamily: 'Georgia, serif',
-          backgroundColor: '#1a2a3a', padding: { x: 8, y: 6 },
+          fontSize: '15px', fill: '#ccddee', fontFamily: 'Georgia, serif',
+          stroke: '#000000', strokeThickness: 3,
+          backgroundColor: '#000000aa', padding: { x: 8, y: 5 },
         }).setInteractive({ useHandCursor: true });
 
         btn.on('pointerover', () => btn.setStyle({ fill: '#ffffff' }));
-        btn.on('pointerout', () => btn.setStyle({ fill: '#88aacc' }));
+        btn.on('pointerout', () => btn.setStyle({ fill: '#ccddee' }));
         btn.on('pointerdown', () => {
           this.scene.start('Location', { locationId: connId });
         });
 
-        navX += btn.width + 10;
+        navX += btn.width + 8;
       }
     }
 
-    // Quest log hint (translated)
+    // Quest hint (top-left, under location title)
     const activeQuests = QuestManager.getActiveQuests(state);
     if (activeQuests.length > 0) {
       const questTitle = I18n.t(`quests.${activeQuests[0].id}`) !== `quests.${activeQuests[0].id}`
         ? I18n.t(`quests.${activeQuests[0].id}`) : activeQuests[0].title;
-      this.add.text(20, uiY + uiH - 28, `📋 ${questTitle}`, {
-        fontSize: '14px', fill: '#ccaa66', fontFamily: 'Georgia, serif',
+      this.add.text(15, height - 12, `📋 ${questTitle}`, {
+        fontSize: '11px', fill: '#ccaa66', fontFamily: 'Georgia, serif',
+        stroke: '#000000', strokeThickness: 2,
       });
     }
 
-    // Right side: Map (left) + Config (right), side by side, full height
-    const bigBtnStyle = { fontSize: '48px', fill: '#88aacc', fontFamily: 'Georgia, serif' };
-    const btnW = 90;
-    const btnH = uiH - 10;
-    const btnCenterY = uiY + uiH / 2;
+    // Floating buttons: Map + Config (bottom-right)
+    const btnSize = 60;
+    const btnStyle = { fontSize: '36px', fill: '#ccddee', fontFamily: 'Georgia, serif' };
 
-    // Map button (left of the two)
-    const mapBg = this.add.rectangle(width - btnW - btnW / 2 - 10, btnCenterY, btnW, btnH, 0x1a2a3a, 0.8)
+    // Map button
+    const mapBg = this.add.rectangle(width - btnSize - btnSize / 2 - 10, height - btnSize / 2 - 8, btnSize, btnSize, 0x000000, 0.6)
       .setInteractive({ useHandCursor: true });
-    const mapTxt = this.add.text(width - btnW - btnW / 2 - 10, btnCenterY, '🗺', bigBtnStyle).setOrigin(0.5);
+    const mapTxt = this.add.text(width - btnSize - btnSize / 2 - 10, height - btnSize / 2 - 8, '🗺', btnStyle).setOrigin(0.5);
     mapBg.on('pointerover', () => mapTxt.setStyle({ fill: '#ffffff' }));
-    mapBg.on('pointerout', () => mapTxt.setStyle({ fill: '#88aacc' }));
+    mapBg.on('pointerout', () => mapTxt.setStyle({ fill: '#ccddee' }));
     mapBg.on('pointerdown', () => this.scene.start('WorldMap'));
 
-    // Config button (right of the two)
-    const cfgBg = this.add.rectangle(width - btnW / 2 - 5, btnCenterY, btnW, btnH, 0x1a2a3a, 0.8)
+    // Config button
+    const cfgBg = this.add.rectangle(width - btnSize / 2 - 5, height - btnSize / 2 - 8, btnSize, btnSize, 0x000000, 0.6)
       .setInteractive({ useHandCursor: true });
-    const cfgTxt = this.add.text(width - btnW / 2 - 5, btnCenterY, '⚙', bigBtnStyle).setOrigin(0.5);
+    const cfgTxt = this.add.text(width - btnSize / 2 - 5, height - btnSize / 2 - 8, '⚙', btnStyle).setOrigin(0.5);
     cfgBg.on('pointerover', () => cfgTxt.setStyle({ fill: '#ffffff' }));
-    cfgBg.on('pointerout', () => cfgTxt.setStyle({ fill: '#88aacc' }));
+    cfgBg.on('pointerout', () => cfgTxt.setStyle({ fill: '#ccddee' }));
     cfgBg.on('pointerdown', () => this.openConfigMenu(state));
   }
 

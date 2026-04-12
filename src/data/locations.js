@@ -10,21 +10,21 @@ export const LOCATIONS = {
     connections: ['mine-shaft', 'tidewatcher-village', 'cliff-overlook'],
     hotspots: [
       {
-        id: 'kael', x: 550, y: 400, width: 60, height: 80,
+        id: 'kael', x: 688, y: 375, width: 75, height: 75,
         label: 'Foreman Kael', action: 'dialogue', character: 'foreman-kael',
         dialogueId: 'foreman-kael-default',
       },
       {
-        id: 'dera', x: 400, y: 420, width: 60, height: 80,
+        id: 'dera', x: 500, y: 394, width: 75, height: 75,
         label: 'Dera', action: 'dialogue', character: 'dera',
         dialogueId: 'dera-default',
       },
       {
-        id: 'mine-entry', x: 790, y: 320, width: 60, height: 100,
+        id: 'mine-entry', x: 988, y: 300, width: 75, height: 94,
         label: 'Enter the mine', action: 'travel', target: 'mine-shaft',
       },
       {
-        id: 'verdium-crate', x: 590, y: 440, width: 40, height: 30,
+        id: 'verdium-crate', x: 738, y: 413, width: 50, height: 28,
         label: 'Verdium crate', action: 'examine', dialogueId: 'examine-verdium-crate',
       },
     ],
@@ -37,15 +37,15 @@ export const LOCATIONS = {
     connections: ['mine-entrance'],
     hotspots: [
       {
-        id: 'cracks', x: 370, y: 220, width: 80, height: 100,
+        id: 'cracks', x: 463, y: 206, width: 100, height: 94,
         label: 'Examine the cracks', action: 'examine', dialogueId: 'examine-cracks',
       },
       {
-        id: 'water-puddle', x: 512, y: 480, width: 120, height: 40,
+        id: 'water-puddle', x: 640, y: 450, width: 150, height: 38,
         label: 'Strange water', action: 'examine', dialogueId: 'examine-water',
       },
       {
-        id: 'verdium-vein', x: 250, y: 200, width: 60, height: 40,
+        id: 'verdium-vein', x: 313, y: 188, width: 75, height: 38,
         label: 'Glowing Verdium vein', action: 'examine', dialogueId: 'examine-vein',
       },
     ],
@@ -58,12 +58,12 @@ export const LOCATIONS = {
     connections: ['mine-entrance', 'cliff-overlook'],
     hotspots: [
       {
-        id: 'brin', x: 300, y: 360, width: 60, height: 80,
+        id: 'brin', x: 375, y: 338, width: 75, height: 75,
         label: 'Elder Brin', action: 'dialogue', character: 'village-elder-brin',
         dialogueId: 'brin-default',
       },
       {
-        id: 'harbor', x: 800, y: 500, width: 100, height: 60,
+        id: 'harbor', x: 1000, y: 469, width: 125, height: 56,
         label: 'Harbor (travel to other islands)', action: 'examine',
         dialogueId: 'harbor-travel',
       },
@@ -77,7 +77,7 @@ export const LOCATIONS = {
     connections: ['tidewatcher-village', 'mine-entrance'],
     hotspots: [
       {
-        id: 'telescope', x: 512, y: 520, width: 50, height: 60,
+        id: 'telescope', x: 640, y: 488, width: 63, height: 56,
         label: 'Look through the telescope', action: 'examine',
         dialogueId: 'examine-telescope',
       },
@@ -92,12 +92,12 @@ export const LOCATIONS = {
     connections: ['elder-grove'],
     hotspots: [
       {
-        id: 'roothold', x: 700, y: 400, width: 60, height: 80,
+        id: 'roothold', x: 875, y: 375, width: 75, height: 75,
         label: 'Roothold the Warden', action: 'dialogue', character: 'korrim-guard',
         dialogueId: 'roothold-default',
       },
       {
-        id: 'flora', x: 200, y: 440, width: 80, height: 50,
+        id: 'flora', x: 250, y: 413, width: 100, height: 47,
         label: 'Examine the flora', action: 'examine',
         dialogueId: 'examine-flora',
       },
@@ -111,12 +111,12 @@ export const LOCATIONS = {
     connections: ['forest-path'],
     hotspots: [
       {
-        id: 'mossa', x: 350, y: 400, width: 60, height: 80,
+        id: 'mossa', x: 438, y: 375, width: 75, height: 75,
         label: 'Elder Mossa', action: 'dialogue', character: 'elder-mossa',
         dialogueId: 'elder-mossa-default',
       },
       {
-        id: 'great-root', x: 512, y: 300, width: 100, height: 100,
+        id: 'great-root', x: 640, y: 281, width: 125, height: 94,
         label: 'The Great Root Tree', action: 'examine',
         dialogueId: 'examine-great-root',
       },
@@ -131,12 +131,12 @@ export const LOCATIONS = {
     connections: ['inventors-lab'],
     hotspots: [
       {
-        id: 'tink', x: 350, y: 350, width: 60, height: 80,
+        id: 'tink', x: 438, y: 328, width: 75, height: 75,
         label: 'Tink the Inventor', action: 'dialogue', character: 'tink',
         dialogueId: 'tink-default',
       },
       {
-        id: 'machinery', x: 560, y: 260, width: 80, height: 60,
+        id: 'machinery', x: 700, y: 244, width: 100, height: 56,
         label: 'Examine machinery', action: 'examine',
         dialogueId: 'examine-machinery',
       },
@@ -150,12 +150,12 @@ export const LOCATIONS = {
     connections: ['harbor-workshop'],
     hotspots: [
       {
-        id: 'blueprints', x: 140, y: 120, width: 80, height: 60,
+        id: 'blueprints', x: 175, y: 113, width: 100, height: 56,
         label: 'Examine blueprints', action: 'examine',
         dialogueId: 'examine-blueprints',
       },
       {
-        id: 'prototype', x: 680, y: 290, width: 60, height: 40,
+        id: 'prototype', x: 850, y: 272, width: 75, height: 38,
         label: 'Strange prototype', action: 'examine',
         dialogueId: 'examine-prototype',
         requireFlag: 'talked-to-tink',
@@ -171,12 +171,12 @@ export const LOCATIONS = {
     connections: ['archive-hall'],
     hotspots: [
       {
-        id: 'elyn', x: 500, y: 400, width: 60, height: 80,
+        id: 'elyn', x: 625, y: 375, width: 75, height: 75,
         label: 'Scholar Elyn', action: 'dialogue', character: 'scholar-elyn',
         dialogueId: 'scholar-elyn-default',
       },
       {
-        id: 'mural', x: 180, y: 250, width: 80, height: 100,
+        id: 'mural', x: 225, y: 234, width: 100, height: 94,
         label: 'Ancient mural', action: 'examine',
         dialogueId: 'examine-mural',
       },
@@ -190,17 +190,17 @@ export const LOCATIONS = {
     connections: ['crystal-plaza'],
     hotspots: [
       {
-        id: 'geology-section', x: 210, y: 300, width: 100, height: 120,
+        id: 'geology-section', x: 263, y: 281, width: 125, height: 113,
         label: 'Geology archives', action: 'examine',
         dialogueId: 'examine-geology-archives',
       },
       {
-        id: 'ancient-section', x: 530, y: 300, width: 100, height: 120,
+        id: 'ancient-section', x: 663, y: 281, width: 125, height: 113,
         label: 'Ancient records', action: 'examine',
         dialogueId: 'examine-ancient-records',
       },
       {
-        id: 'pedestal', x: 512, y: 380, width: 60, height: 60,
+        id: 'pedestal', x: 640, y: 356, width: 75, height: 56,
         label: 'Reading pedestal', action: 'examine',
         dialogueId: 'examine-pedestal',
       },

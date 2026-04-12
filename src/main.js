@@ -9,8 +9,8 @@ import { DialogueScene } from './scenes/DialogueScene.js';
 const config = {
   type: Phaser.CANVAS,
   parent: 'game-container',
-  width: 1024,
-  height: 768,
+  width: 1280,
+  height: 720,
   backgroundColor: '#000000',
   fps: {
     target: 1,

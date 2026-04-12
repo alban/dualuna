@@ -3,9 +3,13 @@
 # Default: generate art + build
 all: art build
 
-# Generate pre-rendered background PNGs
+# Generate pre-rendered background PNGs (procedural)
 art:
 	node scripts/generate-backgrounds.js
+
+# Generate AI art backgrounds (Pollinations.ai, free, no API key)
+ai-art:
+	node scripts/generate-ai-art.js
 
 # Build for production
 build:
