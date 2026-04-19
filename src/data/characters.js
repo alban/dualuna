@@ -1,3 +1,13 @@
+export const RACE_COLORS = {
+  tidewatcher: 0x6688aa,
+  korrim: 0x558844,
+  velessi: 0xaaaa44,
+  luminari: 0x8866bb,
+  coralline: 0xcc6677,
+  deepkin: 0x4466aa,
+  shellborn: 0x887744,
+};
+
 export const CHARACTERS = {
   'foreman-kael': {
     name: 'Kael',

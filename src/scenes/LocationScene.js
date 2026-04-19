@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import { LOCATIONS } from '../data/locations.js';
-import { CHARACTERS } from '../data/characters.js';
+import { CHARACTERS, RACE_COLORS } from '../data/characters.js';
 import { SaveManager } from '../systems/SaveManager.js';
 import { QuestManager } from '../systems/QuestManager.js';
 import { I18n } from '../systems/I18n.js';
@@ -98,8 +98,7 @@ export class LocationScene extends Phaser.Scene {
         .setInteractive({ useHandCursor: true });
 
       // Visual indicator — localized label
-      const hsLabel = I18n.t(`locations.${this.locationId}.hotspots.${hotspot.id}`) !== `locations.${this.locationId}.hotspots.${hotspot.id}`
-        ? I18n.t(`locations.${this.locationId}.hotspots.${hotspot.id}`) : hotspot.label;
+      const hsLabel = I18n.tOr(`locations.${this.locationId}.hotspots.${hotspot.id}`, hotspot.label);
       const labelText = this.add.text(hotspot.x, hotspot.y - hotspot.height / 2 - 16, hsLabel, {
         fontSize: '16px', fill: '#aaddcc', fontFamily: 'Georgia, serif',
         stroke: '#000000', strokeThickness: 2,
@@ -111,11 +110,7 @@ export class LocationScene extends Phaser.Scene {
       if (hotspot.action === 'dialogue' && hotspot.character) {
         const char = CHARACTERS[hotspot.character];
         if (char) {
-          const raceColors = {
-            tidewatcher: 0x6688aa, korrim: 0x558844, velessi: 0xaaaa44, luminari: 0x8866bb,
-            coralline: 0xcc6677, deepkin: 0x4466aa, shellborn: 0x887744,
-          };
-          const color = raceColors[char.race] || 0x888888;
+          const color = RACE_COLORS[char.race] || 0x888888;
 
           // Simple character sprite: circle with initial
           indicator.fillStyle(color, 0.8);
@@ -224,8 +219,7 @@ export class LocationScene extends Phaser.Scene {
     const { width, height } = this.scale;
 
     // Floating overlay: location name + verdium (top-left)
-    const uiLocName = I18n.t(`locations.${this.locationId}.name`) !== `locations.${this.locationId}.name`
-      ? I18n.t(`locations.${this.locationId}.name`) : location.name;
+    const uiLocName = I18n.tOr(`locations.${this.locationId}.name`, location.name);
     this.add.text(15, height - 55, uiLocName, {
       fontSize: '16px', fill: '#ffffff', fontFamily: 'Georgia, serif',
       stroke: '#000000', strokeThickness: 3,
@@ -244,8 +238,7 @@ export class LocationScene extends Phaser.Scene {
         const connLoc = LOCATIONS[connId];
         if (!connLoc) continue;
 
-        const connName = I18n.t(`locations.${connId}.name`) !== `locations.${connId}.name`
-          ? I18n.t(`locations.${connId}.name`) : connLoc.name;
+        const connName = I18n.tOr(`locations.${connId}.name`, connLoc.name);
         const btn = this.add.text(navX, navY, `▸ ${connName}`, {
           fontSize: '15px', fill: '#ccddee', fontFamily: 'Georgia, serif',
           stroke: '#000000', strokeThickness: 3,
@@ -265,8 +258,7 @@ export class LocationScene extends Phaser.Scene {
     // Quest hint (top-left, under location title)
     const activeQuests = QuestManager.getActiveQuests(state);
     if (activeQuests.length > 0) {
-      const questTitle = I18n.t(`quests.${activeQuests[0].id}`) !== `quests.${activeQuests[0].id}`
-        ? I18n.t(`quests.${activeQuests[0].id}`) : activeQuests[0].title;
+      const questTitle = I18n.tOr(`quests.${activeQuests[0].id}`, activeQuests[0].title);
       this.add.text(15, height - 12, `📋 ${questTitle}`, {
         fontSize: '11px', fill: '#ccaa66', fontFamily: 'Georgia, serif',
         stroke: '#000000', strokeThickness: 2,

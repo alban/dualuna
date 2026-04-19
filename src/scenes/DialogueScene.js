@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import { DIALOGUES } from '../data/dialogues.js';
-import { CHARACTERS } from '../data/characters.js';
+import { CHARACTERS, RACE_COLORS } from '../data/characters.js';
 import { QuestManager } from '../systems/QuestManager.js';
 import { I18n } from '../systems/I18n.js';
 
@@ -111,11 +111,7 @@ export class DialogueScene extends Phaser.Scene {
       return;
     }
 
-    const raceColors = {
-      tidewatcher: 0x6688aa, korrim: 0x558844, velessi: 0xaaaa44, luminari: 0x8866bb,
-      coralline: 0xcc6677, deepkin: 0x4466aa, shellborn: 0x887744,
-    };
-    const color = raceColors[char.race] || 0x888888;
+    const color = RACE_COLORS[char.race] || 0x888888;
     const cx = 110, cy = this.panelY + 80;
 
     // Portrait background

@@ -53,6 +53,12 @@ export const I18n = {
     return val ?? key;
   },
 
+  // Get a UI string by key, falling back to a default if not found
+  tOr(key, fallback) {
+    const result = this.t(key);
+    return result !== key ? result : fallback;
+  },
+
   // Get dialogue text: dialogueId, nodeId, field
   dialogue(dialogueId, nodeId, field = 'text') {
     return strings?.dialogues?.[dialogueId]?.[nodeId]?.[field];

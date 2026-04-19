@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { I18n } from '../systems/I18n.js';
+import { SaveManager } from '../systems/SaveManager.js';
 
 export class MenuScene extends Phaser.Scene {
   constructor() {
@@ -41,7 +42,7 @@ export class MenuScene extends Phaser.Scene {
       .setOrigin(0.5).setInteractive({ useHandCursor: true });
 
     // Check if save exists
-    const hasSave = localStorage.getItem('dualuna_save') !== null;
+    const hasSave = SaveManager.hasSave();
     if (!hasSave) {
       continueBtn.setAlpha(0.3);
       continueBtn.disableInteractive();
@@ -78,6 +79,7 @@ export class MenuScene extends Phaser.Scene {
 
   startNewGame() {
     this.registry.set('gameState', {
+      saveVersion: 1,
       chapter: 1,
       currentLocation: 'mine-entrance',
       currentIsland: 'cliff-haven',
@@ -96,7 +98,7 @@ export class MenuScene extends Phaser.Scene {
 
   continueGame() {
     try {
-      const save = JSON.parse(localStorage.getItem('dualuna_save'));
+      const save = SaveManager.load();
       this.registry.set('gameState', save);
       this.scene.start('Location', { locationId: save.currentLocation });
     } catch (e) {
