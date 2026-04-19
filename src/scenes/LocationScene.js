@@ -1,3 +1,4 @@
+import Phaser from 'phaser';
 import { LOCATIONS } from '../data/locations.js';
 import { CHARACTERS } from '../data/characters.js';
 import { SaveManager } from '../systems/SaveManager.js';
