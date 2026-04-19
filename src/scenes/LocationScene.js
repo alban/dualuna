@@ -299,7 +299,11 @@ export class LocationScene extends Phaser.Scene {
       elements.push(bg, txt);
     };
 
-    const closeMenu = () => elements.forEach(el => el.destroy());
+    this.time.paused = true;
+    const closeMenu = () => {
+      this.time.paused = false;
+      elements.forEach(el => el.destroy());
+    };
     const btnSpacing = Math.round(65 * sy);
 
     makeCfgBtn(panelY - btnSpacing * 2.5, '💾  ' + I18n.t('ui.saveLabel'), () => {
