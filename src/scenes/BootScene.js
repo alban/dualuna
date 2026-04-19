@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import { LOCATIONS } from '../data/locations.js';
 import { I18n } from '../systems/I18n.js';
+import { BASE_W, BASE_H } from '../utils/layout.js';
 
 export class BootScene extends Phaser.Scene {
   constructor() {
@@ -9,7 +10,8 @@ export class BootScene extends Phaser.Scene {
 
   preload() {
     const { width, height } = this.scale;
-    const barW = 400, barH = 30;
+    const sx = width / BASE_W, sy = height / BASE_H;
+    const barW = Math.round(400 * sx), barH = Math.round(30 * sy);
     const barX = (width - barW) / 2;
     const barY = height / 2;
 

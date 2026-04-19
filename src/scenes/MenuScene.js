@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import { I18n } from '../systems/I18n.js';
 import { SaveManager } from '../systems/SaveManager.js';
+import { BASE_W, BASE_H } from '../utils/layout.js';
 
 export class MenuScene extends Phaser.Scene {
   constructor() {
@@ -9,36 +10,37 @@ export class MenuScene extends Phaser.Scene {
 
   create() {
     const { width, height } = this.scale;
+    const sx = width / BASE_W, sy = height / BASE_H;
 
     // Pre-rendered background
-    this.add.image(0, 0, 'bg-menu').setOrigin(0, 0);
+    this.add.image(0, 0, 'bg-menu').setOrigin(0, 0).setDisplaySize(width, height);
 
     // Title
-    this.add.text(width / 2, 200, 'DUALUNA', {
-      fontSize: '72px', fill: '#88ccff', fontFamily: 'Georgia, serif',
+    this.add.text(width / 2, Math.round(200 * sy), 'DUALUNA', {
+      fontSize: `${Math.round(72 * sy)}px`, fill: '#88ccff', fontFamily: 'Georgia, serif',
       stroke: '#224466', strokeThickness: 4,
     }).setOrigin(0.5);
 
-    this.add.text(width / 2, 270, I18n.t('ui.subtitle'), {
-      fontSize: '28px', fill: '#66aa99', fontFamily: 'Georgia, serif',
+    this.add.text(width / 2, Math.round(270 * sy), I18n.t('ui.subtitle'), {
+      fontSize: `${Math.round(28 * sy)}px`, fill: '#66aa99', fontFamily: 'Georgia, serif',
       fontStyle: 'italic',
     }).setOrigin(0.5);
 
-    this.add.text(width / 2, 330, I18n.t('ui.tagline'), {
-      fontSize: '16px', fill: '#557788', fontFamily: 'Georgia, serif',
+    this.add.text(width / 2, Math.round(330 * sy), I18n.t('ui.tagline'), {
+      fontSize: `${Math.round(16 * sy)}px`, fill: '#557788', fontFamily: 'Georgia, serif',
     }).setOrigin(0.5);
 
     // Menu buttons
     const buttonStyle = {
-      fontSize: '24px', fill: '#aaddcc', fontFamily: 'Georgia, serif',
+      fontSize: `${Math.round(24 * sy)}px`, fill: '#aaddcc', fontFamily: 'Georgia, serif',
     };
     const hoverStyle = { fill: '#ffffff' };
     const normalStyle = { fill: '#aaddcc' };
 
-    const newGame = this.add.text(width / 2, 440, `◆  ${I18n.t('ui.newGame')}  ◆`, buttonStyle)
+    const newGame = this.add.text(width / 2, Math.round(440 * sy), `◆  ${I18n.t('ui.newGame')}  ◆`, buttonStyle)
       .setOrigin(0.5).setInteractive({ useHandCursor: true });
 
-    const continueBtn = this.add.text(width / 2, 500, `◆  ${I18n.t('ui.continue')}  ◆`, buttonStyle)
+    const continueBtn = this.add.text(width / 2, Math.round(500 * sy), `◆  ${I18n.t('ui.continue')}  ◆`, buttonStyle)
       .setOrigin(0.5).setInteractive({ useHandCursor: true });
 
     // Check if save exists
@@ -57,9 +59,9 @@ export class MenuScene extends Phaser.Scene {
     continueBtn.on('pointerdown', () => this.continueGame());
 
     // Fullscreen button — bottom left, large
-    const fsBtn = this.add.text(15, height - 55, '⛶', {
-      fontSize: '40px', fill: '#88aacc', fontFamily: 'Georgia, serif',
-      backgroundColor: '#1a2a3a', padding: { x: 12, y: 6 },
+    const fsBtn = this.add.text(Math.round(15 * sx), height - Math.round(90 * sy), '⛶', {
+      fontSize: `${Math.round(80 * sy)}px`, fill: '#88aacc', fontFamily: 'Georgia, serif',
+      backgroundColor: '#1a2a3a', padding: { x: Math.round(20 * sx), y: Math.round(14 * sy) },
     }).setInteractive({ useHandCursor: true });
     fsBtn.on('pointerover', () => fsBtn.setStyle({ fill: '#ffffff' }));
     fsBtn.on('pointerout', () => fsBtn.setStyle({ fill: '#88aacc' }));
@@ -72,8 +74,8 @@ export class MenuScene extends Phaser.Scene {
     });
 
     // Version
-    this.add.text(width / 2, height - 30, I18n.t('ui.phase'), {
-      fontSize: '12px', fill: '#8899aa', fontFamily: 'Georgia, serif',
+    this.add.text(width / 2, height - Math.round(30 * sy), I18n.t('ui.phase'), {
+      fontSize: `${Math.round(12 * sy)}px`, fill: '#8899aa', fontFamily: 'Georgia, serif',
     }).setOrigin(0.5);
   }
 

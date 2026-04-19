@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { WORLD } from '../data/world.js';
+import { BASE_W, BASE_H } from '../utils/layout.js';
 
 export class WorldMapScene extends Phaser.Scene {
   constructor() {
@@ -8,10 +9,13 @@ export class WorldMapScene extends Phaser.Scene {
 
   create() {
     const { width, height } = this.scale;
+    const sx = width / BASE_W, sy = height / BASE_H;
+    const ss = Math.min(sx, sy);
+    this._sx = sx; this._sy = sy; this._ss = ss;
     const state = this.registry.get('gameState');
 
     // Pre-rendered ocean background
-    this.add.image(0, 0, 'bg-worldmap').setOrigin(0, 0);
+    this.add.image(0, 0, 'bg-worldmap').setOrigin(0, 0).setDisplaySize(width, height);
 
     // Draw island shapes (lightweight — just a few ellipses)
     const islandGfx = this.make.graphics({ x: 0, y: 0, add: false });
@@ -27,34 +31,32 @@ export class WorldMapScene extends Phaser.Scene {
     this.add.image(0, 0, texKey).setOrigin(0, 0);
 
     // Title
-    this.add.text(width / 2, 30, 'The Islands of Dualuna', {
-      fontSize: '28px', fill: '#88bbdd', fontFamily: 'Georgia, serif',
+    this.add.text(width / 2, Math.round(30 * sy), 'The Islands of Dualuna', {
+      fontSize: `${Math.round(28 * sy)}px`, fill: '#88bbdd', fontFamily: 'Georgia, serif',
     }).setOrigin(0.5);
 
     // Add interactive labels and hit zones (these need to stay as live objects)
     for (const [id, island] of Object.entries(WORLD.islands)) {
       const discovered = state.discoveredIslands.includes(id);
       const isCurrent = state.currentIsland === id;
+      const ix = Math.round(island.mapX * sx), iy = Math.round(island.mapY * sy);
+      const isize = Math.round(island.size * ss);
 
       if (discovered) {
         // Island name label
-        const label = this.add.text(island.mapX, island.mapY + island.size + 15, island.name, {
-          fontSize: '14px',
+        const label = this.add.text(ix, iy + isize + 15, island.name, {
+          fontSize: `${Math.round(14 * sy)}px`,
           fill: isCurrent ? '#ffffff' : '#88aacc',
           fontFamily: 'Georgia, serif',
           fontStyle: isCurrent ? 'bold' : 'normal',
         }).setOrigin(0.5);
 
         // Make clickable
-        const hitArea = this.add.zone(island.mapX, island.mapY, island.size * 2.5, island.size * 2.5)
+        const hitArea = this.add.zone(ix, iy, isize * 2.5, isize * 2.5)
           .setInteractive({ useHandCursor: true });
 
-        hitArea.on('pointerover', () => {
-          label.setStyle({ fill: '#ffffff' });
-        });
-        hitArea.on('pointerout', () => {
-          label.setStyle({ fill: isCurrent ? '#ffffff' : '#88aacc' });
-        });
+        hitArea.on('pointerover', () => label.setStyle({ fill: '#ffffff' }));
+        hitArea.on('pointerout', () => label.setStyle({ fill: isCurrent ? '#ffffff' : '#88aacc' }));
         hitArea.on('pointerdown', () => {
           this.travelToIsland(id, island);
         });
@@ -63,13 +65,13 @@ export class WorldMapScene extends Phaser.Scene {
 
     // Current location info
     const currentIsland = WORLD.islands[state.currentIsland];
-    this.add.text(width / 2, height - 60, `Current: ${currentIsland.name}`, {
-      fontSize: '18px', fill: '#aaddcc', fontFamily: 'Georgia, serif',
+    this.add.text(width / 2, height - Math.round(60 * sy), `Current: ${currentIsland.name}`, {
+      fontSize: `${Math.round(18 * sy)}px`, fill: '#aaddcc', fontFamily: 'Georgia, serif',
     }).setOrigin(0.5);
 
     // Back button
-    const backBtn = this.add.text(60, height - 30, '← Back', {
-      fontSize: '16px', fill: '#88aacc', fontFamily: 'Georgia, serif',
+    const backBtn = this.add.text(Math.round(60 * sx), height - Math.round(30 * sy), '← Back', {
+      fontSize: `${Math.round(16 * sy)}px`, fill: '#88aacc', fontFamily: 'Georgia, serif',
     }).setInteractive({ useHandCursor: true });
     backBtn.on('pointerover', () => backBtn.setStyle({ fill: '#ffffff' }));
     backBtn.on('pointerout', () => backBtn.setStyle({ fill: '#88aacc' }));
@@ -78,13 +80,16 @@ export class WorldMapScene extends Phaser.Scene {
     });
 
     // Verdium display
-    this.add.text(width - 20, height - 30, `◆ Verdium: ${state.verdium}`, {
-      fontSize: '14px', fill: '#44cc88', fontFamily: 'Georgia, serif',
+    this.add.text(width - 20, height - Math.round(30 * sy), `◆ Verdium: ${state.verdium}`, {
+      fontSize: `${Math.round(14 * sy)}px`, fill: '#44cc88', fontFamily: 'Georgia, serif',
     }).setOrigin(1, 0.5);
   }
 
   drawIsland(gfx, island, discovered, isCurrent) {
-    const { mapX: x, mapY: y, size, color } = island;
+    const sx = this._sx, sy = this._sy, ss = this._ss;
+    const x = Math.round(island.mapX * sx), y = Math.round(island.mapY * sy);
+    const size = Math.round(island.size * ss);
+    const { color } = island;
 
     if (!discovered) {
       // Fog of war — just a faint shape

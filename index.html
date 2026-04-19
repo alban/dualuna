@@ -9,39 +9,31 @@
   <title>Dualuna: The Verdium Collector</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
+    html, body {
       background: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      min-height: 100dvh;
       overflow: hidden;
       touch-action: none;
     }
     #game-container {
-      width: 100vw;
-      height: 100vh;
-      height: 100dvh;
-      max-width: 1280px;
-      max-height: 720px;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
     }
     /* Landscape hint overlay for portrait mobile */
     #rotate-hint {
       display: none;
       position: fixed; inset: 0;
-      background: #000;
+      background: #000e1a;
       color: #88ccdd;
       font-family: Georgia, serif;
-      font-size: 20px;
+      font-size: 28px;
       justify-content: center;
       align-items: center;
       text-align: center;
       z-index: 9999;
       padding: 2em;
     }
-    #rotate-hint .icon { font-size: 48px; display: block; margin-bottom: 16px; }
-    @media (max-width: 900px) and (orientation: portrait) {
+    #rotate-hint .icon { font-size: 80px; display: block; margin-bottom: 24px; }
+    @media (orientation: portrait) {
       #rotate-hint { display: flex; flex-direction: column; }
     }
   </style>

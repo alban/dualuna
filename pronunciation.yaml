@@ -1,0 +1,189 @@
+# Dualuna — Global Pronunciation Dictionary
+#
+# This file is used by the build script to automatically
+# wrap fantasy words in SSML phoneme tags before TTS generation.
+# Annotate once here — applies to every audio file, every language.
+#
+# IPA notation used throughout.
+# Test pronunciations with: https://ipa-reader.xyz/
+#
+# Format:
+#   word:
+#     ipa: "IPA for default (English)"
+#     notes: "optional pronunciation guidance for voice actors"
+#     languages:
+#       fr:
+#         ipa: "IPA for French"
+#         notes: "optional"
+
+words:
+
+  Dualuna:
+    ipa: "duːəˈluːnə"
+    notes: "doo-ah-LOO-nah. The planet name. Three syllables,
+            stress on second. The double moon reference is
+            intentional — 'dual luna'."
+    languages:
+      fr:
+        ipa: "dualyna"
+        notes: "doo-ah-LU-na. Similar to English."
+
+  Verdium:
+    ipa: "vɜːdiəm"
+    notes: "VER-dee-um. Like 'verdant' + '-ium'. Green-gold mineral."
+    languages:
+      fr:
+        ipa: "vɛʁdjɔm"
+        notes: "Vair-DYOM. The 'r' is French uvular."
+
+  Tidewatcher:
+    ipa: "taɪdwɒtʃər"
+    notes: "TIDE-watch-er. Kept in English across all languages —
+            it is a proper noun / race name."
+    languages:
+      fr:
+        ipa: "taɪdwɒtʃər"
+        notes: "Pronounced as in English. Do not translate."
+
+  Korrim:
+    ipa: "kɒrɪm"
+    notes: "KOR-im. Short, hard sounds. Like the bark of a tree."
+    languages:
+      fr:
+        ipa: "kɔʁim"
+        notes: "Kor-IM. French uvular r."
+
+  Velessi:
+    ipa: "vəˈlɛsi"
+    notes: "veh-LES-ee. Light, quick. Fits the inventor race."
+    languages:
+      fr:
+        ipa: "velɛsi"
+        notes: "ve-LES-ee. Similar."
+
+  Luminari:
+    ipa: "luːmɪˈnɑːri"
+    notes: "loo-mi-NAH-ree. Four syllables, stress on third.
+            Evokes luminescence."
+    languages:
+      fr:
+        ipa: "lyminari"
+        notes: "lu-mi-NA-ri. French u sound."
+
+  Coralline:
+    ipa: "kɒrəlaɪn"
+    notes: "KOR-ah-line. Like the marine organism."
+    languages:
+      fr:
+        ipa: "kɔʁalin"
+        notes: "ko-ra-LEEN."
+
+  Deepkin:
+    ipa: "diːpkɪn"
+    notes: "DEEP-kin. Two syllables, equal stress."
+    languages:
+      fr:
+        ipa: "diːpkɪn"
+        notes: "Kept in English — proper noun."
+
+  Shellborn:
+    ipa: "ʃɛlbɔːn"
+    notes: "SHELL-born."
+    languages:
+      fr:
+        ipa: "ʃɛlbɔːn"
+        notes: "Kept in English — proper noun."
+
+  # Location names — kept in English across all languages
+  # as they are proper nouns of the fantasy world
+
+  "Cliff Haven":
+    ipa: "klɪf heɪvən"
+    notes: "KLIF HAY-ven. Kept in English in all languages."
+    languages:
+      fr:
+        ipa: "klɪf heɪvən"
+        notes: "Pronounced as English. Do not translate."
+
+  "Green Root":
+    ipa: "ɡriːn ruːt"
+    notes: "GREEN ROOT. Kept in English in all languages."
+    languages:
+      fr:
+        ipa: "ɡriːn ruːt"
+        notes: "Pronounced as English. Do not translate."
+
+  "Spark Cove":
+    ipa: "spɑːk koʊv"
+    notes: "SPARK COVE. Kept in English in all languages."
+    languages:
+      fr:
+        ipa: "spɑːk koʊv"
+        notes: "Pronounced as English. Do not translate."
+
+  Luminara:
+    ipa: "luːmɪˈnɑːrə"
+    notes: "loo-mi-NAH-rah. The island name (not the race Luminari).
+            Four syllables."
+    languages:
+      fr:
+        ipa: "lyminara"
+        notes: "lu-mi-NA-ra."
+
+  # Character names — consistent across all languages
+
+  Kael:
+    ipa: "keɪl"
+    notes: "KAYL. One syllable. Solid, grounded."
+    languages:
+      fr:
+        ipa: "kɛl"
+        notes: "KELL. Slightly different vowel in French."
+
+  Dera:
+    ipa: "dɛrə"
+    notes: "DEH-rah. Quick, light. Fits her personality."
+    languages:
+      fr:
+        ipa: "deʁa"
+        notes: "de-RA. French r."
+
+  Brin:
+    ipa: "brɪn"
+    notes: "BRIN. One syllable. Elder, weighty."
+    languages:
+      fr:
+        ipa: "bʁɛ̃"
+        notes: "BRAN (nasal). Or keep as BRIN — your choice."
+
+  Tink:
+    ipa: "tɪŋk"
+    notes: "TINK. One syllable. Sharp, metallic. Fits perfectly."
+    languages:
+      fr:
+        ipa: "tɪŋk"
+        notes: "Same in all languages."
+
+  Mossa:
+    ipa: "mɒsə"
+    notes: "MOS-ah. Soft. Like moss."
+    languages:
+      fr:
+        ipa: "mɔsa"
+        notes: "MO-sa."
+
+  Elyn:
+    ipa: "ɛlɪn"
+    notes: "EL-in. Soft, scholarly."
+    languages:
+      fr:
+        ipa: "elɛ̃"
+        notes: "e-LAN (nasal n). Or EL-in — your choice."
+
+  Roothold:
+    ipa: "ruːthəʊld"
+    notes: "ROOT-hold. The forest warden. Strong, compound word."
+    languages:
+      fr:
+        ipa: "ruːthəʊld"
+        notes: "Kept in English — proper name."

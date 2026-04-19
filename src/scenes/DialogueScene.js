@@ -3,6 +3,7 @@ import { DIALOGUES } from '../data/dialogues.js';
 import { CHARACTERS, RACE_COLORS } from '../data/characters.js';
 import { QuestManager } from '../systems/QuestManager.js';
 import { I18n } from '../systems/I18n.js';
+import { BASE_W, BASE_H } from '../utils/layout.js';
 
 export class DialogueScene extends Phaser.Scene {
   constructor() {
@@ -17,8 +18,10 @@ export class DialogueScene extends Phaser.Scene {
 
   create() {
     const { width, height } = this.scale;
-    const dialogue = DIALOGUES[this.dialogueId];
+    const sx = width / BASE_W, sy = height / BASE_H, ss = Math.min(sx, sy);
+    this.sx = sx; this.sy = sy; this.ss = ss;
 
+    const dialogue = DIALOGUES[this.dialogueId];
     if (!dialogue) {
       console.warn(`Dialogue not found: ${this.dialogueId}`);
       this.closeDialogue();
@@ -37,32 +40,31 @@ export class DialogueScene extends Phaser.Scene {
       Phaser.Geom.Rectangle.Contains
     );
 
-    // Dialogue panel — large, covers bottom half
-    this.panelY = height - 380;
-    const panelH = 350;
+    // Panel — bottom half of screen
+    const panelH = Math.round(350 * sy);
+    this.panelY = height - panelH - Math.round(30 * sy);
+    this.panelH = panelH;
     this.panel = this.add.graphics();
     this.panel.fillStyle(0x0a1520, 0.95);
-    this.panel.fillRoundedRect(20, this.panelY, width - 40, panelH, 8);
+    this.panel.fillRoundedRect(Math.round(20 * sx), this.panelY, width - Math.round(40 * sx), panelH, 8);
     this.panel.lineStyle(1, 0x334455, 1);
-    this.panel.strokeRoundedRect(20, this.panelY, width - 40, panelH, 8);
+    this.panel.strokeRoundedRect(Math.round(20 * sx), this.panelY, width - Math.round(40 * sx), panelH, 8);
 
-    // Portrait area (left side)
+    // Portrait area
     this.portraitArea = this.add.graphics();
-    this.portraitNameText = this.add.text(110, this.panelY + 140, '', {
-      fontSize: '14px', fill: '#88ccdd', fontFamily: 'Georgia, serif',
+    this.portraitNameText = this.add.text(Math.round(110 * sx), this.panelY + Math.round(140 * sy), '', {
+      fontSize: `${Math.round(14 * sy)}px`, fill: '#88ccdd', fontFamily: 'Georgia, serif',
       fontStyle: 'bold',
     }).setOrigin(0.5);
 
     // Dialogue text area
-    this.dialogueText = this.add.text(210, this.panelY + 20, '', {
-      fontSize: '30px', fill: '#ccddee', fontFamily: 'Georgia, serif',
-      wordWrap: { width: width - 270 },
-      lineSpacing: 10,
+    this.dialogueText = this.add.text(Math.round(210 * sx), this.panelY + Math.round(20 * sy), '', {
+      fontSize: `${Math.round(30 * sy)}px`, fill: '#ccddee', fontFamily: 'Georgia, serif',
+      wordWrap: { width: width - Math.round(270 * sx) },
+      lineSpacing: Math.round(10 * sy),
     });
 
-    // Choices container
     this.choiceTexts = [];
-
     this.showNode(this.currentNodeId);
   }
 
@@ -76,20 +78,16 @@ export class DialogueScene extends Phaser.Scene {
 
     const state = this.registry.get('gameState');
 
-    // Record that we've seen this dialogue
     if (!state.dialogueHistory.includes(this.dialogueId)) {
       state.dialogueHistory.push(this.dialogueId);
     }
 
-    // Apply effects from this node
     if (node.effects) {
       this.applyEffects(node.effects, state);
     }
 
-    // Show speaker portrait
     this.updatePortrait(node.speaker);
 
-    // Get localized text (fall back to dialogue data)
     const localizedText = I18n.dialogue(this.dialogueId, nodeId, 'text') || node.text || '';
     this.dialogueText.setText('');
     this.typeText(localizedText, () => {
@@ -111,33 +109,33 @@ export class DialogueScene extends Phaser.Scene {
       return;
     }
 
+    const sx = this.sx, sy = this.sy, ss = this.ss;
     const color = RACE_COLORS[char.race] || 0x888888;
-    const cx = 110, cy = this.panelY + 80;
+    const cx = Math.round(110 * sx), cy = this.panelY + Math.round(80 * sy);
+    const frameX = Math.round(40 * sx), frameY = this.panelY + Math.round(15 * sy);
+    const frameW = Math.round(140 * sx), frameH = Math.round(130 * sy);
 
-    // Portrait background
     this.portraitArea.fillStyle(0x0d1a25, 1);
-    this.portraitArea.fillRoundedRect(40, this.panelY + 15, 140, 130, 6);
+    this.portraitArea.fillRoundedRect(frameX, frameY, frameW, frameH, 6);
     this.portraitArea.lineStyle(1, color, 0.6);
-    this.portraitArea.strokeRoundedRect(40, this.panelY + 15, 140, 130, 6);
+    this.portraitArea.strokeRoundedRect(frameX, frameY, frameW, frameH, 6);
 
-    // Simple character face
     this.portraitArea.fillStyle(color, 0.4);
-    this.portraitArea.fillCircle(cx, cy, 35);
+    this.portraitArea.fillCircle(cx, cy, Math.round(35 * ss));
     this.portraitArea.fillStyle(color, 0.7);
-    this.portraitArea.fillCircle(cx, cy - 5, 25); // face
+    this.portraitArea.fillCircle(cx, cy - Math.round(5 * sy), Math.round(25 * ss));
     this.portraitArea.fillStyle(0xffffff, 0.8);
-    this.portraitArea.fillCircle(cx - 8, cy - 10, 4); // left eye
-    this.portraitArea.fillCircle(cx + 8, cy - 10, 4); // right eye
+    this.portraitArea.fillCircle(cx - Math.round(8 * sx), cy - Math.round(10 * sy), Math.round(4 * ss));
+    this.portraitArea.fillCircle(cx + Math.round(8 * sx), cy - Math.round(10 * sy), Math.round(4 * ss));
     this.portraitArea.fillStyle(color, 0.9);
-    this.portraitArea.fillCircle(cx - 8, cy - 10, 2);
-    this.portraitArea.fillCircle(cx + 8, cy - 10, 2);
+    this.portraitArea.fillCircle(cx - Math.round(8 * sx), cy - Math.round(10 * sy), Math.round(2 * ss));
+    this.portraitArea.fillCircle(cx + Math.round(8 * sx), cy - Math.round(10 * sy), Math.round(2 * ss));
 
     this.portraitNameText.setText(char.name);
 
-    // Race tag
     if (!this.raceTag) {
-      this.raceTag = this.add.text(130, this.panelY + 155, '', {
-        fontSize: '10px', fill: '#667788', fontFamily: 'Georgia, serif',
+      this.raceTag = this.add.text(Math.round(130 * sx), this.panelY + Math.round(155 * sy), '', {
+        fontSize: `${Math.round(10 * sy)}px`, fill: '#667788', fontFamily: 'Georgia, serif',
         fontStyle: 'italic',
       }).setOrigin(0.5);
     }
@@ -145,21 +143,19 @@ export class DialogueScene extends Phaser.Scene {
   }
 
   typeText(fullText, onComplete) {
-    // Show text instantly — no typewriter delay
     this.dialogueText.setText(fullText);
     onComplete();
   }
 
   showChoices(node, nodeId) {
-    // Clear old choices
     this.choiceTexts.forEach(t => t.destroy());
     this.choiceTexts = [];
 
     const state = this.registry.get('gameState');
     const { width } = this.scale;
+    const sy = this.sy, sx = this.sx;
 
     if (node.choices && node.choices.length > 0) {
-      // Filter choices by conditions, tracking original indices for i18n
       const validChoices = [];
       node.choices.forEach((c, originalIndex) => {
         if (c.requireFlag && !state.questFlags[c.requireFlag]) return;
@@ -168,10 +164,10 @@ export class DialogueScene extends Phaser.Scene {
       });
 
       validChoices.forEach((choice, i) => {
-        const y = this.panelY + 200 + i * 45;
+        const y = this.panelY + Math.round(200 * sy) + i * Math.round(45 * sy);
         const choiceLabel = I18n.choice(this.dialogueId, nodeId, choice._origIndex) || choice.text;
-        const text = this.add.text(210, y, `▸ ${choiceLabel}`, {
-          fontSize: '28px', fill: '#88ccaa', fontFamily: 'Georgia, serif',
+        const text = this.add.text(Math.round(210 * sx), y, `▸ ${choiceLabel}`, {
+          fontSize: `${Math.round(28 * sy)}px`, fill: '#88ccaa', fontFamily: 'Georgia, serif',
           backgroundColor: '#0a151f', padding: { x: 10, y: 8 },
         }).setInteractive({ useHandCursor: true });
 
@@ -191,12 +187,11 @@ export class DialogueScene extends Phaser.Scene {
         this.choiceTexts.push(text);
       });
     } else {
-      // No choices — click to continue or end
       const label = node.next ? I18n.t('ui.continueDialogue') : I18n.t('ui.close');
-      const continueText = this.add.text(width / 2, this.panelY + 250, label, {
-          fontSize: '28px', fill: '#88ccaa', fontFamily: 'Georgia, serif',
-          backgroundColor: '#0a151f', padding: { x: 16, y: 10 },
-        }).setOrigin(0.5).setInteractive({ useHandCursor: true });
+      const continueText = this.add.text(width / 2, this.panelY + Math.round(250 * sy), label, {
+        fontSize: `${Math.round(28 * sy)}px`, fill: '#88ccaa', fontFamily: 'Georgia, serif',
+        backgroundColor: '#0a151f', padding: { x: 16, y: 10 },
+      }).setOrigin(0.5).setInteractive({ useHandCursor: true });
 
       continueText.on('pointerover', () => continueText.setStyle({ fill: '#ffffff' }));
       continueText.on('pointerout', () => continueText.setStyle({ fill: '#88ccaa' }));
@@ -251,7 +246,6 @@ export class DialogueScene extends Phaser.Scene {
   closeDialogue() {
     const state = this.registry.get('gameState');
 
-    // Check if we should open the world map
     if (state.questFlags['open-map']) {
       delete state.questFlags['open-map'];
       this.registry.set('gameState', state);
@@ -263,7 +257,6 @@ export class DialogueScene extends Phaser.Scene {
 
     this.scene.resume(this.returnScene);
     this.scene.stop();
-    // Restart the location scene to reflect any changes
     this.scene.get(this.returnScene).scene.restart(this.returnData);
   }
 }

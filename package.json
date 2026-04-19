@@ -11,6 +11,7 @@
     "export-to-content": "node scripts/export-to-content.js",
     "generate-art": "node scripts/generate-backgrounds.js",
     "screenshots": "node scripts/screenshots.js",
+    "screenshots:quick": "node scripts/screenshots.js --quick",
     "preview": "vite preview"
   },
   "keywords": [],

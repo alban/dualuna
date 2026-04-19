@@ -26,6 +26,7 @@ const VIEWPORTS = {
 
 const LOCATION_IDS = Object.keys(LOCATIONS_DATA);
 const ISLAND_IDS = Object.keys(WORLD.islands);
+const QUICK = process.argv.includes('--quick');
 
 // Determine which island a location belongs to
 function getIslandForLocation(locId) {
@@ -84,8 +85,11 @@ async function run() {
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
 
-  for (const [vpName, vp] of Object.entries(VIEWPORTS)) {
-    for (const lang of LANGUAGES) {
+  const viewports = QUICK ? { mobile: VIEWPORTS.mobile } : VIEWPORTS;
+  const languages = QUICK ? ['en'] : LANGUAGES;
+
+  for (const [vpName, vp] of Object.entries(viewports)) {
+    for (const lang of languages) {
       mkdirSync(OUT_DIR, { recursive: true });
       const prefix = `${vpName}-${lang}`;
       console.log(`\n=== ${vpName} / ${lang} ===`);
@@ -111,9 +115,10 @@ async function run() {
       await navigateToScene(page, 'WorldMap', { state: mapState });
       await screenshot(page, join(OUT_DIR, `${prefix}-03-worldmap.png`));
 
-      // 4. Each location
-      for (let i = 0; i < LOCATION_IDS.length; i++) {
-        const locId = LOCATION_IDS[i];
+      // 4. Locations (all, or just mine-entrance in quick mode)
+      const locIds = QUICK ? ['mine-entrance'] : LOCATION_IDS;
+      for (let i = 0; i < locIds.length; i++) {
+        const locId = locIds[i];
         const locState = getGameState(locId);
         await navigateToScene(page, 'Location', { state: locState, data: { locationId: locId } });
         await screenshot(page, join(OUT_DIR, `${prefix}-${String(i + 4).padStart(2, '0')}-${locId}.png`));
@@ -133,7 +138,7 @@ async function run() {
         locationScene.scene.pause();
       });
       await WAIT(1500);
-      let idx = LOCATION_IDS.length + 4;
+      let idx = locIds.length + 4;
       await screenshot(page, join(OUT_DIR, `${prefix}-${String(idx).padStart(2, '0')}-dialogue.png`));
       idx++;
 
