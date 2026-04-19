@@ -277,7 +277,7 @@ export class LocationScene extends Phaser.Scene {
     const backdrop = this.add.rectangle(width / 2, height / 2, width, height, 0x000000, 0.7)
       .setInteractive();
 
-    const panelW = Math.round(450 * sx), panelH = Math.round(420 * sy);
+    const panelW = Math.round(450 * sx), panelH = Math.round(540 * sy);
     const panelX = width / 2, panelY = height / 2;
     const panel = this.add.graphics();
     panel.fillStyle(0x0a1520, 0.95);
@@ -300,22 +300,41 @@ export class LocationScene extends Phaser.Scene {
     };
 
     const closeMenu = () => elements.forEach(el => el.destroy());
-    const btnSpacing = Math.round(70 * sy);
+    const btnSpacing = Math.round(65 * sy);
 
-    makeCfgBtn(panelY - btnSpacing * 1.5, '💾  ' + I18n.t('ui.saveLabel'), () => {
+    makeCfgBtn(panelY - btnSpacing * 2.5, '💾  ' + I18n.t('ui.saveLabel'), () => {
       SaveManager.save(state);
       closeMenu();
       this.showNotification(I18n.t('ui.gameSaved'));
     });
 
-    makeCfgBtn(panelY - btnSpacing * 0.5, '🌐  ' + I18n.t('ui.languageLabel'), () => {
+    makeCfgBtn(panelY - btnSpacing * 1.5, '📤  ' + I18n.t('ui.exportLabel'), () => {
+      SaveManager.save(state);
+      SaveManager.exportJSON(state);
+      closeMenu();
+    });
+
+    makeCfgBtn(panelY - btnSpacing * 0.5, '📥  ' + I18n.t('ui.importLabel'), () => {
+      closeMenu();
+      SaveManager.importJSON(
+        (save) => {
+          this.registry.set('gameState', save);
+          SaveManager.save(save);
+          this.showNotification(I18n.t('ui.importSuccess'));
+          this.scene.start('Location', { locationId: save.currentLocation });
+        },
+        () => this.showNotification(I18n.t('ui.importError')),
+      );
+    });
+
+    makeCfgBtn(panelY + btnSpacing * 0.5, '🌐  ' + I18n.t('ui.languageLabel'), () => {
       SaveManager.save(state);
       closeMenu();
       this.scene.start('Language');
     });
 
     const fsLabel = document.fullscreenElement ? I18n.t('ui.exitFullscreenLabel') : I18n.t('ui.fullscreenLabel');
-    makeCfgBtn(panelY + btnSpacing * 0.5, '⛶  ' + fsLabel, () => {
+    makeCfgBtn(panelY + btnSpacing * 1.5, '⛶  ' + fsLabel, () => {
       if (document.fullscreenElement) {
         document.exitFullscreen();
       } else {
@@ -324,7 +343,7 @@ export class LocationScene extends Phaser.Scene {
       closeMenu();
     });
 
-    makeCfgBtn(panelY + btnSpacing * 1.5, '↻  ' + I18n.t('ui.restart'), () => {
+    makeCfgBtn(panelY + btnSpacing * 2.5, '↻  ' + I18n.t('ui.restart'), () => {
       window.location.reload();
     });
 

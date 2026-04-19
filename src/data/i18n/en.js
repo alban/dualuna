@@ -27,6 +27,10 @@ export default {
     "exitFullscreenLabel": "Exit fullscreen",
     "saveLabel": "Save",
     "languageLabel": "Language",
+    "exportLabel": "Export save",
+    "importLabel": "Import save",
+    "importSuccess": "Save loaded!",
+    "importError": "Invalid save file",
     "restart": "Restart"
   },
   "quests": {

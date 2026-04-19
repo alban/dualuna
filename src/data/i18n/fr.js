@@ -27,6 +27,10 @@ export default {
     "exitFullscreenLabel": "Quitter le plein écran",
     "saveLabel": "Sauvegarder",
     "languageLabel": "Langue",
+    "exportLabel": "Exporter la sauvegarde",
+    "importLabel": "Importer une sauvegarde",
+    "importSuccess": "Sauvegarde chargée !",
+    "importError": "Fichier de sauvegarde invalide",
     "restart": "Redémarrer"
   },
   "quests": {

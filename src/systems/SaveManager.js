@@ -37,4 +37,42 @@ export class SaveManager {
   static deleteSave() {
     localStorage.removeItem(this.SAVE_KEY);
   }
+
+  static exportJSON(state) {
+    const json = JSON.stringify(state, null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'dualuna-save.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  static importJSON(onSuccess, onError) {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json,application/json';
+    input.style.display = 'none';
+    document.body.appendChild(input);
+    input.onchange = (e) => {
+      const file = e.target.files[0];
+      document.body.removeChild(input);
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        try {
+          const save = JSON.parse(ev.target.result);
+          if (!save.saveVersion || !save.currentLocation) throw new Error('Invalid save');
+          onSuccess(save);
+        } catch (err) {
+          onError?.(err);
+        }
+      };
+      reader.readAsText(file);
+    };
+    input.click();
+  }
 }
