@@ -15,6 +15,10 @@ ai-art:
 build:
 	npx vite build
 
+# Generate i18n from content source files
+generate:
+	npm run generate
+
 # Start local dev server
 dev:
 	npx vite --port 4444 --host

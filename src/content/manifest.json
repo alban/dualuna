@@ -1,0 +1,257 @@
+{
+  "version": 1,
+  "nodes": {
+    "dera-default.start": {
+      "hash": "23ba9568569f5384",
+      "dirty": false
+    },
+    "dera-default.shaft": {
+      "hash": "975346c1a2128a61",
+      "dirty": false
+    },
+    "dera-default.theory": {
+      "hash": "c67e02e86b9055ba",
+      "dirty": false
+    },
+    "dera-default.okay": {
+      "hash": "2efdcd88880b3b18",
+      "dirty": false
+    },
+    "dera-default.alive": {
+      "hash": "10bd8950d0f8faa5",
+      "dirty": false
+    },
+    "dera-default.consult": {
+      "hash": "8be3f0c27d129566",
+      "dirty": false
+    },
+    "dera-default.govisit": {
+      "hash": "48555ab34bba6778",
+      "dirty": false
+    },
+    "dera-default.sailing": {
+      "hash": "0dc29a276fce098b",
+      "dirty": false
+    },
+    "brin-default.start": {
+      "hash": "8b8f7b7ae82c120b",
+      "dirty": false
+    },
+    "brin-default.report": {
+      "hash": "fb8d206911c5cd96",
+      "dirty": false
+    },
+    "brin-default.worried": {
+      "hash": "d4882bdf301aced7",
+      "dirty": false
+    },
+    "brin-default.gofirst": {
+      "hash": "2aec673aa82d0292",
+      "dirty": false
+    },
+    "brin-default.agree": {
+      "hash": "e1d18c21623715f7",
+      "dirty": false
+    },
+    "brin-default.stopmine": {
+      "hash": "ea1f702b7020a957",
+      "dirty": false
+    },
+    "roothold-default.start": {
+      "hash": "4a2c8b1aa2b81732",
+      "dirty": false
+    },
+    "roothold-default.tremors": {
+      "hash": "33e9333241ec8cf6",
+      "dirty": false
+    },
+    "roothold-default.learn": {
+      "hash": "54cb6a2dd9576539",
+      "dirty": false
+    },
+    "elder-mossa-default.start": {
+      "hash": "64a48032502e50e1",
+      "dirty": false
+    },
+    "elder-mossa-default.mining": {
+      "hash": "877dde6af1368ff5",
+      "dirty": false
+    },
+    "elder-mossa-default.sense": {
+      "hash": "5a9d1b5300895a9f",
+      "dirty": false
+    },
+    "elder-mossa-default.deeper": {
+      "hash": "d7efe4a008d6d874",
+      "dirty": false
+    },
+    "elder-mossa-default.mining-cause": {
+      "hash": "2b3796a3b109b491",
+      "dirty": false
+    },
+    "elder-mossa-default.whatis": {
+      "hash": "38b4bb1d6e784cfa",
+      "dirty": false
+    },
+    "elder-mossa-default.advice": {
+      "hash": "0524eae1ae0bba8d",
+      "dirty": false
+    },
+    "examine-flora.start": {
+      "hash": "c1cc5c4c2331b84e",
+      "dirty": false
+    },
+    "examine-great-root.start": {
+      "hash": "1c15036c6c4392c4",
+      "dirty": false
+    },
+    "foreman-kael-default.start": {
+      "hash": "eb085bcd231fd883",
+      "dirty": false
+    },
+    "foreman-kael-default.cause": {
+      "hash": "f917b1a97f0e4fcc",
+      "dirty": false
+    },
+    "foreman-kael-default.stop": {
+      "hash": "7692a7bae08ce1a6",
+      "dirty": false
+    },
+    "foreman-kael-default.hurt": {
+      "hash": "d8dc0b7d220f2c7b",
+      "dirty": false
+    },
+    "foreman-kael-default.natural": {
+      "hash": "f2d5e645adf10a28",
+      "dirty": false
+    },
+    "foreman-kael-default.examine": {
+      "hash": "e7a86ab02d98e968",
+      "dirty": false
+    },
+    "intro-mine.start": {
+      "hash": "7d2f989a9a2ed61c",
+      "dirty": false
+    },
+    "intro-mine.start2": {
+      "hash": "e04af5f52794e3f6",
+      "dirty": false
+    },
+    "examine-verdium-crate.start": {
+      "hash": "ac5befe3eed1a819",
+      "dirty": false
+    },
+    "examine-cracks.start": {
+      "hash": "077cdc139e5a058a",
+      "dirty": false
+    },
+    "examine-water.start": {
+      "hash": "7447c9c64c92002c",
+      "dirty": false
+    },
+    "examine-vein.start": {
+      "hash": "215cefb0f8225152",
+      "dirty": false
+    },
+    "harbor-travel.start": {
+      "hash": "5edd45c423a5019e",
+      "dirty": false
+    },
+    "harbor-travel.map": {
+      "hash": "008434b973f94ff6",
+      "dirty": false
+    },
+    "harbor-travel.end": {
+      "hash": "01ba4719c80b6fe9",
+      "dirty": false
+    },
+    "examine-telescope.start": {
+      "hash": "597309f4d0349294",
+      "dirty": false
+    },
+    "examine-telescope.start2": {
+      "hash": "409548b6ea09f62b",
+      "dirty": false
+    },
+    "scholar-elyn-default.start": {
+      "hash": "6f77dcdfbd929387",
+      "dirty": false
+    },
+    "scholar-elyn-default.research": {
+      "hash": "e1f49054db5dea7c",
+      "dirty": false
+    },
+    "scholar-elyn-default.archives": {
+      "hash": "ebc282d48801d6b4",
+      "dirty": false
+    },
+    "scholar-elyn-default.reveal": {
+      "hash": "36171857ea1e6420",
+      "dirty": false
+    },
+    "scholar-elyn-default.beneath": {
+      "hash": "c6e4e0e37fefa45f",
+      "dirty": false
+    },
+    "scholar-elyn-default.severing": {
+      "hash": "c5eac6e81feb1bb5",
+      "dirty": false
+    },
+    "scholar-elyn-default.conclude": {
+      "hash": "ad3a044e2b886fdc",
+      "dirty": false
+    },
+    "examine-mural.start": {
+      "hash": "2ea12adad5eb5a92",
+      "dirty": false
+    },
+    "examine-geology-archives.start": {
+      "hash": "b6628f24170e70e4",
+      "dirty": false
+    },
+    "examine-ancient-records.start": {
+      "hash": "abd3604bc9d65c02",
+      "dirty": false
+    },
+    "examine-pedestal.start": {
+      "hash": "3f511910921f72cd",
+      "dirty": false
+    },
+    "tink-default.start": {
+      "hash": "802f7a2fe6a53631",
+      "dirty": false
+    },
+    "tink-default.problem": {
+      "hash": "50a7614bc6251ef1",
+      "dirty": false
+    },
+    "tink-default.tremors": {
+      "hash": "155ca82ca825e9db",
+      "dirty": false
+    },
+    "tink-default.analysis": {
+      "hash": "7fb030fbe2afa7c3",
+      "dirty": false
+    },
+    "tink-default.alive": {
+      "hash": "cbecc121d3391a47",
+      "dirty": false
+    },
+    "tink-default.build": {
+      "hash": "d835a5d9b4b5609d",
+      "dirty": false
+    },
+    "examine-machinery.start": {
+      "hash": "ed4c7ff738a8c8f4",
+      "dirty": false
+    },
+    "examine-blueprints.start": {
+      "hash": "5c15b7af3c4371d0",
+      "dirty": false
+    },
+    "examine-prototype.start": {
+      "hash": "fcc272123770b505",
+      "dirty": false
+    }
+  }
+}
