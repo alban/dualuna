@@ -119,15 +119,18 @@ async function run() {
         await screenshot(page, join(OUT_DIR, `${prefix}-${String(i + 4).padStart(2, '0')}-${locId}.png`));
       }
 
-      // Dialogue
+      // Dialogue — navigate to Location first, then launch Dialogue on top
+      const dlgState = getGameState('mine-entrance');
+      await navigateToScene(page, 'Location', { state: dlgState, data: { locationId: 'mine-entrance' } });
       await page.evaluate(() => {
         const game = window.__PHASER_GAME__;
-        game.scene.getScenes(true).forEach(s => game.scene.stop(s));
-        game.scene.start('Dialogue', {
+        const locationScene = game.scene.getScene('Location');
+        locationScene.scene.launch('Dialogue', {
           dialogueId: 'foreman-kael-default',
           returnScene: 'Location',
           returnData: { locationId: 'mine-entrance' },
         });
+        locationScene.scene.pause();
       });
       await WAIT(1500);
       let idx = LOCATION_IDS.length + 4;

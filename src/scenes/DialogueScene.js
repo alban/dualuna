@@ -55,7 +55,7 @@ export class DialogueScene extends Phaser.Scene {
 
     // Dialogue text area
     this.dialogueText = this.add.text(210, this.panelY + 20, '', {
-      fontSize: '24px', fill: '#ccddee', fontFamily: 'Georgia, serif',
+      fontSize: '30px', fill: '#ccddee', fontFamily: 'Georgia, serif',
       wordWrap: { width: width - 270 },
       lineSpacing: 10,
     });
@@ -171,8 +171,8 @@ export class DialogueScene extends Phaser.Scene {
         const y = this.panelY + 200 + i * 45;
         const choiceLabel = I18n.choice(this.dialogueId, nodeId, choice._origIndex) || choice.text;
         const text = this.add.text(210, y, `▸ ${choiceLabel}`, {
-          fontSize: '22px', fill: '#88ccaa', fontFamily: 'Georgia, serif',
-          backgroundColor: '#0a151f', padding: { x: 8, y: 6 },
+          fontSize: '28px', fill: '#88ccaa', fontFamily: 'Georgia, serif',
+          backgroundColor: '#0a151f', padding: { x: 10, y: 8 },
         }).setInteractive({ useHandCursor: true });
 
         text.on('pointerover', () => text.setStyle({ fill: '#ffffff' }));
@@ -194,8 +194,8 @@ export class DialogueScene extends Phaser.Scene {
       // No choices — click to continue or end
       const label = node.next ? I18n.t('ui.continueDialogue') : I18n.t('ui.close');
       const continueText = this.add.text(width / 2, this.panelY + 250, label, {
-          fontSize: '24px', fill: '#88ccaa', fontFamily: 'Georgia, serif',
-          backgroundColor: '#0a151f', padding: { x: 14, y: 8 },
+          fontSize: '28px', fill: '#88ccaa', fontFamily: 'Georgia, serif',
+          backgroundColor: '#0a151f', padding: { x: 16, y: 10 },
         }).setOrigin(0.5).setInteractive({ useHandCursor: true });
 
       continueText.on('pointerover', () => continueText.setStyle({ fill: '#ffffff' }));

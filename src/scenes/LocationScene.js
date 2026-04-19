@@ -292,7 +292,7 @@ export class LocationScene extends Phaser.Scene {
     const backdrop = this.add.rectangle(width / 2, height / 2, width, height, 0x000000, 0.7)
       .setInteractive();
 
-    const panelW = 450, panelH = 380;
+    const panelW = 450, panelH = 420;
     const panelX = width / 2, panelY = height / 2;
     const panel = this.add.graphics();
     panel.fillStyle(0x0a1520, 0.95);
@@ -303,10 +303,10 @@ export class LocationScene extends Phaser.Scene {
     const elements = [backdrop, panel];
 
     const makeCfgBtn = (y, label, onClick) => {
-      const bg = this.add.rectangle(panelX, y, panelW - 40, 60, 0x1a2a3a, 0.8)
+      const bg = this.add.rectangle(panelX, y, panelW - 40, 72, 0x1a2a3a, 0.8)
         .setInteractive({ useHandCursor: true });
       const txt = this.add.text(panelX, y, label, {
-        fontSize: '22px', fill: '#88aacc', fontFamily: 'Georgia, serif',
+        fontSize: '26px', fill: '#88aacc', fontFamily: 'Georgia, serif',
       }).setOrigin(0.5);
       bg.on('pointerover', () => txt.setStyle({ fill: '#ffffff' }));
       bg.on('pointerout', () => txt.setStyle({ fill: '#88aacc' }));
