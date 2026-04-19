@@ -1,5 +1,14 @@
 export class SaveManager {
   static SAVE_KEY = 'dualuna_save';
+  static LANG_KEY = 'dualuna_lang';
+
+  static saveLanguage(lang) {
+    localStorage.setItem(this.LANG_KEY, lang);
+  }
+
+  static getSavedLanguage() {
+    return localStorage.getItem(this.LANG_KEY) || 'en';
+  }
 
   static save(state) {
     try {

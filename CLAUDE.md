@@ -17,6 +17,9 @@ src/scenes/    — Phaser scenes (engine layer, no content)
 src/data/      — Game data (generated, don't hand-edit text)
 src/systems/   — SaveManager, QuestManager, I18n
 src/content/   — Source files (edit these to change content)
+src/utils/     — Shared utilities (layout constants, etc.)
+docs/          — Game design documents (game-design.md, scenario.md, pronunciation.yaml)
+scripts/       — Build and tooling scripts
 ```
 
 ## Key Conventions
@@ -37,13 +40,10 @@ src/content/   — Source files (edit these to change content)
 - Don't add any backend or server dependency
 - Don't add registration or login requirements
 
-## Current Known Bugs
-- LocationScene.js missing `import Phaser from 'phaser'`
-- raceColors duplicated in LocationScene + DialogueScene
-  (should be in characters.js as a color property)
-- typeText() is a stub, not implemented
-- MenuScene uses raw localStorage instead of SaveManager.hasSave()
-- i18n fallback pattern duplicated — needs I18n.tOr(key, fallback)
+## Known Limitations
+- typeText() is a stub — shows text instantly, no typewriter animation
+- Only 'en' and 'fr' are fully translated; other languages exist as stubs
+- First fullscreen tap after page load is intermittent on mobile browser
 
 ## Platform Constraints
 - Must work on 2012 laptop, 5-year-old phone, Firefox ESR

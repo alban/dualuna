@@ -1,5 +1,6 @@
 // Internationalization manager
 // All user-facing text goes through this system.
+import { SaveManager } from './SaveManager.js';
 
 const SUPPORTED_LANGUAGES = {
   en: 'English',
@@ -69,12 +70,11 @@ export const I18n = {
     return strings?.dialogues?.[dialogueId]?.[nodeId]?.choices?.[choiceIndex];
   },
 
-  // Get saved language preference
   getSavedLanguage() {
-    return localStorage.getItem('dualuna_lang') || 'en';
+    return SaveManager.getSavedLanguage();
   },
 
   saveLanguage(lang) {
-    localStorage.setItem('dualuna_lang', lang);
+    SaveManager.saveLanguage(lang);
   },
 };
