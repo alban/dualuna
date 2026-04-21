@@ -43,6 +43,46 @@
 
 ## Devlog
 
+### 2026-04-21 — Character naming, portraits, dialogue fixes
+
+#### Character renames (French phonetics)
+All four English-sounding character names replaced with French-sounding equivalents:
+- Kael → Gaël (Breton, near-identical sound)
+- Dera → Léra
+- Tink → Lix (short, no gender, slightly mechanical)
+- Elyn → Éline
+
+Code IDs use unaccented forms (foreman-gael, lera, lix, scholar-eline).
+Content files renamed accordingly (git mv preserves history).
+Updated across: characters.js, dialogues.js, locations.js, quests.js,
+all i18n files (en, fr, 8 stubs), all content dialogue files, scenario.md.
+
+#### AI-generated character portraits
+Each character now has a portrait image (256×256 PNG, Pollinations/flux model).
+Portrait prompt lives in `src/content/characters/<id>.md`.
+All portraits share a style suffix for visual consistency:
+"Fantasy character portrait. Bust shot. Painterly, retro graphic adventure aesthetic.
+Dark moody background. Dramatic warm amber side lighting."
+
+Regenerate: `node scripts/generate-ai-art.js portraits`
+
+Portraits shown:
+- In DialogueScene: replaces the race-coloured circle in the portrait frame
+- In LocationScene: replaces the coloured circle at hotspot positions
+- Fallback: race-coloured silhouette if portrait not loaded
+
+#### Dialogue freeze bug — two root causes fixed
+Player could get permanently stuck in a dialogue with no way to exit.
+
+**Bug 1 — No escape hatch:** backdrop had setInteractive() but no pointerdown
+handler. If choices failed to render, nothing could be clicked.
+Fix: permanent ✕ close button top-right of panel, always rendered first.
+
+**Bug 2 — Silent empty-choices:** if node.choices exists (length > 0) but all
+entries are filtered by requireFlag, the if-branch runs but forEach produces
+nothing. The else-branch (Continue button) never executes. Player stuck.
+Fix: if validChoices is empty after filtering, fall through to Continue button.
+
 ### 2026-04-21 — DPR rendering + smoke test session
 
 #### Context
