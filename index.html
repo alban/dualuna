@@ -50,6 +50,12 @@
       padding: 12px 24px; border-radius: 8px; cursor: pointer;
     }
     #rotate-hint button:active { color: #ffffff; }
+    #rotate-hint a {
+      position: absolute; bottom: 12px; right: 16px;
+      color: #8899aa; font-family: Georgia, serif; font-size: 12px;
+      text-decoration: none; text-shadow: 0 1px 3px #000;
+    }
+    #rotate-hint a:hover { color: #88aacc; }
     @media (orientation: portrait) {
       #rotate-hint { display: flex; flex-direction: column; }
     }
@@ -62,6 +68,7 @@
       <button onclick="(document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()).catch(()=>{})">⛶</button>
       <button onclick="window.location.reload()">🔄</button>
     </div>
+    <a href="https://github.com/alban/dualuna" target="_blank">github.com/alban/dualuna</a>
   </div>
   <div id="game-container"></div>
   <script type="module" src="/src/main.js"></script>

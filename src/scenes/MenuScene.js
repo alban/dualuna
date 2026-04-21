@@ -103,6 +103,15 @@ export class MenuScene extends Phaser.Scene {
     this.add.text(width / 2, height - Math.round(30 * sy), I18n.t('ui.phase'), {
       fontSize: `${Math.round(12 * sy)}px`, fill: '#8899aa', fontFamily: 'Georgia, serif',
     }).setOrigin(0.5);
+
+    // GitHub link — bottom-right
+    const ghLink = this.add.text(width - 10, height - 10, 'github.com/alban/dualuna', {
+      fontSize: `${Math.max(Math.round(14 * sy), 14)}px`, fill: '#8899aa', fontFamily: 'Georgia, serif',
+      backgroundColor: '#000000aa', padding: { x: 6, y: 3 },
+    }).setOrigin(1, 1).setInteractive({ useHandCursor: true });
+    ghLink.on('pointerover', () => ghLink.setStyle({ fill: '#88aacc' }));
+    ghLink.on('pointerout', () => ghLink.setStyle({ fill: '#8899aa' }));
+    ghLink.on('pointerdown', () => window.open('https://github.com/alban/dualuna', '_blank'));
   }
 
   startNewGame() {
