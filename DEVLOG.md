@@ -43,6 +43,92 @@
 
 ## Devlog
 
+### 2026-04-21 — DPR rendering + smoke test session
+
+#### Context
+Three Claude Code sessions were lost mid-work due to a 403 auth error
+("Account is no longer a member of the organization associated with this token").
+All three sessions had uncommitted changes. On restart, we diagnosed the diff
+and selectively reverted.
+
+#### What was reverted (bad)
+- DPR canvas patch in main.js — broke Phaser input (see root cause below)
+- webkit fullscreen API changes in all scenes — broken logic + not the root fix
+- generate-ai-art.js 1280→1920 resolution bump — Pollinations ignores larger sizes anyway
+- index.html rotate-hint animation — untested
+
+#### What was kept and committed
+- `scripts/run-smoke.js` + `scripts/smoke-test.js` — Puppeteer smoke test that
+  self-starts vite, checks all 5 scenes for JS errors and black screens at DPR=3
+  (Android phone landscape). Bypasses click/input by using Phaser internal API
+  directly. `make smoke-test` or `npm run smoke-test`.
+
+#### DPR rendering — root cause of broken input (IMPORTANT)
+mobile browser initialises the viewport in portrait orientation, then rotates.
+Phaser's ScaleManager calls `updateBounds()` (which reads `canvas.getBoundingClientRect()`)
+at init time while the canvas is portrait-sized (360×667 CSS). After rotation to landscape
+(723×280), `canvasBounds` stays stale at 360×667 because `getParentBounds()` doesn't
+always trigger `refresh()` after the canvas resize.
+
+Result: `displayScale = baseSize / canvasBounds = 723/360, 280/667 = (2.01, 0.42)`.
+Phaser multiplies every pointer coordinate by 2.01, placing all taps far off-screen.
+Buttons appear to receive no input.
+
+#### DPR rendering — correct fix
+In `boostCanvas()`, after changing `canvas.width`/`canvas.style.width`, force Phaser
+to resync its stale values:
+
+```js
+game.scale.updateBounds();                              // re-reads getBoundingClientRect
+game.scale.displayScale.set(
+  game.scale.baseSize.width / game.scale.canvasBounds.width,
+  game.scale.baseSize.height / game.scale.canvasBounds.height
+);                                                      // recalculates to (1, 1)
+```
+
+Also: call `boostCanvas()` inside the `preRender` patch every frame, because
+`ScaleManager.updateScale()` (called from `step()` on every PRE_STEP tick) resets
+`canvas.width` back to CSS size. Without the per-frame boost, the DPR buffer is
+lost after the first Phaser internal resize cycle.
+
+#### Debugging methodology — fetch-to-server logging
+When phone debugging requires more than a screenshot (e.g. inspecting internal
+Phaser state), inject debug JS that sends a fetch request with data encoded in
+the URL query string. Vite won't log these by default, so add a middleware plugin
+to vite.config.js to capture them:
+
+```js
+// vite.config.js — temporary, remove after debugging
+plugins: [{
+  name: 'dbg-logger',
+  configureServer(server) {
+    server.middlewares.use('/dbg', (req, res) => {
+      console.log('[DBG]', req.url);
+      res.writeHead(200);
+      res.end('ok');
+    });
+  },
+}]
+```
+
+In the game JS:
+```js
+fetch('/dbg?' + new URLSearchParams({ key: value, ... })).catch(() => {});
+```
+
+Advantages over screenshots: no round-trip delay, captures exact numeric values,
+can fire on every tap automatically, readable directly in server logs.
+Remove both the fetch calls and the vite plugin before committing.
+
+#### Status at end of session
+Fix implemented in `src/main.js`, not yet confirmed working on phone.
+Debug fetch logging is still in main.js — remove before committing.
+The debug middleware is still in vite.config.js — remove before committing.
+
+#### Remaining known issues
+- Fullscreen first-tap sometimes does nothing (pre-existing, unrelated to DPR)
+- All debug code needs cleanup before commit
+
 ### 2026-04-19 — Full design and architecture session
 (mobile chat, claude.ai account separate from laptop account)
 
