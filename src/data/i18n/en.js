@@ -38,11 +38,11 @@ export default {
     "the-deep-response": "The Deep Response"
   },
   "dialogues": {
-    "dera-default": {
+    "lera-default": {
       "start": {
         "text": "Hey! Feel that one at dawn? Nearly fell off the rope ladder! My Heights-sense went crazy!",
         "choices": [
-          "Kael says the lower shaft's bad.",
+          "Gaël says the lower shaft's bad.",
           "What do you think it is?",
           "You okay?"
         ]
@@ -64,7 +64,7 @@ export default {
         "text": "Like a heartbeat! Deep, slow, from the sea side. Never heard anything like it. I wasn't imagining it."
       },
       "consult": {
-        "text": "We're miners, not scholars! We need help. Tink on Spark Cove knows geology. Elder Mossa on Green Root can sense things we can't. And the Luminari might have records.",
+        "text": "We're miners, not scholars! We need help. Lix on Spark Cove knows geology. Elder Mossa on Green Root can sense things we can't. And the Luminari might have records.",
         "choices": [
           "Good idea. I'll visit them all.",
           "That's a lot of sailing."
@@ -79,7 +79,7 @@ export default {
     },
     "brin-default": {
       "start": {
-        "text": "There you are. Felt the tremor too. Whole village is worried. What does Kael say?",
+        "text": "There you are. Felt the tremor too. Whole village is worried. What does Gaël say?",
         "choices": [
           "Cracks and salt water in the lower shaft.",
           "He's worried. We need to investigate.",
@@ -89,7 +89,7 @@ export default {
       "report": {
         "text": "Salt water? In the deep shaft? We've mined these cliffs for generations. Never hit seawater. If the rock between us and the ocean is cracking...",
         "choices": [
-          "Dera says we should consult the other islands.",
+          "Léra says we should consult the other islands.",
           "Should we stop mining?"
         ]
       },
@@ -97,13 +97,13 @@ export default {
         "text": "Then go see it yourself. Check the cracks, touch the rock. I need your Tidewatcher instincts on this."
       },
       "gofirst": {
-        "text": "Mine first. Talk to Kael, examine the shaft. I need a report. The village needs Verdium, but not at the cost of lives."
+        "text": "Mine first. Talk to Gaël, examine the shaft. I need a report. The village needs Verdium, but not at the cost of lives."
       },
       "agree": {
         "text": "Smart girl. Go — Spark Cove, Green Root, Luminara. Velessi know engineering, Korrim know the earth, Luminari keep the old records. Use the harbor. Tell them Brin sent you."
       },
       "stopmine": {
-        "text": "Can't. Not yet. Village needs Verdium. But I'll have Kael pull back from the deep shaft. Go consult the other islands. Find out what we're dealing with."
+        "text": "Can't. Not yet. Village needs Verdium. But I'll have Gaël pull back from the deep shaft. Go consult the other islands. Find out what we're dealing with."
       }
     },
     "roothold-default": {
@@ -149,7 +149,7 @@ export default {
         "text": "Our oldest songs speak of \"the world beneath the water.\" We thought them poetry. What if they were truth?"
       },
       "advice": {
-        "text": "Try Luminara — their archives hold what we only remember as song. And that Velessi, Tink? Engineer eyes see what spirit ones miss."
+        "text": "Try Luminara — their archives hold what we only remember as song. And that Velessi, Lix? Engineer eyes see what spirit ones miss."
       }
     },
     "examine-flora": {
@@ -162,7 +162,7 @@ export default {
         "text": "The Great Root Tree. Trunk wider than three houses, roots spanning the island. Press your ear to the bark — you hear a slow, steady thrum. A heartbeat."
       }
     },
-    "foreman-kael-default": {
+    "foreman-gael-default": {
       "start": {
         "text": "Third tremor this week. Thirty tides in these mines, never felt anything like it.",
         "choices": [
@@ -182,13 +182,13 @@ export default {
         "text": "Stop? Everything needs Verdium. Brin won't allow it without proof. All we've got is shaky ground and worried faces."
       },
       "hurt": {
-        "text": "Not yet. But a support beam cracked yesterday. Dera patched it. If these tremors get worse..."
+        "text": "Not yet. But a support beam cracked yesterday. Léra patched it. If these tremors get worse..."
       },
       "natural": {
         "text": "Thought so at first. Twin moons pull the earth, sure. But this is different. Rhythmic. Almost... deliberate."
       },
       "examine": {
-        "text": "Get down to the lower shaft. See those cracks. Check the water pooling down there. And talk to Dera — she noticed things I missed."
+        "text": "Get down to the lower shaft. See those cracks. Check the water pooling down there. And talk to Léra — she noticed things I missed."
       }
     },
     "intro-mine": {
@@ -240,7 +240,7 @@ export default {
         "text": "The ocean between the islands is vast. No one knows what lies beneath. At least... that's what everyone believes."
       }
     },
-    "scholar-elyn-default": {
+    "scholar-eline-default": {
       "start": {
         "text": "Your bioluminescence betrays your worry, Tidewatcher. What brings you to the Crystal Plaza?",
         "choices": [
@@ -291,7 +291,7 @@ export default {
         "text": "A reading pedestal, humming with Verdium energy. Even here, far from the mines — everything on Dualuna is connected."
       }
     },
-    "tink-default": {
+    "lix-default": {
       "start": {
         "text": "A Tidewatcher! Been dying to study your cliff Verdium — totally different crystal structure! Wait. You've got that worried look. What broke?",
         "choices": [
@@ -326,12 +326,12 @@ export default {
     },
     "examine-blueprints": {
       "start": {
-        "text": "Cliff Haven cross-section on the wall. Tink's notes: \"Veins extend below sea level. How deep?\" And smaller: \"Why do the deepest veins curve toward the ocean?\""
+        "text": "Cliff Haven cross-section on the wall. Lix's notes: \"Veins extend below sea level. How deep?\" And smaller: \"Why do the deepest veins curve toward the ocean?\""
       }
     },
     "examine-prototype": {
       "start": {
-        "text": "Crystal probes, a Verdium oscillator. Label: \"Resonance Sensor v3 — CLIFF HAVEN.\" Tiny gears, hand-wound coils. Tink's already on it."
+        "text": "Crystal probes, a Verdium oscillator. Label: \"Resonance Sensor v3 — CLIFF HAVEN.\" Tiny gears, hand-wound coils. Lix's already on it."
       }
     }
   },
@@ -340,8 +340,8 @@ export default {
       "name": "Verdium Mine Entrance",
       "description": "The main entrance to the cliff-face Verdium mines",
       "hotspots": {
-        "kael": "Foreman Kael",
-        "dera": "Dera",
+        "gael": "Foreman Gaël",
+        "lera": "Léra",
         "mine-entry": "Enter the mine",
         "verdium-crate": "Verdium crate"
       }
@@ -390,12 +390,12 @@ export default {
       "name": "Harbor Workshop",
       "description": "A bustling harbor filled with Velessi inventions and half-finished projects",
       "hotspots": {
-        "tink": "Tink the Inventor",
+        "lix": "Lix the Inventor",
         "machinery": "Examine machinery"
       }
     },
     "inventors-lab": {
-      "name": "Tink's Laboratory",
+      "name": "Lix's Laboratory",
       "description": "A chaotic but brilliant workshop filled with prototypes and blueprints",
       "hotspots": {
         "blueprints": "Examine blueprints",
@@ -406,7 +406,7 @@ export default {
       "name": "Crystal Plaza",
       "description": "The luminous heart of Luminari culture, aglow with bioluminescent patterns",
       "hotspots": {
-        "elyn": "Scholar Elyn",
+        "eline": "Scholar Éline",
         "mural": "Ancient mural"
       }
     },

@@ -38,11 +38,11 @@ export default {
     "the-deep-response": "La réponse des profondeurs"
   },
   "dialogues": {
-    "dera-default": {
+    "lera-default": {
       "start": {
         "text": "Hé ! T'as senti celle de l'aube ? J'ai failli tomber de l'échelle de corde ! Mon sens des Hauteurs a disjoncté !",
         "choices": [
-          "Kael dit que le puits inférieur va mal.",
+          "Gaël dit que le puits inférieur va mal.",
           "Tu penses que c'est quoi ?",
           "Ça va ?"
         ]
@@ -64,7 +64,7 @@ export default {
         "text": "Comme un battement de cœur ! Profond, lent, côté mer. Jamais entendu un truc pareil. J'ai pas rêvé."
       },
       "consult": {
-        "text": "On est des mineurs, pas des érudits ! On a besoin d'aide. Tink sur Spark Cove connaît la géologie. L'Ancienne Mossa sur Green Root peut sentir des choses qu'on ne peut pas. Et les Luminari ont peut-être des archives.",
+        "text": "On est des mineurs, pas des érudits ! On a besoin d'aide. Lix sur Spark Cove connaît la géologie. L'Ancienne Mossa sur Green Root peut sentir des choses qu'on ne peut pas. Et les Luminari ont peut-être des archives.",
         "choices": [
           "Bonne idée. Je vais tous les voir.",
           "Ça fait beaucoup de navigation."
@@ -79,7 +79,7 @@ export default {
     },
     "brin-default": {
       "start": {
-        "text": "Te voilà. J'ai senti la secousse aussi. Tout le village s'inquiète. Qu'est-ce que Kael dit ?",
+        "text": "Te voilà. J'ai senti la secousse aussi. Tout le village s'inquiète. Qu'est-ce que Gaël dit ?",
         "choices": [
           "Des fissures et de l'eau salée dans le puits inférieur.",
           "Il est inquiet. On doit enquêter.",
@@ -89,7 +89,7 @@ export default {
       "report": {
         "text": "De l'eau salée ? Dans le puits profond ? On mine ces falaises depuis des générations. Jamais touché l'eau de mer. Si la roche entre nous et l'océan se fissure...",
         "choices": [
-          "Dera dit qu'on devrait consulter les autres îles.",
+          "Léra dit qu'on devrait consulter les autres îles.",
           "On devrait arrêter de miner ?"
         ]
       },
@@ -97,13 +97,13 @@ export default {
         "text": "Alors va voir par toi-même. Vérifie les fissures, touche la roche. J'ai besoin de ton instinct de Tidewatcher."
       },
       "gofirst": {
-        "text": "La mine d'abord. Parle à Kael, examine le puits. J'ai besoin d'un rapport. Le village a besoin de Verdium, mais pas au prix de vies."
+        "text": "La mine d'abord. Parle à Gaël, examine le puits. J'ai besoin d'un rapport. Le village a besoin de Verdium, mais pas au prix de vies."
       },
       "agree": {
         "text": "Bien vu, petite. Va — Spark Cove, Green Root, Luminara. Les Velessi connaissent l'ingénierie, les Korrim connaissent la terre, les Luminari gardent les anciens récits. Passe par le port. Dis-leur que Brin t'envoie."
       },
       "stopmine": {
-        "text": "Impossible. Pas encore. Le village a besoin de Verdium. Mais je vais dire à Kael de se retirer du puits profond. Va consulter les autres îles. Découvre à quoi on a affaire."
+        "text": "Impossible. Pas encore. Le village a besoin de Verdium. Mais je vais dire à Gaël de se retirer du puits profond. Va consulter les autres îles. Découvre à quoi on a affaire."
       }
     },
     "roothold-default": {
@@ -149,7 +149,7 @@ export default {
         "text": "Nos plus anciens chants parlent du « monde sous les eaux ». On les croyait poétiques. Et s'ils disaient la vérité ?"
       },
       "advice": {
-        "text": "Essaie Luminara — leurs archives conservent ce que nous ne gardons qu'en chansons. Et ce Velessi, Tink ? Les yeux d'ingénieur voient ce que ceux de l'esprit manquent."
+        "text": "Essaie Luminara — leurs archives conservent ce que nous ne gardons qu'en chansons. Et ce Velessi, Lix ? Les yeux d'ingénieur voient ce que ceux de l'esprit manquent."
       }
     },
     "examine-flora": {
@@ -162,7 +162,7 @@ export default {
         "text": "Le Grand Arbre-Racine. Un tronc plus large que trois maisons, des racines couvrant l'île entière. Colle ton oreille à l'écorce — tu entends un bourdonnement lent et régulier. Un battement de cœur."
       }
     },
-    "foreman-kael-default": {
+    "foreman-gael-default": {
       "start": {
         "text": "Troisième secousse cette semaine. Trente marées dans ces mines, j'ai jamais senti ça.",
         "choices": [
@@ -182,13 +182,13 @@ export default {
         "text": "Arrêter ? Tout a besoin de Verdium. Brin n'acceptera pas sans preuve. On a juste un sol qui tremble et des visages inquiets."
       },
       "hurt": {
-        "text": "Pas encore. Mais une poutre a craqué hier. Dera l'a réparée. Si les secousses empirent..."
+        "text": "Pas encore. Mais une poutre a craqué hier. Léra l'a réparée. Si les secousses empirent..."
       },
       "natural": {
         "text": "C'est ce que je croyais au début. Les lunes jumelles tirent la terre, oui. Mais là c'est différent. Rythmique. Presque... délibéré."
       },
       "examine": {
-        "text": "Descends au puits inférieur. Regarde les fissures. Vérifie l'eau qui stagne en bas. Et parle à Dera — elle a remarqué des trucs que j'ai loupés."
+        "text": "Descends au puits inférieur. Regarde les fissures. Vérifie l'eau qui stagne en bas. Et parle à Léra — elle a remarqué des trucs que j'ai loupés."
       }
     },
     "intro-mine": {
@@ -240,7 +240,7 @@ export default {
         "text": "L'océan entre les îles est immense. Personne ne sait ce qui se cache en dessous. Du moins... c'est ce que tout le monde croit."
       }
     },
-    "scholar-elyn-default": {
+    "scholar-eline-default": {
       "start": {
         "text": "Ta bioluminescence trahit ton inquiétude, Tidewatcher. Qu'est-ce qui t'amène sur la Place de Cristal ?",
         "choices": [
@@ -291,7 +291,7 @@ export default {
         "text": "Un pupitre de lecture, vibrant d'énergie de Verdium. Même ici, loin des mines — tout sur Dualuna est connecté."
       }
     },
-    "tink-default": {
+    "lix-default": {
       "start": {
         "text": "Un Tidewatcher ! Je rêvais d'étudier ton Verdium de falaise — structure cristalline complètement différente ! Attends. T'as cette tête inquiète. Qu'est-ce qui a cassé ?",
         "choices": [
@@ -326,12 +326,12 @@ export default {
     },
     "examine-blueprints": {
       "start": {
-        "text": "Une coupe transversale de Cliff Haven au mur. Notes de Tink : « Les filons descendent sous le niveau de la mer. Jusqu'où ? » Et en plus petit : « Pourquoi les filons les plus profonds courbent-ils vers l'océan ? »"
+        "text": "Une coupe transversale de Cliff Haven au mur. Notes de Lix : « Les filons descendent sous le niveau de la mer. Jusqu'où ? » Et en plus petit : « Pourquoi les filons les plus profonds courbent-ils vers l'océan ? »"
       }
     },
     "examine-prototype": {
       "start": {
-        "text": "Des sondes de cristal, un oscillateur à Verdium. Étiquette : « Capteur de Résonance v3 — CLIFF HAVEN. » Minuscules engrenages, bobines remontées à la main. Tink est déjà dessus."
+        "text": "Des sondes de cristal, un oscillateur à Verdium. Étiquette : « Capteur de Résonance v3 — CLIFF HAVEN. » Minuscules engrenages, bobines remontées à la main. Lix est déjà dessus."
       }
     }
   },
@@ -340,8 +340,8 @@ export default {
       "name": "Entrée de la mine de Verdium",
       "description": "L'entrée principale des mines de Verdium dans la falaise",
       "hotspots": {
-        "kael": "Contremaître Kael",
-        "dera": "Dera",
+        "gael": "Contremaître Gaël",
+        "lera": "Léra",
         "mine-entry": "Entrer dans la mine",
         "verdium-crate": "Caisse de Verdium"
       }
@@ -390,12 +390,12 @@ export default {
       "name": "Atelier du port",
       "description": "Un port animé rempli d'inventions Velessi et de projets inachevés",
       "hotspots": {
-        "tink": "Tink l'Inventeur",
+        "lix": "Lix l'Inventeur",
         "machinery": "Examiner les machines"
       }
     },
     "inventors-lab": {
-      "name": "Laboratoire de Tink",
+      "name": "Laboratoire de Lix",
       "description": "Un atelier chaotique mais brillant, plein de prototypes et de plans",
       "hotspots": {
         "blueprints": "Examiner les plans",
@@ -406,7 +406,7 @@ export default {
       "name": "Place de Cristal",
       "description": "Le cœur lumineux de la culture Luminari, scintillant de motifs bioluminescents",
       "hotspots": {
-        "elyn": "Érudite Elyn",
+        "eline": "Érudite Éline",
         "mural": "Fresque ancienne"
       }
     },

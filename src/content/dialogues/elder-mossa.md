@@ -52,8 +52,8 @@ fr: Nos plus anciens chants parlent du « monde sous les eaux ». On les croyait
 en: Our oldest songs speak of "the world beneath the water." We thought them poetry. What if they were truth?
 
 ## node: advice
-fr: Essaie Luminara — leurs archives conservent ce que nous ne gardons qu'en chansons. Et ce Velessi, Tink ? Les yeux d'ingénieur voient ce que ceux de l'esprit manquent.
-en: Try Luminara — their archives hold what we only remember as song. And that Velessi, Tink? Engineer eyes see what spirit ones miss.
+fr: Essaie Luminara — leurs archives conservent ce que nous ne gardons qu'en chansons. Et ce Velessi, Lix ? Les yeux d'ingénieur voient ce que ceux de l'esprit manquent.
+en: Try Luminara — their archives hold what we only remember as song. And that Velessi, Lix? Engineer eyes see what spirit ones miss.
 
 
 # dialogue: examine-flora

@@ -10,14 +10,14 @@ export const LOCATIONS = {
     connections: ['mine-shaft', 'tidewatcher-village', 'cliff-overlook'],
     hotspots: [
       {
-        id: 'kael', x: 688, y: 375, width: 75, height: 75,
-        label: 'Foreman Kael', action: 'dialogue', character: 'foreman-kael',
-        dialogueId: 'foreman-kael-default',
+        id: 'gael', x: 688, y: 375, width: 75, height: 75,
+        label: 'Foreman Gaël', action: 'dialogue', character: 'foreman-gael',
+        dialogueId: 'foreman-gael-default',
       },
       {
-        id: 'dera', x: 500, y: 394, width: 75, height: 75,
-        label: 'Dera', action: 'dialogue', character: 'dera',
-        dialogueId: 'dera-default',
+        id: 'lera', x: 500, y: 394, width: 75, height: 75,
+        label: 'Léra', action: 'dialogue', character: 'lera',
+        dialogueId: 'lera-default',
       },
       {
         id: 'mine-entry', x: 988, y: 300, width: 75, height: 94,
@@ -131,9 +131,9 @@ export const LOCATIONS = {
     connections: ['inventors-lab'],
     hotspots: [
       {
-        id: 'tink', x: 438, y: 328, width: 75, height: 75,
-        label: 'Tink the Inventor', action: 'dialogue', character: 'tink',
-        dialogueId: 'tink-default',
+        id: 'lix', x: 438, y: 328, width: 75, height: 75,
+        label: 'Lix the Inventor', action: 'dialogue', character: 'lix',
+        dialogueId: 'lix-default',
       },
       {
         id: 'machinery', x: 700, y: 244, width: 100, height: 56,
@@ -144,7 +144,7 @@ export const LOCATIONS = {
   },
 
   'inventors-lab': {
-    name: 'Tink\'s Laboratory',
+    name: 'Lix\'s Laboratory',
     island: 'Spark Cove',
     description: 'A chaotic but brilliant workshop filled with prototypes and blueprints',
     connections: ['harbor-workshop'],
@@ -158,7 +158,7 @@ export const LOCATIONS = {
         id: 'prototype', x: 850, y: 272, width: 75, height: 38,
         label: 'Strange prototype', action: 'examine',
         dialogueId: 'examine-prototype',
-        requireFlag: 'talked-to-tink',
+        requireFlag: 'talked-to-lix',
       },
     ],
   },
@@ -171,9 +171,9 @@ export const LOCATIONS = {
     connections: ['archive-hall'],
     hotspots: [
       {
-        id: 'elyn', x: 625, y: 375, width: 75, height: 75,
-        label: 'Scholar Elyn', action: 'dialogue', character: 'scholar-elyn',
-        dialogueId: 'scholar-elyn-default',
+        id: 'eline', x: 625, y: 375, width: 75, height: 75,
+        label: 'Scholar Éline', action: 'dialogue', character: 'scholar-eline',
+        dialogueId: 'scholar-eline-default',
       },
       {
         id: 'mural', x: 225, y: 234, width: 100, height: 94,

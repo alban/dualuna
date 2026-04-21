@@ -119,14 +119,14 @@ are worth questioning.
 > their verbal tics, what they would never say, their arc.
 > This is what Claude uses to keep them consistent.
 
-### Foreman Kael (Tidewatcher, Depths)
+### Foreman Gaël (Tidewatcher, Depths)
 Role: Mine foreman, Cliff Haven
 Voice: [WRITE THIS]
 Cares about: [WRITE THIS]
 Would never: [WRITE THIS]
 Arc: [WRITE THIS]
 
-### Dera (Tidewatcher, Heights)
+### Léra (Tidewatcher, Heights)
 Role: Mine worker, player's closest friend
 Voice: Colloquial, warm, fast. Finishes thoughts mid-sentence.
        Uses "Ha!" as punctuation. Calls player "cave-dweller"
@@ -143,7 +143,7 @@ Cares about: [WRITE THIS]
 Would never: [WRITE THIS]
 Arc: [WRITE THIS]
 
-### Tink (Velessi, agender)
+### Lix (Velessi, agender)
 Role: Chief inventor, Spark Cove
 Voice: Breathless, fast, finishes other people's sentences.
        Thinks in exclamation points. Goes from 0 to excited
@@ -166,7 +166,7 @@ Would never: Rush, raise their voice, dismiss a question
 Arc: Already half-knows. Has been waiting for someone
      to ask the right question. Least surprised of anyone.
 
-### Scholar Elyn (Luminari, Weaver)
+### Scholar Éline (Luminari, Weaver)
 Role: Archive keeper, Luminara
 Voice: [WRITE THIS]
 Cares about: [WRITE THIS]
@@ -220,9 +220,9 @@ Friends make a joke. Laugh too hard. The crack stays.
 ### Key Chapter 1 Beats (pre-written, never generated)
 - Museum tremor and the cracked exhibit
 - First time player hears the rhythmic sound in the mine cracks
-- Dera's "like a heartbeat" moment
-- Tink's "the physics says it's not random"
-- Elyn's "what if it's literal?"
+- Léra's "like a heartbeat" moment
+- Lix's "the physics says it's not random"
+- Éline's "what if it's literal?"
 - Player expresses doubt about tremors in museum
   → callback delivered much later: "I should have listened"
 

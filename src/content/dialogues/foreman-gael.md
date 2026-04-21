@@ -23,13 +23,13 @@ fr: Arrêter ? Tout a besoin de Verdium. Brin n'acceptera pas sans preuve. On a 
 en: Stop? Everything needs Verdium. Brin won't allow it without proof. All we've got is shaky ground and worried faces.
 
 ## node: hurt
-fr: Pas encore. Mais une poutre a craqué hier. Dera l'a réparée. Si les secousses empirent...
-en: Not yet. But a support beam cracked yesterday. Dera patched it. If these tremors get worse...
+fr: Pas encore. Mais une poutre a craqué hier. Léra l'a réparée. Si les secousses empirent...
+en: Not yet. But a support beam cracked yesterday. Léra patched it. If these tremors get worse...
 
 ## node: natural
 fr: C'est ce que je croyais au début. Les lunes jumelles tirent la terre, oui. Mais là c'est différent. Rythmique. Presque... délibéré.
 en: Thought so at first. Twin moons pull the earth, sure. But this is different. Rhythmic. Almost... deliberate.
 
 ## node: examine
-fr: Descends au puits inférieur. Regarde les fissures. Vérifie l'eau qui stagne en bas. Et parle à Dera — elle a remarqué des trucs que j'ai loupés.
-en: Get down to the lower shaft. See those cracks. Check the water pooling down there. And talk to Dera — she noticed things I missed.
+fr: Descends au puits inférieur. Regarde les fissures. Vérifie l'eau qui stagne en bas. Et parle à Léra — elle a remarqué des trucs que j'ai loupés.
+en: Get down to the lower shaft. See those cracks. Check the water pooling down there. And talk to Léra — she noticed things I missed.

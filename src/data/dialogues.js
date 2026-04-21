@@ -19,11 +19,11 @@ export const DIALOGUES = {
   },
 
   // ====== FOREMAN KAEL ======
-  'foreman-kael-default': {
+  'foreman-gael-default': {
     startNode: 'start',
     nodes: {
       start: {
-        speaker: 'foreman-kael',
+        speaker: 'foreman-gael',
         text: 'Third tremor this week. Thirty tides in these mines, never felt anything like it.',
         choices: [
           { text: 'What\'s causing them?', next: 'cause' },
@@ -32,7 +32,7 @@ export const DIALOGUES = {
         ],
       },
       cause: {
-        speaker: 'foreman-kael',
+        speaker: 'foreman-gael',
         text: 'That\'s what worries me. Lower shaft\'s changed — wetter, new cracks. Tap the rock and it sounds... hollow. Something\'s behind there.',
         choices: [
           { text: 'I\'ll check the shaft myself.', next: 'examine' },
@@ -40,27 +40,27 @@ export const DIALOGUES = {
         ],
       },
       stop: {
-        speaker: 'foreman-kael',
+        speaker: 'foreman-gael',
         text: 'Stop? Everything needs Verdium. Brin won\'t allow it without proof. All we\'ve got is shaky ground and worried faces.',
         next: 'examine',
       },
       hurt: {
-        speaker: 'foreman-kael',
-        text: 'Not yet. But a support beam cracked yesterday. Dera patched it. If these tremors get worse...',
+        speaker: 'foreman-gael',
+        text: 'Not yet. But a support beam cracked yesterday. Léra patched it. If these tremors get worse...',
         next: 'examine',
       },
       natural: {
-        speaker: 'foreman-kael',
+        speaker: 'foreman-gael',
         text: 'Thought so at first. Twin moons pull the earth, sure. But this is different. Rhythmic. Almost... deliberate.',
         next: 'examine',
       },
       examine: {
-        speaker: 'foreman-kael',
-        text: 'Get down to the lower shaft. See those cracks. Check the water pooling down there. And talk to Dera — she noticed things I missed.',
+        speaker: 'foreman-gael',
+        text: 'Get down to the lower shaft. See those cracks. Check the water pooling down there. And talk to Léra — she noticed things I missed.',
         effects: {
           startQuest: 'tremors-in-the-deep',
-          completeObjective: { quest: 'tremors-in-the-deep', objective: 'talk-kael' },
-          setFlags: { 'talked-to-kael': true },
+          completeObjective: { quest: 'tremors-in-the-deep', objective: 'talk-gael' },
+          setFlags: { 'talked-to-gael': true },
         },
         next: null,
       },
@@ -68,20 +68,20 @@ export const DIALOGUES = {
   },
 
   // ====== DERA ======
-  'dera-default': {
+  'lera-default': {
     startNode: 'start',
     nodes: {
       start: {
-        speaker: 'dera',
+        speaker: 'lera',
         text: 'Hey! Feel that one at dawn? Nearly fell off the rope ladder! My Heights-sense went crazy!',
         choices: [
-          { text: 'Kael says the lower shaft\'s bad.', next: 'shaft', requireFlag: 'talked-to-kael' },
+          { text: 'Gaël says the lower shaft\'s bad.', next: 'shaft', requireFlag: 'talked-to-gael' },
           { text: 'What do you think it is?', next: 'theory' },
           { text: 'You okay?', next: 'okay' },
         ],
       },
       shaft: {
-        speaker: 'dera',
+        speaker: 'lera',
         text: 'Worse than bad! I pressed my ear to the far wall down there. Heard something. Not rock. Not water. A low hum. Alive.',
         choices: [
           { text: 'Alive?!', next: 'alive' },
@@ -89,26 +89,26 @@ export const DIALOGUES = {
         ],
       },
       theory: {
-        speaker: 'dera',
+        speaker: 'lera',
         text: 'Okay, this\'ll sound crazy. The cliffs go way deeper than we mine. What if something\'s down there? Something that doesn\'t like the digging?',
         next: 'consult',
       },
       okay: {
-        speaker: 'dera',
+        speaker: 'lera',
         text: 'Ha! Takes more than a quake to shake a Heights-born! But... something feels wrong in the rock. Can\'t explain it.',
         next: 'consult',
       },
       alive: {
-        speaker: 'dera',
+        speaker: 'lera',
         text: 'Like a heartbeat! Deep, slow, from the sea side. Never heard anything like it. I wasn\'t imagining it.',
         next: 'consult',
       },
       consult: {
-        speaker: 'dera',
-        text: 'We\'re miners, not scholars! We need help. Tink on Spark Cove knows geology. Elder Mossa on Green Root can sense things we can\'t. And the Luminari might have records.',
+        speaker: 'lera',
+        text: 'We\'re miners, not scholars! We need help. Lix on Spark Cove knows geology. Elder Mossa on Green Root can sense things we can\'t. And the Luminari might have records.',
         effects: {
           setFlags: {
-            'dera-consult-advice': true,
+            'lera-consult-advice': true,
           },
           discoverIsland: 'green-root',
           // Spark Cove and Luminara are discovered through other dialogues
@@ -119,12 +119,12 @@ export const DIALOGUES = {
         ],
       },
       govisit: {
-        speaker: 'dera',
+        speaker: 'lera',
         text: 'Be careful! And come back with answers. I don\'t wanna be here when whatever\'s down there pushes harder.',
         next: null,
       },
       sailing: {
-        speaker: 'dera',
+        speaker: 'lera',
         text: 'Ha! Sea air\'ll do you good, cave-dweller! Use the harbor. Brin can arrange boats. Go talk to everyone!',
         effects: {
           discoverIslands: ['spark-cove', 'luminara'],
@@ -192,7 +192,7 @@ export const DIALOGUES = {
     nodes: {
       start: {
         speaker: 'village-elder-brin',
-        text: 'There you are. Felt the tremor too. Whole village is worried. What does Kael say?',
+        text: 'There you are. Felt the tremor too. Whole village is worried. What does Gaël say?',
         choices: [
           { text: 'Cracks and salt water in the lower shaft.', next: 'report', requireFlag: 'examined-cracks' },
           { text: 'He\'s worried. We need to investigate.', next: 'worried' },
@@ -203,7 +203,7 @@ export const DIALOGUES = {
         speaker: 'village-elder-brin',
         text: 'Salt water? In the deep shaft? We\'ve mined these cliffs for generations. Never hit seawater. If the rock between us and the ocean is cracking...',
         choices: [
-          { text: 'Dera says we should consult the other islands.', next: 'agree' },
+          { text: 'Léra says we should consult the other islands.', next: 'agree' },
           { text: 'Should we stop mining?', next: 'stopmine' },
         ],
       },
@@ -214,7 +214,7 @@ export const DIALOGUES = {
       },
       gofirst: {
         speaker: 'village-elder-brin',
-        text: 'Mine first. Talk to Kael, examine the shaft. I need a report. The village needs Verdium, but not at the cost of lives.',
+        text: 'Mine first. Talk to Gaël, examine the shaft. I need a report. The village needs Verdium, but not at the cost of lives.',
         next: null,
       },
       agree: {
@@ -228,7 +228,7 @@ export const DIALOGUES = {
       },
       stopmine: {
         speaker: 'village-elder-brin',
-        text: 'Can\'t. Not yet. Village needs Verdium. But I\'ll have Kael pull back from the deep shaft. Go consult the other islands. Find out what we\'re dealing with.',
+        text: 'Can\'t. Not yet. Village needs Verdium. But I\'ll have Gaël pull back from the deep shaft. Go consult the other islands. Find out what we\'re dealing with.',
         effects: {
           discoverIslands: ['spark-cove', 'luminara'],
           setFlags: { 'brin-approved-journey': true },
@@ -356,7 +356,7 @@ export const DIALOGUES = {
       },
       advice: {
         speaker: 'elder-mossa',
-        text: 'Try Luminara — their archives hold what we only remember as song. And that Velessi, Tink? Engineer eyes see what spirit ones miss.',
+        text: 'Try Luminara — their archives hold what we only remember as song. And that Velessi, Lix? Engineer eyes see what spirit ones miss.',
         next: null,
       },
     },
@@ -385,11 +385,11 @@ export const DIALOGUES = {
   },
 
   // ====== SPARK COVE ======
-  'tink-default': {
+  'lix-default': {
     startNode: 'start',
     nodes: {
       start: {
-        speaker: 'tink',
+        speaker: 'lix',
         text: 'A Tidewatcher! Been dying to study your cliff Verdium — totally different crystal structure! Wait. You\'ve got that worried look. What broke?',
         choices: [
           { text: 'Mine\'s cracking. Filling with seawater.', next: 'problem' },
@@ -397,17 +397,17 @@ export const DIALOGUES = {
         ],
       },
       problem: {
-        speaker: 'tink',
+        speaker: 'lix',
         text: 'Seawater?! That\'s forty meters of solid basalt! If water\'s getting through, something breached the barrier from the OTHER side. Not your mining.',
         next: 'analysis',
       },
       tremors: {
-        speaker: 'tink',
+        speaker: 'lix',
         text: 'Tremors! Periodic? ...Periodic! That rules out tectonics. Periodic means a SOURCE. Something generating them. Hmm...',
         next: 'analysis',
       },
       analysis: {
-        speaker: 'tink',
+        speaker: 'lix',
         text: 'I\'ve got a half-built resonance sensor! Measures rock vibrations. The periodicity, the salt water, the cracking — something\'s pushing against your cliff from the ocean side!',
         choices: [
           { text: 'Could something alive cause this?', next: 'alive' },
@@ -415,20 +415,20 @@ export const DIALOGUES = {
         ],
       },
       alive: {
-        speaker: 'tink',
+        speaker: 'lix',
         text: 'I\'m an engineer, not a storyteller! But... pressure doesn\'t pulse. Water doesn\'t intrude rhythmically. Something\'s either pushing or trying to get through. The physics says it\'s not random.',
         effects: {
-          completeObjective: { quest: 'tremors-in-the-deep', objective: 'consult-tink' },
-          setFlags: { 'talked-to-tink': true, 'tink-insight': true },
+          completeObjective: { quest: 'tremors-in-the-deep', objective: 'consult-lix' },
+          setFlags: { 'talked-to-lix': true, 'lix-insight': true },
         },
         next: null,
       },
       build: {
-        speaker: 'tink',
+        speaker: 'lix',
         text: 'Already on it! Calibrate my sensor to Verdium frequencies and — YES! — I can trace the vibrations to their source! Give me a few days. Check the Luminari archives in the meantime!',
         effects: {
-          completeObjective: { quest: 'tremors-in-the-deep', objective: 'consult-tink' },
-          setFlags: { 'talked-to-tink': true, 'tink-building-sensor': true },
+          completeObjective: { quest: 'tremors-in-the-deep', objective: 'consult-lix' },
+          setFlags: { 'talked-to-lix': true, 'lix-building-sensor': true },
         },
         next: null,
       },
@@ -451,7 +451,7 @@ export const DIALOGUES = {
     nodes: {
       start: {
         speaker: null,
-        text: 'Cliff Haven cross-section on the wall. Tink\'s notes: "Veins extend below sea level. How deep?" And smaller: "Why do the deepest veins curve toward the ocean?"',
+        text: 'Cliff Haven cross-section on the wall. Lix\'s notes: "Veins extend below sea level. How deep?" And smaller: "Why do the deepest veins curve toward the ocean?"',
         next: null,
       },
     },
@@ -462,18 +462,18 @@ export const DIALOGUES = {
     nodes: {
       start: {
         speaker: null,
-        text: 'Crystal probes, a Verdium oscillator. Label: "Resonance Sensor v3 — CLIFF HAVEN." Tiny gears, hand-wound coils. Tink\'s already on it.',
+        text: 'Crystal probes, a Verdium oscillator. Label: "Resonance Sensor v3 — CLIFF HAVEN." Tiny gears, hand-wound coils. Lix\'s already on it.',
         next: null,
       },
     },
   },
 
   // ====== LUMINARA ======
-  'scholar-elyn-default': {
+  'scholar-eline-default': {
     startNode: 'start',
     nodes: {
       start: {
-        speaker: 'scholar-elyn',
+        speaker: 'scholar-eline',
         text: 'Your bioluminescence betrays your worry, Tidewatcher. What brings you to the Crystal Plaza?',
         choices: [
           { text: 'Tremors in our mines. I need answers.', next: 'research' },
@@ -481,17 +481,17 @@ export const DIALOGUES = {
         ],
       },
       research: {
-        speaker: 'scholar-elyn',
+        speaker: 'scholar-eline',
         text: 'Tremors near the Verdium mines... I\'ve seen records of this before. Crystal tablets from the first settlers — they mention "the voice of the deep." We called it mythology.',
         next: 'reveal',
       },
       archives: {
-        speaker: 'scholar-elyn',
+        speaker: 'scholar-eline',
         text: 'The archives are open. But let me guide you — I\'ve been cross-referencing geological surveys with old myths. I found correlations that shouldn\'t exist.',
         next: 'reveal',
       },
       reveal: {
-        speaker: 'scholar-elyn',
+        speaker: 'scholar-eline',
         text: 'The first settlers described Verdium as "bridges between worlds." Surface to something below. We assumed metaphor. But what if it\'s literal?',
         choices: [
           { text: 'Something exists beneath the ocean?!', next: 'beneath' },
@@ -499,25 +499,25 @@ export const DIALOGUES = {
         ],
       },
       beneath: {
-        speaker: 'scholar-elyn',
+        speaker: 'scholar-eline',
         text: 'One damaged tablet speaks of "those who build below the water" and "cities where no moon shines." Filed under mythology. But your tremors, the seawater, the pulsing sounds... what if it\'s real?',
         effects: {
           completeObjective: { quest: 'tremors-in-the-deep', objective: 'research-archives' },
-          setFlags: { 'elyn-insight': true, 'learned-about-deep-ones': true },
+          setFlags: { 'eline-insight': true, 'learned-about-deep-ones': true },
         },
         next: 'conclude',
       },
       severing: {
-        speaker: 'scholar-elyn',
+        speaker: 'scholar-eline',
         text: 'Exactly what I fear. If Verdium connects surface and depth, we\'ve been severing it for generations. And if something intelligent lives below... they might see our mining as an attack.',
         effects: {
           completeObjective: { quest: 'tremors-in-the-deep', objective: 'research-archives' },
-          setFlags: { 'elyn-insight': true, 'learned-about-deep-ones': true },
+          setFlags: { 'eline-insight': true, 'learned-about-deep-ones': true },
         },
         next: 'conclude',
       },
       conclude: {
-        speaker: 'scholar-elyn',
+        speaker: 'scholar-eline',
         text: 'Take this knowledge to Cliff Haven. But tread carefully. The idea that our Verdium harvest harms someone we didn\'t know existed... not everyone will accept that.',
         next: null,
       },

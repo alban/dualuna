@@ -43,12 +43,12 @@ en: Half-finished inventions everywhere. A wind-mill, a twin-moon tide clock, se
 # dialogue: examine-blueprints
 
 ## node: start
-fr: Une coupe transversale de Cliff Haven au mur. Notes de Tink : « Les filons descendent sous le niveau de la mer. Jusqu'où ? » Et en plus petit : « Pourquoi les filons les plus profonds courbent-ils vers l'océan ? »
-en: Cliff Haven cross-section on the wall. Tink's notes: "Veins extend below sea level. How deep?" And smaller: "Why do the deepest veins curve toward the ocean?"
+fr: Une coupe transversale de Cliff Haven au mur. Notes de Lix : « Les filons descendent sous le niveau de la mer. Jusqu'où ? » Et en plus petit : « Pourquoi les filons les plus profonds courbent-ils vers l'océan ? »
+en: Cliff Haven cross-section on the wall. Lix's notes: "Veins extend below sea level. How deep?" And smaller: "Why do the deepest veins curve toward the ocean?"
 
 
 # dialogue: examine-prototype
 
 ## node: start
-fr: Des sondes de cristal, un oscillateur à Verdium. Étiquette : « Capteur de Résonance v3 — CLIFF HAVEN. » Minuscules engrenages, bobines remontées à la main. Tink est déjà dessus.
-en: Crystal probes, a Verdium oscillator. Label: "Resonance Sensor v3 — CLIFF HAVEN." Tiny gears, hand-wound coils. Tink's already on it.
+fr: Des sondes de cristal, un oscillateur à Verdium. Étiquette : « Capteur de Résonance v3 — CLIFF HAVEN. » Minuscules engrenages, bobines remontées à la main. Lix est déjà dessus.
+en: Crystal probes, a Verdium oscillator. Label: "Resonance Sensor v3 — CLIFF HAVEN." Tiny gears, hand-wound coils. Lix's already on it.

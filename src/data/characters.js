@@ -9,15 +9,15 @@ export const RACE_COLORS = {
 };
 
 export const CHARACTERS = {
-  'foreman-kael': {
-    name: 'Kael',
+  'foreman-gael': {
+    name: 'Gaël',
     race: 'tidewatcher',
     gender: 'Depths',
     title: 'Mine Foreman',
     description: 'A weathered Tidewatcher of the Depths who has overseen the Verdium mines for decades. Calm under pressure, but the recent tremors worry even them.',
   },
-  'dera': {
-    name: 'Dera',
+  'lera': {
+    name: 'Léra',
     race: 'tidewatcher',
     gender: 'Heights',
     title: 'Mine Worker',
@@ -30,15 +30,15 @@ export const CHARACTERS = {
     title: 'Forest Elder',
     description: 'An ancient Korrim in their Spring-aspect, moss and tiny flowers blooming across their bark-like skin. They sense disturbances in the earth through the roots of the forest.',
   },
-  'tink': {
-    name: 'Tink',
+  'lix': {
+    name: 'Lix',
     race: 'velessi',
     gender: 'agender',
     title: 'Chief Inventor',
     description: 'A brilliant Velessi engineer with oil-stained fingers and a workshop full of improbable machines. They speak very fast and finish other people\'s sentences.',
   },
-  'scholar-elyn': {
-    name: 'Elyn',
+  'scholar-eline': {
+    name: 'Éline',
     race: 'luminari',
     gender: 'Weaver',
     title: 'Archive Keeper',

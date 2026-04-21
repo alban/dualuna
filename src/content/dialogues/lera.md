@@ -3,8 +3,8 @@
 ## node: start
 fr: Hé ! T'as senti celle de l'aube ? J'ai failli tomber de l'échelle de corde ! Mon sens des Hauteurs a disjoncté !
 en: Hey! Feel that one at dawn? Nearly fell off the rope ladder! My Heights-sense went crazy!
-choice[0].fr: Kael dit que le puits inférieur va mal.
-choice[0].en: Kael says the lower shaft's bad.
+choice[0].fr: Gaël dit que le puits inférieur va mal.
+choice[0].en: Gaël says the lower shaft's bad.
 choice[1].fr: Tu penses que c'est quoi ?
 choice[1].en: What do you think it is?
 choice[2].fr: Ça va ?
@@ -31,8 +31,8 @@ fr: Comme un battement de cœur ! Profond, lent, côté mer. Jamais entendu un t
 en: Like a heartbeat! Deep, slow, from the sea side. Never heard anything like it. I wasn't imagining it.
 
 ## node: consult
-fr: On est des mineurs, pas des érudits ! On a besoin d'aide. Tink sur Spark Cove connaît la géologie. L'Ancienne Mossa sur Green Root peut sentir des choses qu'on ne peut pas. Et les Luminari ont peut-être des archives.
-en: We're miners, not scholars! We need help. Tink on Spark Cove knows geology. Elder Mossa on Green Root can sense things we can't. And the Luminari might have records.
+fr: On est des mineurs, pas des érudits ! On a besoin d'aide. Lix sur Spark Cove connaît la géologie. L'Ancienne Mossa sur Green Root peut sentir des choses qu'on ne peut pas. Et les Luminari ont peut-être des archives.
+en: We're miners, not scholars! We need help. Lix on Spark Cove knows geology. Elder Mossa on Green Root can sense things we can't. And the Luminari might have records.
 choice[0].fr: Bonne idée. Je vais tous les voir.
 choice[0].en: Good idea. I'll visit them all.
 choice[1].fr: Ça fait beaucoup de navigation.
