@@ -205,20 +205,18 @@ export class LocationScene extends Phaser.Scene {
     const { width, height } = this.scale;
     const sx = this.sx, sy = this.sy;
 
-    const uiLocName = I18n.tOr(`locations.${this.locationId}.name`, location.name);
-    this.add.text(Math.round(15 * sx), height - Math.round(55 * sy), uiLocName, {
-      fontSize: `${Math.round(16 * sy)}px`, fill: '#ffffff', fontFamily: 'Georgia, serif',
-      stroke: '#000000', strokeThickness: 3,
-    });
-    this.add.text(Math.round(15 * sx), height - Math.round(32 * sy), `◆ ${state.verdium}`, {
-      fontSize: `${Math.round(14 * sy)}px`, fill: '#44cc88', fontFamily: 'Georgia, serif',
-      stroke: '#000000', strokeThickness: 2,
-    });
+    // Font sizes with minimums so they remain readable on small screens
+    const navFont    = Math.max(Math.round(18 * sy), 14);
+    const infoFont   = Math.max(Math.round(16 * sy), 13);
+    const smallFont  = Math.max(Math.round(13 * sy), 11);
 
-    // Navigation buttons
+    // Navigation buttons — anchored to bottom, computed first so info stack sits below
+    const navPadY = 7;
+    const navBtnH = navFont + navPadY * 2;
+    const navY = height - navBtnH - 4;
+
     if (location.connections) {
       let navX = Math.round(15 * sx);
-      const navY = height - Math.round(90 * sy);
 
       for (const connId of location.connections) {
         const connLoc = LOCATIONS[connId];
@@ -226,9 +224,9 @@ export class LocationScene extends Phaser.Scene {
 
         const connName = I18n.tOr(`locations.${connId}.name`, connLoc.name);
         const btn = this.add.text(navX, navY, `▸ ${connName}`, {
-          fontSize: `${Math.round(15 * sy)}px`, fill: '#ccddee', fontFamily: 'Georgia, serif',
+          fontSize: `${navFont}px`, fill: '#ccddee', fontFamily: 'Georgia, serif',
           stroke: '#000000', strokeThickness: 3,
-          backgroundColor: '#000000aa', padding: { x: 8, y: 5 },
+          backgroundColor: '#000000aa', padding: { x: 10, y: navPadY },
         }).setInteractive({ useHandCursor: true });
 
         btn.on('pointerover', () => btn.setStyle({ fill: '#ffffff' }));
@@ -241,15 +239,32 @@ export class LocationScene extends Phaser.Scene {
       }
     }
 
-    // Quest hint
+    // Info stack: location name → verdium → quest, bottom-up above nav buttons
+    const lineGap = 4;
+    let infoY = navY - lineGap;
+
     const activeQuests = QuestManager.getActiveQuests(state);
     if (activeQuests.length > 0) {
       const questTitle = I18n.tOr(`quests.${activeQuests[0].id}`, activeQuests[0].title);
-      this.add.text(Math.round(15 * sx), height - Math.round(12 * sy), `📋 ${questTitle}`, {
-        fontSize: `${Math.round(11 * sy)}px`, fill: '#ccaa66', fontFamily: 'Georgia, serif',
+      infoY -= smallFont;
+      this.add.text(Math.round(15 * sx), infoY, `📋 ${questTitle}`, {
+        fontSize: `${smallFont}px`, fill: '#ccaa66', fontFamily: 'Georgia, serif',
         stroke: '#000000', strokeThickness: 2,
       });
+      infoY -= lineGap;
     }
+
+    infoY -= infoFont;
+    this.add.text(Math.round(15 * sx), infoY, `◆ ${state.verdium}`, {
+      fontSize: `${infoFont}px`, fill: '#44cc88', fontFamily: 'Georgia, serif',
+      stroke: '#000000', strokeThickness: 2,
+    });
+    infoY -= lineGap + infoFont;
+    const uiLocName = I18n.tOr(`locations.${this.locationId}.name`, location.name);
+    this.add.text(Math.round(15 * sx), infoY, uiLocName, {
+      fontSize: `${infoFont}px`, fill: '#ffffff', fontFamily: 'Georgia, serif',
+      stroke: '#000000', strokeThickness: 3,
+    });
 
     // Floating buttons: Map + Config (bottom-right)
     const btnSize = Math.round(60 * Math.min(sx, sy));
