@@ -43,6 +43,15 @@
 
 ## Devlog
 
+### 2026-04-21 — Character naming, portraits, dialogue fixes, UI polish
+
+#### GitHub link on all non-game screens
+Added to MenuScene and rotate-hint overlay (LanguageScene already had it).
+Colour: #8899aa — matches existing secondary/version text, proven readable.
+Dark background pill (backgroundColor #000000aa) ensures contrast over background images.
+Font: Math.max(14*sy, 14)px — minimum 14px so it doesn't vanish on small screens.
+rotate-hint uses fixed CSS 12px + text-shadow (HTML element, not Phaser).
+
 ### 2026-04-21 — Character naming, portraits, dialogue fixes
 
 #### Character renames (French phonetics)
