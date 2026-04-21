@@ -33,13 +33,27 @@
       padding: 2em;
     }
     #rotate-hint .icon { font-size: 80px; display: block; margin-bottom: 24px; }
+    #rotate-hint .buttons { display: flex; gap: 16px; margin-top: 32px; }
+    #rotate-hint button {
+      background: #0a1a2a; border: 1px solid #334455; color: #88ccdd;
+      font-family: Georgia, serif; font-size: 48px;
+      padding: 12px 24px; border-radius: 8px; cursor: pointer;
+    }
+    #rotate-hint button:active { color: #ffffff; }
     @media (orientation: portrait) {
       #rotate-hint { display: flex; flex-direction: column; }
     }
   </style>
 </head>
 <body>
-  <div id="rotate-hint"><div class="icon">&#x21BB;</div>Rotate your device to landscape</div>
+  <div id="rotate-hint">
+    <div class="icon">&#x21BB;</div>
+    Rotate your device to landscape
+    <div class="buttons">
+      <button onclick="(document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()).catch(()=>{})">⛶</button>
+      <button onclick="window.location.reload()">↻</button>
+    </div>
+  </div>
   <div id="game-container"></div>
   <script type="module" src="/src/main.js"></script>
 </body>

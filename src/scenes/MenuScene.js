@@ -73,6 +73,16 @@ export class MenuScene extends Phaser.Scene {
       }
     });
 
+    const reloadBtn = this.add.text(
+      Math.round(15 * sx) + fsBtn.width + Math.round(10 * sx),
+      height - Math.round(90 * sy), '↻', {
+        fontSize: `${Math.round(80 * sy)}px`, fill: '#88aacc', fontFamily: 'Georgia, serif',
+        backgroundColor: '#1a2a3a', padding: { x: Math.round(20 * sx), y: Math.round(14 * sy) },
+      }).setInteractive({ useHandCursor: true });
+    reloadBtn.on('pointerover', () => reloadBtn.setStyle({ fill: '#ffffff' }));
+    reloadBtn.on('pointerout', () => reloadBtn.setStyle({ fill: '#88aacc' }));
+    reloadBtn.on('pointerdown', () => window.location.reload());
+
     // Version
     this.add.text(width / 2, height - Math.round(30 * sy), I18n.t('ui.phase'), {
       fontSize: `${Math.round(12 * sy)}px`, fill: '#8899aa', fontFamily: 'Georgia, serif',

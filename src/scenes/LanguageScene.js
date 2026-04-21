@@ -122,6 +122,16 @@ export class LanguageScene extends Phaser.Scene {
       else document.documentElement.requestFullscreen().catch(() => {});
     });
 
+    const reloadBtn = this.add.text(
+      Math.round(15 * sx) + fsBtn.width + Math.round(10 * sx),
+      height - Math.round(90 * sy), '↻', {
+        fontSize: `${Math.round(80 * sy)}px`, fill: '#88aacc', fontFamily: 'Georgia, serif',
+        backgroundColor: '#1a2a3a', padding: { x: Math.round(20 * sx), y: Math.round(14 * sy) },
+      }).setInteractive({ useHandCursor: true });
+    reloadBtn.on('pointerover', () => reloadBtn.setStyle({ fill: '#ffffff' }));
+    reloadBtn.on('pointerout', () => reloadBtn.setStyle({ fill: '#88aacc' }));
+    reloadBtn.on('pointerdown', () => window.location.reload());
+
     // GitHub link — bottom-right
     const ghLink = this.add.text(width - 10, height - 10, 'github.com/alban/dualuna', {
       fontSize: `${Math.round(10 * ss)}px`, fill: '#334455', fontFamily: 'Georgia, serif',
