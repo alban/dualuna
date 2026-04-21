@@ -5,6 +5,7 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
+    "smoke-test": "node scripts/run-smoke.js",
     "dev": "vite",
     "build": "vite build",
     "generate": "node scripts/generate.js",

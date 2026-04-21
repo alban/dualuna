@@ -1,4 +1,4 @@
-.PHONY: all art build dev screenshots push clean
+.PHONY: all art build dev screenshots smoke-test push clean
 
 # Default: generate art + build
 all: art build
@@ -22,6 +22,12 @@ generate:
 # Start local dev server
 dev:
 	npx vite --port 4444 --host
+
+# Smoke test: launch game at DPR=3, check for JS errors + black screen.
+# Self-contained: starts vite on port 4444 if not already running, then stops it.
+# Always the same command → "always allow" in Claude Code works stably.
+smoke-test:
+	node scripts/run-smoke.js
 
 # Generate screenshots (requires dev server running: make dev)
 screenshots:
