@@ -106,12 +106,30 @@ export class LocationScene extends Phaser.Scene {
         const char = CHARACTERS[hotspot.character];
         if (char) {
           const color = RACE_COLORS[char.race] || 0x888888;
-          const r = Math.round(22 * ss);
-          indicator.fillStyle(color, 0.8);
-          indicator.fillCircle(hx, hy, r);
-          indicator.fillStyle(0xffffff, 0.9);
-          indicator.fillCircle(hx, hy - Math.round(2 * sy), Math.round(9 * ss));
-          this.add.text(hx, hy + Math.round(24 * sy), char.name, {
+          const r = Math.round(28 * ss);
+          const textureKey = `portrait-${hotspot.character}`;
+          const hasPortrait = this.textures.exists(textureKey) &&
+            this.textures.get(textureKey).key !== '__MISSING';
+
+          // Dark backing + coloured border frame
+          indicator.fillStyle(0x0a1520, 0.85);
+          indicator.fillRoundedRect(hx - r, hy - r, r * 2, r * 2, 5);
+          indicator.lineStyle(2, color, 0.8);
+          indicator.strokeRoundedRect(hx - r, hy - r, r * 2, r * 2, 5);
+
+          if (hasPortrait) {
+            const img = this.add.image(hx, hy, textureKey);
+            const scale = (r * 2 - 4) / Math.max(img.width, img.height);
+            img.setScale(scale);
+          } else {
+            // Fallback: race-coloured silhouette
+            indicator.fillStyle(color, 0.7);
+            indicator.fillCircle(hx, hy - Math.round(3 * ss), Math.round(14 * ss));
+            indicator.fillStyle(color, 0.5);
+            indicator.fillCircle(hx, hy + Math.round(10 * ss), Math.round(18 * ss));
+          }
+
+          this.add.text(hx, hy + r + Math.round(8 * sy), char.name, {
             fontSize: `${Math.round(14 * sy)}px`, fill: '#dddddd', fontFamily: 'Georgia, serif',
             stroke: '#000000', strokeThickness: 2,
           }).setOrigin(0.5);

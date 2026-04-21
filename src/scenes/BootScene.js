@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { LOCATIONS } from '../data/locations.js';
+import { CHARACTERS } from '../data/characters.js';
 import { I18n } from '../systems/I18n.js';
 import { BASE_W, BASE_H } from '../utils/layout.js';
 
@@ -35,6 +36,11 @@ export class BootScene extends Phaser.Scene {
     this.load.image('bg-worldmap', 'assets/backgrounds/worldmap.png');
     for (const id of Object.keys(LOCATIONS)) {
       this.load.image(`bg-${id}`, `assets/backgrounds/${id}.png`);
+    }
+
+    // Load character portraits (silently skip if not yet generated)
+    for (const id of Object.keys(CHARACTERS)) {
+      this.load.image(`portrait-${id}`, `assets/portraits/${id}.png`);
     }
   }
 

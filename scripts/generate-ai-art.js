@@ -5,7 +5,7 @@
  * Usage: node scripts/generate-ai-art.js
  * Output: public/assets/backgrounds/<name>.png
  */
-import { writeFileSync, mkdirSync } from 'fs';
+import { writeFileSync, mkdirSync, readFileSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -59,27 +59,80 @@ async function generateImage(name, prompt) {
   return true;
 }
 
-async function run() {
-  console.log('Generating AI backgrounds via Pollinations.ai...\n');
+const PORTRAIT_STYLE = 'Fantasy character portrait. Bust shot, head and upper chest only. Painterly illustration in the retro graphic adventure aesthetic. Dark moody background, no scene details. Dramatic single-source warm amber side lighting. Rich textures, expressive face. Square format.';
 
-  const entries = Object.entries(PROMPTS);
-  for (let i = 0; i < entries.length; i++) {
-    const [name, prompt] = entries[i];
-    console.log(`[${i + 1}/${entries.length}]`);
-    let success = await generateImage(name, prompt);
-    if (!success) {
-      console.log('  Retrying in 5s...');
-      await new Promise(r => setTimeout(r, 5000));
-      await generateImage(name, prompt);
-    }
-    // Small delay between requests to be nice to the free API
-    if (i < entries.length - 1) {
-      await new Promise(r => setTimeout(r, 2000));
-    }
+const PORTRAIT_DIR = join(__dirname, '..', 'public', 'assets', 'portraits');
+mkdirSync(PORTRAIT_DIR, { recursive: true });
+
+function loadPortraitPrompts() {
+  const charDir = join(__dirname, '..', 'src', 'content', 'characters');
+  const prompts = {};
+  for (const file of readdirSync(charDir)) {
+    if (!file.endsWith('.md')) continue;
+    const id = file.replace('.md', '');
+    const content = readFileSync(join(charDir, file), 'utf8');
+    const match = content.match(/^portrait_prompt:\s*(.+)$/m);
+    if (match) prompts[id] = `${match[1].trim()} ${PORTRAIT_STYLE}`;
+  }
+  return prompts;
+}
+
+async function generatePortrait(id, prompt) {
+  const encoded = encodeURIComponent(prompt);
+  const url = `https://image.pollinations.ai/prompt/${encoded}?width=256&height=256&nologo=true&model=flux`;
+
+  console.log(`  Generating portrait: ${id}...`);
+  const response = await fetch(url);
+  if (!response.ok) {
+    console.error(`  ✗ ${id}: HTTP ${response.status}`);
+    return false;
   }
 
-  console.log('\nDone! All backgrounds saved to public/assets/backgrounds/');
-  console.log('Run "make screenshots" to see them in context.');
+  const buffer = Buffer.from(await response.arrayBuffer());
+  const outPath = join(PORTRAIT_DIR, `${id}.png`);
+  writeFileSync(outPath, buffer);
+  console.log(`  ✓ ${id}.png (${(buffer.length / 1024).toFixed(0)} KB)`);
+  return true;
+}
+
+async function run() {
+  const args = process.argv.slice(2);
+  const mode = args[0] || 'all'; // 'all' | 'backgrounds' | 'portraits'
+
+  if (mode === 'all' || mode === 'backgrounds') {
+    console.log('Generating AI backgrounds via Pollinations.ai...\n');
+    const entries = Object.entries(PROMPTS);
+    for (let i = 0; i < entries.length; i++) {
+      const [name, prompt] = entries[i];
+      console.log(`[${i + 1}/${entries.length}]`);
+      let success = await generateImage(name, prompt);
+      if (!success) {
+        console.log('  Retrying in 5s...');
+        await new Promise(r => setTimeout(r, 5000));
+        await generateImage(name, prompt);
+      }
+      if (i < entries.length - 1) await new Promise(r => setTimeout(r, 2000));
+    }
+    console.log('\nBackgrounds saved to public/assets/backgrounds/');
+  }
+
+  if (mode === 'all' || mode === 'portraits') {
+    console.log('\nGenerating character portraits via Pollinations.ai...\n');
+    const portraits = loadPortraitPrompts();
+    const entries = Object.entries(portraits);
+    for (let i = 0; i < entries.length; i++) {
+      const [id, prompt] = entries[i];
+      console.log(`[${i + 1}/${entries.length}]`);
+      let success = await generatePortrait(id, prompt);
+      if (!success) {
+        console.log('  Retrying in 5s...');
+        await new Promise(r => setTimeout(r, 5000));
+        await generatePortrait(id, prompt);
+      }
+      if (i < entries.length - 1) await new Promise(r => setTimeout(r, 2000));
+    }
+    console.log('\nPortraits saved to public/assets/portraits/');
+  }
 }
 
 run().catch(e => { console.error(e); process.exit(1); });

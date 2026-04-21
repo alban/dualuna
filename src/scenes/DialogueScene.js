@@ -97,6 +97,7 @@ export class DialogueScene extends Phaser.Scene {
 
   updatePortrait(speakerId) {
     this.portraitArea.clear();
+    if (this.portraitImage) { this.portraitImage.destroy(); this.portraitImage = null; }
 
     if (!speakerId) {
       this.portraitNameText.setText('');
@@ -111,30 +112,35 @@ export class DialogueScene extends Phaser.Scene {
 
     const sx = this.sx, sy = this.sy, ss = this.ss;
     const color = RACE_COLORS[char.race] || 0x888888;
-    const cx = Math.round(110 * sx), cy = this.panelY + Math.round(80 * sy);
     const frameX = Math.round(40 * sx), frameY = this.panelY + Math.round(15 * sy);
     const frameW = Math.round(140 * sx), frameH = Math.round(130 * sy);
+    const cx = frameX + frameW / 2, cy = frameY + frameH / 2;
 
+    // Dark background fill
     this.portraitArea.fillStyle(0x0d1a25, 1);
     this.portraitArea.fillRoundedRect(frameX, frameY, frameW, frameH, 6);
-    this.portraitArea.lineStyle(1, color, 0.6);
-    this.portraitArea.strokeRoundedRect(frameX, frameY, frameW, frameH, 6);
 
-    this.portraitArea.fillStyle(color, 0.4);
-    this.portraitArea.fillCircle(cx, cy, Math.round(35 * ss));
-    this.portraitArea.fillStyle(color, 0.7);
-    this.portraitArea.fillCircle(cx, cy - Math.round(5 * sy), Math.round(25 * ss));
-    this.portraitArea.fillStyle(0xffffff, 0.8);
-    this.portraitArea.fillCircle(cx - Math.round(8 * sx), cy - Math.round(10 * sy), Math.round(4 * ss));
-    this.portraitArea.fillCircle(cx + Math.round(8 * sx), cy - Math.round(10 * sy), Math.round(4 * ss));
-    this.portraitArea.fillStyle(color, 0.9);
-    this.portraitArea.fillCircle(cx - Math.round(8 * sx), cy - Math.round(10 * sy), Math.round(2 * ss));
-    this.portraitArea.fillCircle(cx + Math.round(8 * sx), cy - Math.round(10 * sy), Math.round(2 * ss));
+    const textureKey = `portrait-${speakerId}`;
+    if (this.textures.exists(textureKey) && this.textures.get(textureKey).key !== '__MISSING') {
+      this.portraitImage = this.add.image(cx, cy, textureKey);
+      const scale = Math.min(frameW / this.portraitImage.width, frameH / this.portraitImage.height);
+      this.portraitImage.setScale(scale);
+    } else {
+      // Fallback: race-coloured silhouette
+      this.portraitArea.fillStyle(color, 0.35);
+      this.portraitArea.fillCircle(cx, cy, Math.round(35 * ss));
+      this.portraitArea.fillStyle(color, 0.65);
+      this.portraitArea.fillCircle(cx, cy - Math.round(5 * sy), Math.round(25 * ss));
+    }
+
+    // Coloured border drawn on top
+    this.portraitArea.lineStyle(1, color, 0.7);
+    this.portraitArea.strokeRoundedRect(frameX, frameY, frameW, frameH, 6);
 
     this.portraitNameText.setText(char.name);
 
     if (!this.raceTag) {
-      this.raceTag = this.add.text(Math.round(130 * sx), this.panelY + Math.round(155 * sy), '', {
+      this.raceTag = this.add.text(Math.round(110 * sx), this.panelY + Math.round(155 * sy), '', {
         fontSize: `${Math.round(10 * sy)}px`, fill: '#667788', fontFamily: 'Georgia, serif',
         fontStyle: 'italic',
       }).setOrigin(0.5);
