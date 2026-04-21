@@ -12,35 +12,51 @@ export class MenuScene extends Phaser.Scene {
     const { width, height } = this.scale;
     const sx = width / BASE_W, sy = height / BASE_H;
 
-    // Pre-rendered background
+    const ss = Math.min(sx, sy);
+
+    // Pre-rendered background — dimmed so panel reads clearly
     this.add.image(0, 0, 'bg-menu').setOrigin(0, 0).setDisplaySize(width, height);
+    this.add.rectangle(width / 2, height / 2, width, height, 0x000000, 0.55);
+
+    // Central panel
+    const panelW = Math.min(Math.round(480 * sx), width - 40);
+    const panelH = Math.min(Math.round(380 * sy), height - 20);
+    const panelX = width / 2;
+    const panelY = height / 2;
+
+    const panel = this.add.graphics();
+    panel.fillStyle(0x08131e, 0.92);
+    panel.fillRoundedRect(panelX - panelW / 2, panelY - panelH / 2, panelW, panelH, 10);
+    panel.lineStyle(1, 0x2a4a66, 1);
+    panel.strokeRoundedRect(panelX - panelW / 2, panelY - panelH / 2, panelW, panelH, 10);
 
     // Title
-    this.add.text(width / 2, Math.round(200 * sy), 'DUALUNA', {
-      fontSize: `${Math.round(72 * sy)}px`, fill: '#88ccff', fontFamily: 'Georgia, serif',
-      stroke: '#224466', strokeThickness: 4,
+    this.add.text(panelX, panelY - panelH / 2 + Math.round(40 * sy), 'DUALUNA', {
+      fontSize: `${Math.round(28 * ss)}px`, fill: '#88ccff', fontFamily: 'Georgia, serif',
+      stroke: '#112233', strokeThickness: 3,
     }).setOrigin(0.5);
 
-    this.add.text(width / 2, Math.round(270 * sy), I18n.t('ui.subtitle'), {
-      fontSize: `${Math.round(28 * sy)}px`, fill: '#66aa99', fontFamily: 'Georgia, serif',
+    this.add.text(panelX, panelY - panelH / 2 + Math.round(80 * sy), I18n.t('ui.subtitle'), {
+      fontSize: `${Math.round(13 * ss)}px`, fill: '#66aa99', fontFamily: 'Georgia, serif',
       fontStyle: 'italic',
     }).setOrigin(0.5);
 
-    this.add.text(width / 2, Math.round(330 * sy), I18n.t('ui.tagline'), {
-      fontSize: `${Math.round(16 * sy)}px`, fill: '#557788', fontFamily: 'Georgia, serif',
-    }).setOrigin(0.5);
+    const divGfx = this.add.graphics();
+    divGfx.lineStyle(1, 0x223344, 0.8);
+    divGfx.lineBetween(panelX - panelW / 2 + 20, panelY - panelH / 2 + Math.round(100 * sy),
+                       panelX + panelW / 2 - 20, panelY - panelH / 2 + Math.round(100 * sy));
 
     // Menu buttons
     const buttonStyle = {
-      fontSize: `${Math.round(24 * sy)}px`, fill: '#aaddcc', fontFamily: 'Georgia, serif',
+      fontSize: `${Math.round(22 * ss)}px`, fill: '#aaddcc', fontFamily: 'Georgia, serif',
     };
     const hoverStyle = { fill: '#ffffff' };
     const normalStyle = { fill: '#aaddcc' };
 
-    const newGame = this.add.text(width / 2, Math.round(440 * sy), `◆  ${I18n.t('ui.newGame')}  ◆`, buttonStyle)
+    const newGame = this.add.text(panelX, panelY - panelH / 2 + Math.round(180 * sy), `◆  ${I18n.t('ui.newGame')}  ◆`, buttonStyle)
       .setOrigin(0.5).setInteractive({ useHandCursor: true });
 
-    const continueBtn = this.add.text(width / 2, Math.round(500 * sy), `◆  ${I18n.t('ui.continue')}  ◆`, buttonStyle)
+    const continueBtn = this.add.text(panelX, panelY - panelH / 2 + Math.round(255 * sy), `◆  ${I18n.t('ui.continue')}  ◆`, buttonStyle)
       .setOrigin(0.5).setInteractive({ useHandCursor: true });
 
     // Check if save exists
