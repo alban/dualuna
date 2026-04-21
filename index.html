@@ -32,7 +32,17 @@
       z-index: 9999;
       padding: 2em;
     }
-    #rotate-hint .icon { font-size: 80px; display: block; margin-bottom: 24px; }
+    #rotate-hint .icon {
+      font-size: 80px; display: block; margin-bottom: 24px;
+      animation: tilt 2s ease-in-out infinite;
+      transform-origin: center;
+    }
+    @keyframes tilt {
+      0%   { transform: rotate(0deg); }
+      40%  { transform: rotate(-90deg); }
+      60%  { transform: rotate(-90deg); }
+      100% { transform: rotate(0deg); }
+    }
     #rotate-hint .buttons { display: flex; gap: 16px; margin-top: 32px; }
     #rotate-hint button {
       background: #0a1a2a; border: 1px solid #334455; color: #88ccdd;
@@ -47,11 +57,10 @@
 </head>
 <body>
   <div id="rotate-hint">
-    <div class="icon">&#x21BB;</div>
-    Rotate your device to landscape
+    <div class="icon">📱</div>
     <div class="buttons">
       <button onclick="(document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()).catch(()=>{})">⛶</button>
-      <button onclick="window.location.reload()">↻</button>
+      <button onclick="window.location.reload()">🔄</button>
     </div>
   </div>
   <div id="game-container"></div>

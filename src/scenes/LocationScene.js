@@ -347,7 +347,7 @@ export class LocationScene extends Phaser.Scene {
       closeMenu();
     });
 
-    makeCfgBtn(panelY + btnSpacing * 2.5, '↻  ' + I18n.t('ui.restart'), () => {
+    makeCfgBtn(panelY + btnSpacing * 2.5, '🔄  ' + I18n.t('ui.restart'), () => {
       window.location.reload();
     });
 

@@ -124,7 +124,7 @@ export class LanguageScene extends Phaser.Scene {
 
     const reloadBtn = this.add.text(
       Math.round(15 * sx) + fsBtn.width + Math.round(10 * sx),
-      height - Math.round(90 * sy), '↻', {
+      height - Math.round(90 * sy), '🔄', {
         fontSize: `${Math.round(80 * sy)}px`, fill: '#88aacc', fontFamily: 'Georgia, serif',
         backgroundColor: '#1a2a3a', padding: { x: Math.round(20 * sx), y: Math.round(14 * sy) },
       }).setInteractive({ useHandCursor: true });
