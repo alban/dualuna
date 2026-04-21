@@ -31,7 +31,7 @@ export class DialogueScene extends Phaser.Scene {
     this.dialogue = dialogue;
     this.currentNodeId = dialogue.startNode || 'start';
 
-    // Semi-transparent backdrop
+    // Semi-transparent backdrop — also acts as emergency close
     this.backdrop = this.add.graphics();
     this.backdrop.fillStyle(0x000000, 0.6);
     this.backdrop.fillRect(0, 0, width, height);
@@ -49,6 +49,17 @@ export class DialogueScene extends Phaser.Scene {
     this.panel.fillRoundedRect(Math.round(20 * sx), this.panelY, width - Math.round(40 * sx), panelH, 8);
     this.panel.lineStyle(1, 0x334455, 1);
     this.panel.strokeRoundedRect(Math.round(20 * sx), this.panelY, width - Math.round(40 * sx), panelH, 8);
+
+    // Close button — always visible, always works
+    const closeBtn = this.add.text(
+      width - Math.round(40 * sx), this.panelY - Math.round(18 * sy), '✕', {
+        fontSize: `${Math.round(22 * ss)}px`, fill: '#667788', fontFamily: 'Georgia, serif',
+        backgroundColor: '#0a1520cc', padding: { x: 8, y: 4 },
+      }
+    ).setOrigin(0.5).setInteractive({ useHandCursor: true });
+    closeBtn.on('pointerover', () => closeBtn.setStyle({ fill: '#aabbcc' }));
+    closeBtn.on('pointerout', () => closeBtn.setStyle({ fill: '#667788' }));
+    closeBtn.on('pointerdown', () => this.closeDialogue());
 
     // Portrait area
     this.portraitArea = this.add.graphics();
@@ -97,7 +108,8 @@ export class DialogueScene extends Phaser.Scene {
 
   updatePortrait(speakerId) {
     this.portraitArea.clear();
-    if (this.portraitImage) { this.portraitImage.destroy(); this.portraitImage = null; }
+    if (this.portraitImage && this.portraitImage.active) { this.portraitImage.destroy(); }
+    this.portraitImage = null;
 
     if (!speakerId) {
       this.portraitNameText.setText('');
@@ -168,6 +180,23 @@ export class DialogueScene extends Phaser.Scene {
         if (c.requireItem && !state.inventory.includes(c.requireItem)) return;
         validChoices.push({ ...c, _origIndex: originalIndex });
       });
+
+      // If all choices were filtered out, fall through to the continue button
+      if (validChoices.length === 0) {
+        const label = node.next ? I18n.t('ui.continueDialogue') : I18n.t('ui.close');
+        const continueText = this.add.text(width / 2, this.panelY + Math.round(250 * sy), label, {
+          fontSize: `${Math.round(28 * sy)}px`, fill: '#88ccaa', fontFamily: 'Georgia, serif',
+          backgroundColor: '#0a151f', padding: { x: 16, y: 10 },
+        }).setOrigin(0.5).setInteractive({ useHandCursor: true });
+        continueText.on('pointerover', () => continueText.setStyle({ fill: '#ffffff' }));
+        continueText.on('pointerout', () => continueText.setStyle({ fill: '#88ccaa' }));
+        continueText.on('pointerdown', () => {
+          if (node.next) this.showNode(node.next);
+          else this.closeDialogue();
+        });
+        this.choiceTexts.push(continueText);
+        return;
+      }
 
       validChoices.forEach((choice, i) => {
         const y = this.panelY + Math.round(200 * sy) + i * Math.round(45 * sy);
