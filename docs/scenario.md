@@ -47,19 +47,79 @@ Neither is doing anything wrong.
 Both are accidentally harming each other.
 This is not a story about villains.
 
-### The Moon Cycles
-Twin moons create complex tidal cycles. Rare alignments
-flood the lattice network with energy, triggering
-transformation in surface-dwellers who have been exposed
-to Verdium long enough (miners especially).
+### The Two Moons
 
-The gender descriptors already in the game
-(Depths/Heights, Spring/Winter, Weaver) are moon phase
-indicators. The characters use them as cultural identity
-without knowing they describe a biological state.
+Two moons, different in everything:
+- Different colours (one amber/warm, one silver/cold)
+- Different sizes in the sky (different distances)
+- Different orbital cycles, not synchronized
 
-Transformation is not magic. It is dormant biology
-reactivating — the same species, remembering what it was.
+Their combined light creates an ever-changing palette on the
+planet surface. No two nights are alike. Sometimes only one
+moon is up. Sometimes both, their colours mixing. Sometimes
+neither. The interplay of amber, silver, and darkness — over
+the blue of day, the orange of dawn, the red of dusk — means
+the planet never looks the same twice.
+
+**Rendering implication:** background images should be tinted
+at runtime based on the current day phase and moon state.
+A Phaser tint or color overlay on the bg image, computed
+from game state. No regeneration needed — the same image
+reads completely differently under amber moonlight vs silver
+vs full day. This is a feature, not a complication.
+
+**Moon phase naming:** the gender descriptors already in the
+game (Depths/Heights, Spring/Winter, Weaver) are moon phase
+indicators. Characters use them as cultural identity without
+knowing they describe a biological state tied to which moon
+was dominant at their birth.
+
+### The Moon Cycles and Transformation
+
+Specific alignments of the two moons flood the Verdium lattice
+with energy. Surface-dwellers who have been exposed to Verdium
+long enough — miners especially — carry dormant biology that
+responds to this. During the right alignment, if they are
+in contact with Verdium while sleeping, they transform into
+their sea form.
+
+This is not magic. It is forgotten biology reactivating.
+The same species, remembering what it was.
+
+The transformation requires three conditions simultaneously:
+1. Sleep (the body must be at rest, defences lowered)
+2. Physical contact with Verdium
+3. The specific alignment of the two moons
+
+This is why it is rare. This is why it was forgotten.
+Most people never encounter all three conditions at once.
+
+### Sleep Temples
+
+Every island community has at least one sleep temple.
+A large communal room. Many small circular beds arranged
+in a pattern. The ceiling is set with crystals that filter
+the moonlight, producing warm red-orange light — chosen
+for its calming effect on the nervous system, by people who
+did not consciously know why it worked.
+
+The rule: silence, or whispers. You respect the sleep of others.
+The sleep temple is the most sacred communal space precisely
+because it requires nothing of you except presence and quiet.
+
+**What nobody remembers:** sleep temples were built
+deliberately over Verdium veins. The circular beds are
+positioned at nodes in the lattice. The crystal ceiling
+panels are tuned to the amber moon's spectrum — the one
+that triggers transformation. This was not superstition.
+It was engineering. Then it was forgotten, and the
+engineering became tradition, and the tradition became
+architecture, and nobody questioned why the beds were
+circular or why the crystals were that specific colour.
+
+Dialogue in sleep temples should feel different.
+Quieter. More interior. Italicised, perhaps. Characters
+say less and mean more. The space imposes itself.
 
 ---
 
@@ -216,6 +276,64 @@ Tutorial quest "Opening Day" — three small tasks:
 Tremor hits mid-quest. Cracks the exhibit:
 "Periodic tremors — completely natural. Nothing to worry about."
 Friends make a joke. Laugh too hard. The crack stays.
+
+### The Museum Is a Sleep Temple
+
+The museum was built on the site of an old sleep temple —
+directly over a Verdium vein. This is why the tremor crack
+appeared exactly where it did. The vein runs beneath the floor.
+
+The crystal panels in the ceiling: Curator B always thought
+they were decorative. They are not. They are tuned to the
+amber moon's spectrum. They were the ceiling of a sleep temple.
+The museum inherited them without understanding them.
+
+The mythology section's "artwork showing figures lying in
+circular beds" is an architectural diagram of the temple
+that used to stand here.
+
+The "unreadable script" in the mythology section is in the
+undersea language. Post-transformation, the player can read it:
+
+> "When the amber moon rises over the silver moon,
+> lie on the stone, touch the crystal,
+> and remember what you were."
+
+The museum has been displaying a how-to guide for a century.
+Curator B always felt the mythology section was important
+without being able to say why. They were right.
+
+**On the player's return post-transformation:**
+When the player touches the museum floor, they can sense the
+Verdium vein beneath. The crystal ceiling panels respond faintly
+to their presence. The building recognises them.
+
+**The moon cycle exhibit:**
+A twin-moon astronomical chart that nobody fully understands.
+Curator A labeled it "decorative astronomical record."
+It is a calendar. The alignments that trigger transformation
+are marked with a small symbol. The same symbol is carved
+into the floor of every sleep temple on every island.
+It was always in plain sight.
+
+### The Sea Form
+
+After transformation, the player exists as a sea creature.
+Surface-dwellers in their sea form can:
+- Walk on the ocean floor
+- Jump with low gravity — like a human on the moon
+  (the water is not an obstacle, it is a medium)
+- Breathe underwater (dormant biology, now reactivated)
+- Sense the Verdium lattice directly, not through touch
+
+The low-gravity movement is important to get right tonally.
+It is not swimming. It is not walking. It is something between —
+unhurried, deliberate, slightly dreamlike. The undersea world
+should feel vast and quiet and navigable, not hostile.
+
+The undersea people find the transformed surface-dwellers
+immediately recognisable — "the returned" — and not surprising.
+They have been waiting, in their way, for this to happen.
 
 ### Key Chapter 1 Beats (pre-written, never generated)
 - Museum tremor and the cracked exhibit
