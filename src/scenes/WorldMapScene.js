@@ -14,10 +14,18 @@ export class WorldMapScene extends Phaser.Scene {
     this._sx = sx; this._sy = sy; this._ss = ss;
     const state = this.registry.get('gameState');
 
-    // Pre-rendered ocean background
-    this.add.image(0, 0, 'bg-worldmap').setOrigin(0, 0).setDisplaySize(width, height);
+    // Plain ocean background — deep navy, no image
+    const bg = this.add.graphics();
+    bg.fillStyle(0x06111e, 1);
+    bg.fillRect(0, 0, width, height);
 
-    // Draw island shapes (lightweight — just a few ellipses)
+    // Subtle ocean depth bands
+    for (let i = 0; i < 6; i++) {
+      bg.fillStyle(0x07161f + i * 0x010101, 0.4);
+      bg.fillRect(0, Math.round((height / 6) * i), width, Math.round(height / 6));
+    }
+
+    // Draw islands
     const islandGfx = this.make.graphics({ x: 0, y: 0, add: false });
     for (const [id, island] of Object.entries(WORLD.islands)) {
       const discovered = state.discoveredIslands.includes(id);
@@ -32,7 +40,8 @@ export class WorldMapScene extends Phaser.Scene {
 
     // Title
     this.add.text(width / 2, Math.round(30 * sy), 'The Islands of Dualuna', {
-      fontSize: `${Math.round(28 * sy)}px`, fill: '#88bbdd', fontFamily: 'Georgia, serif',
+      fontSize: `${Math.round(26 * sy)}px`, fill: '#88bbdd', fontFamily: 'Georgia, serif',
+      stroke: '#000000', strokeThickness: 3,
     }).setOrigin(0.5);
 
     // Add interactive labels and hit zones (these need to stay as live objects)
@@ -44,11 +53,13 @@ export class WorldMapScene extends Phaser.Scene {
 
       if (discovered) {
         // Island name label
-        const label = this.add.text(ix, iy + isize + 15, island.name, {
-          fontSize: `${Math.round(14 * sy)}px`,
-          fill: isCurrent ? '#ffffff' : '#88aacc',
+        const label = this.add.text(ix, iy + isize + Math.round(18 * sy), island.name, {
+          fontSize: `${Math.round(16 * sy)}px`,
+          fill: isCurrent ? '#ffffff' : '#aaccee',
           fontFamily: 'Georgia, serif',
           fontStyle: isCurrent ? 'bold' : 'normal',
+          stroke: '#000000', strokeThickness: 3,
+          backgroundColor: '#00000066', padding: { x: 6, y: 3 },
         }).setOrigin(0.5);
 
         // Make clickable
@@ -63,16 +74,23 @@ export class WorldMapScene extends Phaser.Scene {
       }
     }
 
+    // Bottom bar
+    const barH = Math.round(50 * sy);
+    const barGfx = this.add.graphics();
+    barGfx.fillStyle(0x000000, 0.7);
+    barGfx.fillRect(0, height - barH, width, barH);
+
     // Current location info
     const currentIsland = WORLD.islands[state.currentIsland];
-    this.add.text(width / 2, height - Math.round(60 * sy), `Current: ${currentIsland.name}`, {
-      fontSize: `${Math.round(18 * sy)}px`, fill: '#aaddcc', fontFamily: 'Georgia, serif',
+    this.add.text(width / 2, height - barH / 2, `${currentIsland.name}`, {
+      fontSize: `${Math.round(17 * sy)}px`, fill: '#aaddcc', fontFamily: 'Georgia, serif',
+      fontStyle: 'italic',
     }).setOrigin(0.5);
 
     // Back button
-    const backBtn = this.add.text(Math.round(60 * sx), height - Math.round(30 * sy), '← Back', {
-      fontSize: `${Math.round(16 * sy)}px`, fill: '#88aacc', fontFamily: 'Georgia, serif',
-    }).setInteractive({ useHandCursor: true });
+    const backBtn = this.add.text(Math.round(16 * sx), height - barH / 2, '← Back', {
+      fontSize: `${Math.round(17 * sy)}px`, fill: '#88aacc', fontFamily: 'Georgia, serif',
+    }).setOrigin(0, 0.5).setInteractive({ useHandCursor: true });
     backBtn.on('pointerover', () => backBtn.setStyle({ fill: '#ffffff' }));
     backBtn.on('pointerout', () => backBtn.setStyle({ fill: '#88aacc' }));
     backBtn.on('pointerdown', () => {
@@ -80,8 +98,8 @@ export class WorldMapScene extends Phaser.Scene {
     });
 
     // Verdium display
-    this.add.text(width - 20, height - Math.round(30 * sy), `◆ Verdium: ${state.verdium}`, {
-      fontSize: `${Math.round(14 * sy)}px`, fill: '#44cc88', fontFamily: 'Georgia, serif',
+    this.add.text(width - Math.round(16 * sx), height - barH / 2, `◆ ${state.verdium}`, {
+      fontSize: `${Math.round(17 * sy)}px`, fill: '#44cc88', fontFamily: 'Georgia, serif',
     }).setOrigin(1, 0.5);
   }
 
@@ -120,36 +138,38 @@ export class WorldMapScene extends Phaser.Scene {
   travelToIsland(islandId, island) {
     const state = this.registry.get('gameState');
     if (islandId === state.currentIsland) {
-      // Already here, go to the island's default location
       this.scene.start('Location', { locationId: island.defaultLocation });
       return;
     }
 
-    // Travel animation
-    const { width, height } = this.scale;
-    const overlay = this.add.graphics();
-    overlay.fillStyle(0x000000, 0);
-    overlay.fillRect(0, 0, width, height);
+    // DOM overlay — bypasses 1 FPS Phaser render, appears instantly
+    const el = document.createElement('div');
+    el.style.cssText = [
+      'position:fixed', 'inset:0', 'background:rgba(3,10,18,0.92)',
+      'display:flex', 'flex-direction:column', 'align-items:center', 'justify-content:center',
+      'z-index:9999', 'font-family:Georgia,serif',
+    ].join(';');
+    el.innerHTML = `<div style="font-size:3.5rem">⛵</div>
+      <div style="color:#88ccdd;font-size:1.2rem;margin-top:0.8rem;text-shadow:0 1px 4px #000">${island.name}</div>`;
+    document.body.appendChild(el);
 
-    const travelText = this.add.text(width / 2, height / 2, `Sailing to ${island.name}...`, {
-      fontSize: '22px', fill: '#88ccdd', fontFamily: 'Georgia, serif',
-    }).setOrigin(0.5).setAlpha(0);
+    setTimeout(() => {
+      // Swap boat content for solid black — keep overlay until new scene renders
+      el.innerHTML = '';
+      el.style.background = '#06111e';
 
-    this.tweens.add({
-      targets: travelText,
-      alpha: 1,
-      duration: 500,
-      yoyo: true,
-      hold: 1000,
-      onComplete: () => {
-        state.currentIsland = islandId;
-        state.currentLocation = island.defaultLocation;
-        if (!state.visitedLocations.includes(island.defaultLocation)) {
-          state.visitedLocations.push(island.defaultLocation);
-        }
-        this.registry.set('gameState', state);
-        this.scene.start('Location', { locationId: island.defaultLocation });
+      state.currentIsland = islandId;
+      state.currentLocation = island.defaultLocation;
+      if (!state.visitedLocations.includes(island.defaultLocation)) {
+        state.visitedLocations.push(island.defaultLocation);
       }
-    });
+      this.registry.set('gameState', state);
+      this.scene.start('Location', { locationId: island.defaultLocation });
+
+      // Remove overlay after Phaser renders the new scene
+      this.sys.game.events.once('postrender', () => {
+        if (document.body.contains(el)) document.body.removeChild(el);
+      });
+    }, 600);
   }
 }
