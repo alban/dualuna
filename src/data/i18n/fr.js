@@ -102,6 +102,9 @@ export default {
       "agree": {
         "text": "Bien vu, petite. Va — Spark Cove, Green Root, Luminara. Les Velessi connaissent l'ingénierie, les Korrim connaissent la terre, les Luminari gardent les anciens récits. Passe par le port. Dis-leur que Brin t'envoie."
       },
+      "temple": {
+        "text": "Et visite le temple du sommeil avant de partir. Je sais que ça paraît étrange — mais ce bâtiment sait des choses. Il a toujours su. Dors-y une fois si tu peux."
+      },
       "stopmine": {
         "text": "Impossible. Pas encore. Le village a besoin de Verdium. Mais je vais dire à Gaël de se retirer du puits profond. Va consulter les autres îles. Découvre à quoi on a affaire."
       }
@@ -163,6 +166,9 @@ export default {
       }
     },
     "foreman-gael-default": {
+      "museum": {
+        "text": "Et le musée — Valdin et Aosse l'ont ouvert aujourd'hui. Visite privée. Ce sont des amis. Passe quand tu as un moment. J'ai le sentiment que la section géologique pourrait t'intéresser."
+      },
       "start": {
         "text": "Troisième secousse cette semaine. Trente marées dans ces mines, j'ai jamais senti ça.",
         "choices": [
@@ -258,8 +264,15 @@ export default {
         "text": "Les premiers colons décrivaient le Verdium comme des « ponts entre les mondes ». La surface vers quelque chose en dessous. On pensait que c'était une métaphore. Et si c'était littéral ?",
         "choices": [
           "Quelque chose existe sous l'océan ?!",
-          "On rompt ces connexions en minant ?"
+          "On rompt ces connexions en minant ?",
+          "Il y a une carte au musée de Cliff Haven — les alignements des deux lunes."
         ]
+      },
+      "moonchart": {
+        "text": "Je connais cette carte. Je demande une copie correcte depuis trois ans. Ces symboles d'alignement — ils apparaissent aussi dans nos plus anciens relevés géologiques. Quelqu'un les utilisait comme points de référence. Pour quoi, on ne sait pas."
+      },
+      "moonscript": {
+        "text": "Et l'inscription de la section mythologie — celle qu'on ne peut pas lire. Il y a un fragment dans nos archives profondes qui utilise le même script. Je n'ai jamais trouvé personne capable de lire l'un ou l'autre. Ce sont les textes les plus anciens que nous connaissons."
       },
       "beneath": {
         "text": "Une tablette endommagée parle de « ceux qui bâtissent sous les eaux » et de « cités où aucune lune ne brille ». Classé en mythologie. Mais tes secousses, l'eau de mer, les sons pulsés... et si c'était réel ?"
@@ -289,6 +302,130 @@ export default {
     "examine-pedestal": {
       "start": {
         "text": "Un pupitre de lecture, vibrant d'énergie de Verdium. Même ici, loin des mines — tout sur Dualuna est connecté."
+      }
+    },
+    "museum-intro": {
+      "start": {
+        "text": "Le musée est nouveau. Construit à l'emplacement de quelque chose de plus ancien — on le sent dans le sol de pierre, sans pouvoir dire pourquoi."
+      },
+      "start2": {
+        "text": "C'est aujourd'hui la visite privée avant l'ouverture au public. Aosse t'a accueilli à la porte, enthousiaste. Valdin vérifie déjà que chaque étiquette est parfaitement exacte."
+      }
+    },
+    "curator-valdin-default": {
+      "start": {
+        "text": "Ah — bien, tu es venu. Trois choses à faire avant l'ouverture. Ton œil de mineur sur l'exposition géologique, et m'aider à retrouver un échantillon de Verdium qui a disparu.",
+        "choices": [
+          "Et la fissure dans le panneau de l'exposition ?",
+          "L'exposition géologique — j'y jette un œil.",
+          "Qui a pris l'échantillon de Verdium ?"
+        ]
+      },
+      "crack": {
+        "text": "Arrivé à l'aube. Une secousse. Le panneau dit « Secousses périodiques — tout à fait naturelles. Rien à craindre. » La fissure est apparue sur le mot « naturelles ». Aosse trouve ça drôle. Moi pas.",
+        "choices": [
+          "Les secousses empirent.",
+          "C'est quand même un peu drôle."
+        ]
+      },
+      "worse": {
+        "text": "Je sais. J'ai lu les relevés géologiques. Notre explication est correcte — les secousses périodiques sont un trait connu de ces îles. Mais... la fréquence est nouvelle. Je l'ai noté."
+      },
+      "funny": {
+        "text": "Ce n'est pas drôle. C'est une question de crédibilité institutionnelle. Une exposition qui se contredit le jour de son ouverture — j'ai noté l'anomalie de fréquence, si ça peut aider."
+      },
+      "geology": {
+        "text": "L'exposition sur le Verdium. Je veux savoir si la disposition des échantillons a du sens pour quelqu'un qui travaille vraiment dans la mine. Les étiquettes sont exactes — mais sont-elles vraies ?"
+      },
+      "sample": {
+        "text": "Personne ne l'a pris. Il était là hier. Plus maintenant. Renseigne-toi — les amis venus tôt. Quelqu'un l'a déplacé sans me le dire."
+      }
+    },
+    "curator-aosse-default": {
+      "start": {
+        "text": "Tu l'as senti aussi, non ? En entrant. Quelque chose dans le sol.",
+        "choices": [
+          "Je... oui, en fait. C'est quoi ?",
+          "Tu veux dire la secousse ? À l'aube ?",
+          "Parle-moi de la section mythologie."
+        ]
+      },
+      "floor": {
+        "text": "Un bourdonnement. Très faible. Seulement quand on reste immobile. Valdin dit que c'est la résonance de la falaise. Je pense que c'est le bâtiment lui-même — il était autre chose avant d'être un musée."
+      },
+      "tremor": {
+        "text": "Ça aussi. Mais je parlais de la pièce. Pas un son — une sensation. Comme si le bâtiment était plus vieux qu'on ne croit. On a trouvé trois couches de fondations en creusant. Personne ne sait ce qu'est la couche du bas."
+      },
+      "mythology": {
+        "text": "C'est ma section. Valdin en est gêné — « mythologie » semble peu sérieux. Mais les vieilles chansons se souviennent de choses que les documents oublient. Cette inscription — celle que personne ne peut lire — elle a une grammaire. C'est une langue.",
+        "choices": [
+          "D'où vient-elle ?",
+          "Que montre la carte des lunes ?"
+        ]
+      },
+      "inscription": {
+        "text": "Aucune idée. J'en ai envoyé des copies à Luminara, aux anciens Korrim. Personne ne la reconnaît. Mais regarde le plafond — ces panneaux de cristal. Et regarde l'inscription. Le même symbole apparaît dans les deux. Ce n'est pas de la décoration. C'est un système."
+      },
+      "moons": {
+        "text": "Valdin appelle ça un « relevé astronomique décoratif ». Mais ces symboles se répètent. Et les intervalles entre les répétitions correspondent à des alignements spécifiques des deux lunes. Je le sens, même si je ne peux pas encore le prouver."
+      }
+    },
+    "examine-cracked-exhibit": {
+      "start": {
+        "text": "« Secousses périodiques — tout à fait naturelles. Rien à craindre. » La fissure passe exactement sur le mot « naturelles ». Quelqu'un a ri trop fort, puis s'est tu."
+      }
+    },
+    "examine-moon-chart": {
+      "start": {
+        "text": "Une grande carte astronomique. Deux lunes — l'une ambrée, l'autre argentée — représentées dans des dizaines de positions sur leurs cycles respectifs. La carte est étiquetée « Relevé astronomique décoratif, ère pré-scientifique. »"
+      },
+      "start2": {
+        "text": "Mais certaines positions sont marquées d'un petit symbole — comme un cercle dans un cercle. Le même symbole est gravé dans le sol de cette pièce, près de la porte. Tu l'as presque raté."
+      }
+    },
+    "examine-crystal-ceiling": {
+      "start": {
+        "text": "Les panneaux de plafond sont anciens — bien plus anciens que les murs du musée. Du cristal taillé, disposé en grille précise. À la lumière du matin, ils projettent des ombres d'un ambre chaud."
+      },
+      "start2": {
+        "text": "Ils sont accordés à quelque chose. On le voit à la couleur — le même ambre que la grande lune. Pas une coïncidence. Quelqu'un a choisi cette couleur délibérément, il y a longtemps."
+      }
+    },
+    "examine-unreadable-script": {
+      "start": {
+        "text": "Panneau de pierre de la section mythologie. Une inscription en un script inconnu — des boucles et des courbes qui ressemblent à des mots, pas à des motifs. L'étiquette du musée dit « décoratif »."
+      },
+      "start2": {
+        "text": "Ce n'est pas décoratif. Tu ne sais pas comment tu le sais, mais tu le sais. Quoi que cela dise, c'était fait pour être lu."
+      }
+    },
+    "sleep-temple-intro": {
+      "start": {
+        "text": "La règle ici, c'est le silence, ou les chuchotements. Tu le savais avant qu'on te le dise. L'espace le rend évident."
+      },
+      "start2": {
+        "text": "De petits lits circulaires disposés en motif sur le sol. Le plafond brille d'ambre. Tu ressens quelque chose — pas tout à fait le sommeil. Comme le début du sommeil. Comme sa possibilité."
+      }
+    },
+    "examine-circular-beds": {
+      "start": {
+        "text": "Les lits sont taillés dans la même pierre que le sol. Circulaires. Bas. La disposition n'est pas aléatoire — chacun se trouve à une intersection de lignes gravées dans le sol."
+      },
+      "start2": {
+        "text": "Quelqu'un les a placés comme un constructeur de ponts place ses appuis. Pas pour le confort. Pour la position."
+      }
+    },
+    "examine-temple-crystals": {
+      "start": {
+        "text": "Les cristaux du plafond projettent une lumière ambrée dans la pièce. Pas un ambre chaud comme un feu — différent. Plus calme. La couleur que prend la grande lune juste après son lever."
+      },
+      "start2": {
+        "text": "Ta grand-mère t'amenait ici quand tu étais enfant. Tu dormais toujours bien. Tu n'avais pas pensé à demander pourquoi."
+      }
+    },
+    "examine-temple-floor": {
+      "start": {
+        "text": "Près de l'entrée, gravé dans la pierre — un petit symbole. Un cercle dans un cercle. Tu l'as déjà vu. Sur la carte des lunes au musée."
       }
     },
     "lix-default": {
@@ -368,6 +505,27 @@ export default {
       "description": "Une vue imprenable sur l'océan et les îles lointaines",
       "hotspots": {
         "telescope": "Regarder dans le télescope"
+      }
+    },
+    "museum": {
+      "name": "Le Musée",
+      "description": "Un nouveau bâtiment sur un ancien emplacement — géologie du Verdium, histoire insulaire, et une section mythologie que personne ne comprend vraiment",
+      "hotspots": {
+        "curator-valdin": "Valdin",
+        "curator-aosse": "Aosse",
+        "cracked-exhibit": "Panneau d'exposition fissuré",
+        "moon-chart": "Carte des deux lunes",
+        "crystal-ceiling": "Panneaux de cristal du plafond",
+        "unreadable-script": "Inscription illisible"
+      }
+    },
+    "sleep-temple": {
+      "name": "Temple du Sommeil",
+      "description": "Le temple du sommeil du village — lits circulaires, plafond de cristal ambré, et un silence qui ne demande rien",
+      "hotspots": {
+        "circular-beds": "Les lits circulaires",
+        "temple-crystals": "Plafond de cristal ambré",
+        "temple-floor": "Symbole gravé dans le sol"
       }
     },
     "forest-path": {

@@ -55,7 +55,7 @@ export const LOCATIONS = {
     name: 'Tidewatcher Village',
     island: 'Cliff Haven',
     description: 'A cozy village perched between cliff tops and the sea',
-    connections: ['mine-entrance', 'cliff-overlook'],
+    connections: ['mine-entrance', 'cliff-overlook', 'museum', 'sleep-temple'],
     hotspots: [
       {
         id: 'brin', x: 375, y: 338, width: 75, height: 75,
@@ -80,6 +80,71 @@ export const LOCATIONS = {
         id: 'telescope', x: 640, y: 488, width: 63, height: 56,
         label: 'Look through the telescope', action: 'examine',
         dialogueId: 'examine-telescope',
+      },
+    ],
+  },
+
+  'museum': {
+    name: 'The Museum',
+    island: 'Cliff Haven',
+    description: 'A new building over an old site — Verdium geology, island history, and a mythology section nobody fully understands',
+    introDialogue: 'museum-intro',
+    connections: ['tidewatcher-village'],
+    hotspots: [
+      {
+        id: 'curator-valdin', x: 700, y: 350, width: 75, height: 75,
+        label: 'Valdin', action: 'dialogue', character: 'curator-valdin',
+        dialogueId: 'curator-valdin-default',
+      },
+      {
+        id: 'curator-aosse', x: 400, y: 370, width: 75, height: 75,
+        label: 'Aosse', action: 'dialogue', character: 'curator-aosse',
+        dialogueId: 'curator-aosse-default',
+      },
+      {
+        id: 'cracked-exhibit', x: 850, y: 430, width: 100, height: 60,
+        label: 'Cracked exhibit sign', action: 'examine',
+        dialogueId: 'examine-cracked-exhibit',
+      },
+      {
+        id: 'moon-chart', x: 250, y: 280, width: 110, height: 70,
+        label: 'Twin-moon chart', action: 'examine',
+        dialogueId: 'examine-moon-chart',
+      },
+      {
+        id: 'crystal-ceiling', x: 640, y: 180, width: 200, height: 60,
+        label: 'Crystal ceiling panels', action: 'examine',
+        dialogueId: 'examine-crystal-ceiling',
+      },
+      {
+        id: 'unreadable-script', x: 480, y: 450, width: 100, height: 60,
+        label: 'Unreadable inscription', action: 'examine',
+        dialogueId: 'examine-unreadable-script',
+      },
+    ],
+  },
+
+  'sleep-temple': {
+    name: 'Sleep Temple',
+    island: 'Cliff Haven',
+    description: 'The village sleep temple — circular beds, amber crystal ceiling, and a silence that asks nothing of you',
+    introDialogue: 'sleep-temple-intro',
+    connections: ['tidewatcher-village'],
+    hotspots: [
+      {
+        id: 'circular-beds', x: 450, y: 380, width: 200, height: 100,
+        label: 'The circular beds', action: 'examine',
+        dialogueId: 'examine-circular-beds',
+      },
+      {
+        id: 'temple-crystals', x: 640, y: 160, width: 180, height: 60,
+        label: 'Amber crystal ceiling', action: 'examine',
+        dialogueId: 'examine-temple-crystals',
+      },
+      {
+        id: 'temple-floor', x: 640, y: 480, width: 120, height: 50,
+        label: 'Carved floor symbol', action: 'examine',
+        dialogueId: 'examine-temple-floor',
       },
     ],
   },

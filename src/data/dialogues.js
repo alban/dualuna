@@ -62,6 +62,11 @@ export const DIALOGUES = {
           completeObjective: { quest: 'tremors-in-the-deep', objective: 'talk-gael' },
           setFlags: { 'talked-to-gael': true },
         },
+        next: 'museum',
+      },
+      museum: {
+        speaker: 'foreman-gael',
+        text: 'And the museum — Valdin and Aosse opened it today. Private visit. They\'re friends. Go when you have a moment. I have a feeling the geology section might interest you.',
         next: null,
       },
     },
@@ -186,6 +191,239 @@ export const DIALOGUES = {
     },
   },
 
+  // ====== MUSEUM ======
+  'museum-intro': {
+    startNode: 'start',
+    nodes: {
+      start: {
+        speaker: null,
+        text: 'The museum is new. Built on the site of something older — you can feel it in the stone floor, though you couldn\'t say why.',
+        next: 'start2',
+      },
+      start2: {
+        speaker: null,
+        text: 'Today is a private visit before the public opening. Aosse met you at the door, excited. Valdin is already checking that every label is exactly right.',
+        next: null,
+      },
+    },
+  },
+
+  'curator-valdin-default': {
+    startNode: 'start',
+    nodes: {
+      start: {
+        speaker: 'curator-valdin',
+        text: 'Ah — good, you came. Three things I need from you before we open. Your miner\'s eye on the geology exhibit, and your help finding a Verdium sample that\'s gone missing.',
+        choices: [
+          { text: 'What about the crack in the exhibit sign?', next: 'crack' },
+          { text: 'The geology exhibit — I\'ll take a look.', next: 'geology' },
+          { text: 'Who took the Verdium sample?', next: 'sample' },
+        ],
+      },
+      crack: {
+        speaker: 'curator-valdin',
+        text: 'Happened at dawn. Tremor. The sign says "Periodic tremors — completely natural. Nothing to worry about." The crack appeared through the word "natural." Aosse thinks it\'s funny. I do not.',
+        choices: [
+          { text: 'The tremors have been getting worse.', next: 'worse' },
+          { text: 'Maybe it is a little funny.', next: 'funny' },
+        ],
+      },
+      worse: {
+        speaker: 'curator-valdin',
+        text: 'I know. I read the geological surveys. Our explanation is correct — periodic tremors are a known feature of these islands. But... the frequency is new. I\'ve noted it.',
+        next: 'geology',
+      },
+      funny: {
+        speaker: 'curator-valdin',
+        text: 'It is not funny. It is a question of institutional credibility. An exhibit that contradicts itself on opening day is — I\'ve noted the frequency anomaly, if that helps.',
+        next: 'geology',
+      },
+      geology: {
+        speaker: 'curator-valdin',
+        text: 'The Verdium display. I want to know if the sample placement makes sense to someone who actually works in the mine. The labels are accurate — but are they true?',
+        effects: { setFlags: { 'valdin-geology-task': true } },
+        next: null,
+      },
+      sample: {
+        speaker: 'curator-valdin',
+        text: 'Nobody took it. It was here yesterday. Now it\'s gone. Ask around — the friends who came early. Someone moved it without telling me.',
+        effects: { setFlags: { 'valdin-sample-task': true } },
+        next: null,
+      },
+    },
+  },
+
+  'curator-aosse-default': {
+    startNode: 'start',
+    nodes: {
+      start: {
+        speaker: 'curator-aosse',
+        text: 'You felt it too, didn\'t you? When you walked in. Something about the floor.',
+        choices: [
+          { text: 'I... yes, actually. What is it?', next: 'floor' },
+          { text: 'You mean the tremor? At dawn?', next: 'tremor' },
+          { text: 'Tell me about the mythology section.', next: 'mythology' },
+        ],
+      },
+      floor: {
+        speaker: 'curator-aosse',
+        text: 'A hum. Very faint. Only when you stand still. Valdin says it\'s resonance from the cliff face. I think it\'s the building itself — it was something before it was a museum.',
+        next: 'mythology',
+      },
+      tremor: {
+        speaker: 'curator-aosse',
+        text: 'That too. But I meant the room. Not a sound — a feeling. Like the building is older than we think. We found three layers of foundation when we were digging. Nobody knows what the bottom layer is.',
+        next: 'mythology',
+      },
+      mythology: {
+        speaker: 'curator-aosse',
+        text: 'That\'s my section. Valdin is embarrassed by it — "mythology" sounds unscholarly. But old songs remember things that documents forget. That inscription — the one nobody can read — it has grammar. It\'s a language.',
+        choices: [
+          { text: 'Where is it from?', next: 'inscription' },
+          { text: 'What does the moon chart show?', next: 'moons' },
+        ],
+      },
+      inscription: {
+        speaker: 'curator-aosse',
+        text: 'No idea. I\'ve sent copies to Luminara, to the Korrim elders. Nobody recognizes it. But look at the ceiling — those crystal panels. And look at the inscription. The same symbol appears in both. That\'s not decoration. That\'s a system.',
+        effects: { setFlags: { 'aosse-inscription-hint': true } },
+        next: null,
+      },
+      moons: {
+        speaker: 'curator-aosse',
+        text: 'Valdin calls it "decorative astronomical record." But those symbols repeat. And the gaps between repeats — they correspond to specific double-moon alignments. I can feel it, even if I can\'t prove it yet.',
+        effects: { setFlags: { 'aosse-moon-hint': true } },
+        next: null,
+      },
+    },
+  },
+
+  'examine-cracked-exhibit': {
+    startNode: 'start',
+    nodes: {
+      start: {
+        speaker: null,
+        text: '"Periodic tremors — completely natural. Nothing to worry about." The crack runs precisely through the word "natural." Someone laughed too hard and then went quiet.',
+        next: null,
+      },
+    },
+  },
+
+  'examine-moon-chart': {
+    startNode: 'start',
+    nodes: {
+      start: {
+        speaker: null,
+        text: 'A large astronomical chart. Two moons — one amber, one silver — shown in dozens of positions across their different cycles. The chart is labeled "Decorative astronomical record, pre-scientific era."',
+        next: 'start2',
+      },
+      start2: {
+        speaker: null,
+        text: 'But some positions are marked with a small symbol — like a circle inside a circle. The same symbol is carved into the floor of this room, near the door. You almost didn\'t notice it.',
+        effects: { setFlags: { 'noticed-moon-symbol': true } },
+        next: null,
+      },
+    },
+  },
+
+  'examine-crystal-ceiling': {
+    startNode: 'start',
+    nodes: {
+      start: {
+        speaker: null,
+        text: 'The ceiling panels are old — much older than the museum walls. Cut crystal, set in a precise grid. In morning light, they cast warm amber shadows.',
+        next: 'start2',
+      },
+      start2: {
+        speaker: null,
+        text: 'They\'re tuned to something. You can tell by the color — the same amber as the larger moon. Not a coincidence. Someone chose that color deliberately, a long time ago.',
+        effects: { setFlags: { 'examined-crystal-ceiling': true } },
+        next: null,
+      },
+    },
+  },
+
+  'examine-unreadable-script': {
+    startNode: 'start',
+    nodes: {
+      start: {
+        speaker: null,
+        text: 'Stone panel from the mythology section. An inscription in an unknown script — loops and curves that feel like words, not patterns. The museum label calls it "decorative."',
+        next: 'start2',
+      },
+      start2: {
+        speaker: null,
+        text: 'It isn\'t decorative. You don\'t know how you know this, but you know it. Whatever this says, it was meant to be read.',
+        effects: { setFlags: { 'examined-unreadable-script': true } },
+        next: null,
+      },
+    },
+  },
+
+  // ====== SLEEP TEMPLE ======
+  'sleep-temple-intro': {
+    startNode: 'start',
+    nodes: {
+      start: {
+        speaker: null,
+        text: 'The rule here is silence, or whispers. You knew this before you were told. The space makes it obvious.',
+        next: 'start2',
+      },
+      start2: {
+        speaker: null,
+        text: 'Small circular beds arranged in a pattern across the floor. The ceiling glows amber. You feel something — not sleep, exactly. Like the beginning of sleep. Like the possibility of it.',
+        next: null,
+      },
+    },
+  },
+
+  'examine-circular-beds': {
+    startNode: 'start',
+    nodes: {
+      start: {
+        speaker: null,
+        text: 'The beds are carved from the same stone as the floor. Circular. Low. The arrangement isn\'t random — each one sits at an intersection of faint lines carved into the floor.',
+        next: 'start2',
+      },
+      start2: {
+        speaker: null,
+        text: 'Someone laid them out the way a bridge builder lays supports. Not for comfort. For position.',
+        next: null,
+      },
+    },
+  },
+
+  'examine-temple-crystals': {
+    startNode: 'start',
+    nodes: {
+      start: {
+        speaker: null,
+        text: 'The ceiling crystals cast amber light across the room. Not warm amber like a fire — different. Calmer. The color the large moon goes just after rising.',
+        next: 'start2',
+      },
+      start2: {
+        speaker: null,
+        text: 'Your grandmother brought you here as a child. You always slept well. You didn\'t think to ask why.',
+        next: null,
+      },
+    },
+  },
+
+  'examine-temple-floor': {
+    startNode: 'start',
+    nodes: {
+      start: {
+        speaker: null,
+        text: 'Near the entrance, carved into the stone — a small symbol. Circle inside a circle. You\'ve seen this before. On the moon chart in the museum.',
+        effects: {
+          setFlags: { 'connected-temple-museum-symbol': true },
+          completeObjective: { quest: 'tremors-in-the-deep', objective: 'notice-the-pattern' },
+        },
+        next: null,
+      },
+    },
+  },
+
   // ====== VILLAGE ======
   'brin-default': {
     startNode: 'start',
@@ -224,6 +462,11 @@ export const DIALOGUES = {
           discoverIslands: ['spark-cove', 'luminara'],
           setFlags: { 'brin-approved-journey': true },
         },
+        next: 'temple',
+      },
+      temple: {
+        speaker: 'village-elder-brin',
+        text: 'And visit the sleep temple before you go. I know it sounds strange — but the building knows things. It\'s always known. Sleep there once if you can.',
         next: null,
       },
       stopmine: {
@@ -496,7 +739,22 @@ export const DIALOGUES = {
         choices: [
           { text: 'Something exists beneath the ocean?!', next: 'beneath' },
           { text: 'Are we severing those connections by mining?', next: 'severing' },
+          { text: 'There\'s a chart in the Cliff Haven museum — twin-moon alignments.', next: 'moonchart', requireFlag: 'noticed-moon-symbol' },
         ],
+      },
+      moonchart: {
+        speaker: 'scholar-eline',
+        text: 'I know that chart. I\'ve been requesting a proper copy for three years. Those alignment symbols — they appear in our oldest geological surveys too. Someone used them as reference points. For what, we don\'t know.',
+        next: 'moonscript',
+      },
+      moonscript: {
+        speaker: 'scholar-eline',
+        text: 'And the inscription in the mythology section — the unreadable one. There is a fragment in our deep archives that uses the same script. I have never found anyone who can read either of them. They are the oldest texts we know of.',
+        effects: {
+          completeObjective: { quest: 'tremors-in-the-deep', objective: 'research-archives' },
+          setFlags: { 'eline-insight': true, 'learned-about-deep-ones': true, 'eline-script-connection': true },
+        },
+        next: 'conclude',
       },
       beneath: {
         speaker: 'scholar-eline',

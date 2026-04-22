@@ -1,0 +1,1 @@
+portrait_prompt: Korrim museum curator in Spring-aspect, moss and tiny wildflowers blooming across bark-like skin, patient and open expression, wearing a loose earth-tone tunic, warmly lit amber background

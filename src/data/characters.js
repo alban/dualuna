@@ -58,4 +58,18 @@ export const CHARACTERS = {
     title: 'Forest Warden',
     description: 'A Korrim in their Winter-aspect — bark gray and leafless, but strong and vigilant. Guards the approach to the Elder Grove.',
   },
+  'curator-valdin': {
+    name: 'Valdin',
+    race: 'luminari',
+    gender: 'Weaver',
+    title: 'Museum Curator',
+    description: 'A Luminari Weaver, one half of the couple who founded the Cliff Haven museum. Meticulous, evidence-driven. Bioluminescent patterns flicker nervously when challenged.',
+  },
+  'curator-aosse': {
+    name: 'Aosse',
+    race: 'korrim',
+    gender: 'Spring-aspect',
+    title: 'Museum Curator',
+    description: 'A Korrim in their Spring-aspect, the other half of the museum couple. Drawn to myths and old songs. Patient where Valdin is precise.',
+  },
 };

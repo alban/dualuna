@@ -62,8 +62,19 @@ export class LocationScene extends Phaser.Scene {
 
   drawBackground(location) {
     const { width, height } = this.scale;
+    const state = this.registry.get('gameState');
     const bg = this.add.image(0, 0, `bg-${this.locationId}`).setOrigin(0, 0);
     bg.setDisplaySize(width, height);
+    bg.setTint(this.computeMoonTint(state.dayPhase, state.moonPhase));
+  }
+
+  computeMoonTint(dayPhase, moonPhase) {
+    if (dayPhase === 'day') return 0xffffff;
+    const nightTints = { amber: 0xffcc88, silver: 0xaabbdd, both: 0xddaacc, none: 0x667799 };
+    const eveningTints = { amber: 0xffddbb, silver: 0xddeeff, both: 0xeeddee, none: 0xbbccdd };
+    const morningTints = { amber: 0xffeedd, silver: 0xeef4ff, both: 0xf0eef8, none: 0xddeeff };
+    const map = dayPhase === 'night' ? nightTints : dayPhase === 'evening' ? eveningTints : morningTints;
+    return map[moonPhase] || 0xffffff;
   }
 
   drawDayNight(phase) {

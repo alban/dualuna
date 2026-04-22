@@ -127,6 +127,7 @@ export class MenuScene extends Phaser.Scene {
       inventory: [],
       verdium: 100,
       dayPhase: 'morning',
+      moonPhase: 'silver',
       gameTime: 0,
       dialogueHistory: [],
     });

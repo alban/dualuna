@@ -102,6 +102,9 @@ export default {
       "agree": {
         "text": "Smart girl. Go — Spark Cove, Green Root, Luminara. Velessi know engineering, Korrim know the earth, Luminari keep the old records. Use the harbor. Tell them Brin sent you."
       },
+      "temple": {
+        "text": "And visit the sleep temple before you go. I know it sounds strange — but the building knows things. It's always known. Sleep there once if you can."
+      },
       "stopmine": {
         "text": "Can't. Not yet. Village needs Verdium. But I'll have Gaël pull back from the deep shaft. Go consult the other islands. Find out what we're dealing with."
       }
@@ -163,6 +166,9 @@ export default {
       }
     },
     "foreman-gael-default": {
+      "museum": {
+        "text": "And the museum — Valdin and Aosse opened it today. Private visit. They're friends. Go when you have a moment. I have a feeling the geology section might interest you."
+      },
       "start": {
         "text": "Third tremor this week. Thirty tides in these mines, never felt anything like it.",
         "choices": [
@@ -258,8 +264,15 @@ export default {
         "text": "The first settlers described Verdium as \"bridges between worlds.\" Surface to something below. We assumed metaphor. But what if it's literal?",
         "choices": [
           "Something exists beneath the ocean?!",
-          "Are we severing those connections by mining?"
+          "Are we severing those connections by mining?",
+          "There's a chart in the Cliff Haven museum — twin-moon alignments."
         ]
+      },
+      "moonchart": {
+        "text": "I know that chart. I've been requesting a proper copy for three years. Those alignment symbols — they appear in our oldest geological surveys too. Someone used them as reference points. For what, we don't know."
+      },
+      "moonscript": {
+        "text": "And the inscription in the mythology section — the unreadable one. There is a fragment in our deep archives that uses the same script. I have never found anyone who can read either of them. They are the oldest texts we know of."
       },
       "beneath": {
         "text": "One damaged tablet speaks of \"those who build below the water\" and \"cities where no moon shines.\" Filed under mythology. But your tremors, the seawater, the pulsing sounds... what if it's real?"
@@ -289,6 +302,130 @@ export default {
     "examine-pedestal": {
       "start": {
         "text": "A reading pedestal, humming with Verdium energy. Even here, far from the mines — everything on Dualuna is connected."
+      }
+    },
+    "museum-intro": {
+      "start": {
+        "text": "The museum is new. Built on the site of something older — you can feel it in the stone floor, though you couldn't say why."
+      },
+      "start2": {
+        "text": "Today is a private visit before the public opening. Aosse met you at the door, excited. Valdin is already checking that every label is exactly right."
+      }
+    },
+    "curator-valdin-default": {
+      "start": {
+        "text": "Ah — good, you came. Three things I need from you before we open. Your miner's eye on the geology exhibit, and your help finding a Verdium sample that's gone missing.",
+        "choices": [
+          "What about the crack in the exhibit sign?",
+          "The geology exhibit — I'll take a look.",
+          "Who took the Verdium sample?"
+        ]
+      },
+      "crack": {
+        "text": "Happened at dawn. Tremor. The sign says \"Periodic tremors — completely natural. Nothing to worry about.\" The crack appeared through the word \"natural.\" Aosse thinks it's funny. I do not.",
+        "choices": [
+          "The tremors have been getting worse.",
+          "Maybe it is a little funny."
+        ]
+      },
+      "worse": {
+        "text": "I know. I read the geological surveys. Our explanation is correct — periodic tremors are a known feature of these islands. But... the frequency is new. I've noted it."
+      },
+      "funny": {
+        "text": "It is not funny. It is a question of institutional credibility. An exhibit that contradicts itself on opening day is — I've noted the frequency anomaly, if that helps."
+      },
+      "geology": {
+        "text": "The Verdium display. I want to know if the sample placement makes sense to someone who actually works in the mine. The labels are accurate — but are they true?"
+      },
+      "sample": {
+        "text": "Nobody took it. It was here yesterday. Now it's gone. Ask around — the friends who came early. Someone moved it without telling me."
+      }
+    },
+    "curator-aosse-default": {
+      "start": {
+        "text": "You felt it too, didn't you? When you walked in. Something about the floor.",
+        "choices": [
+          "I... yes, actually. What is it?",
+          "You mean the tremor? At dawn?",
+          "Tell me about the mythology section."
+        ]
+      },
+      "floor": {
+        "text": "A hum. Very faint. Only when you stand still. Valdin says it's resonance from the cliff face. I think it's the building itself — it was something before it was a museum."
+      },
+      "tremor": {
+        "text": "That too. But I meant the room. Not a sound — a feeling. Like the building is older than we think. We found three layers of foundation when we were digging. Nobody knows what the bottom layer is."
+      },
+      "mythology": {
+        "text": "That's my section. Valdin is embarrassed by it — \"mythology\" sounds unscholarly. But old songs remember things that documents forget. That inscription — the one nobody can read — it has grammar. It's a language.",
+        "choices": [
+          "Where is it from?",
+          "What does the moon chart show?"
+        ]
+      },
+      "inscription": {
+        "text": "No idea. I've sent copies to Luminara, to the Korrim elders. Nobody recognizes it. But look at the ceiling — those crystal panels. And look at the inscription. The same symbol appears in both. That's not decoration. That's a system."
+      },
+      "moons": {
+        "text": "Valdin calls it \"decorative astronomical record.\" But those symbols repeat. And the gaps between repeats — they correspond to specific double-moon alignments. I can feel it, even if I can't prove it yet."
+      }
+    },
+    "examine-cracked-exhibit": {
+      "start": {
+        "text": "\"Periodic tremors — completely natural. Nothing to worry about.\" The crack runs precisely through the word \"natural.\" Someone laughed too hard and then went quiet."
+      }
+    },
+    "examine-moon-chart": {
+      "start": {
+        "text": "A large astronomical chart. Two moons — one amber, one silver — shown in dozens of positions across their different cycles. The chart is labeled \"Decorative astronomical record, pre-scientific era.\""
+      },
+      "start2": {
+        "text": "But some positions are marked with a small symbol — like a circle inside a circle. The same symbol is carved into the floor of this room, near the door. You almost didn't notice it."
+      }
+    },
+    "examine-crystal-ceiling": {
+      "start": {
+        "text": "The ceiling panels are old — much older than the museum walls. Cut crystal, set in a precise grid. In morning light, they cast warm amber shadows."
+      },
+      "start2": {
+        "text": "They're tuned to something. You can tell by the color — the same amber as the larger moon. Not a coincidence. Someone chose that color deliberately, a long time ago."
+      }
+    },
+    "examine-unreadable-script": {
+      "start": {
+        "text": "Stone panel from the mythology section. An inscription in an unknown script — loops and curves that feel like words, not patterns. The museum label calls it \"decorative.\""
+      },
+      "start2": {
+        "text": "It isn't decorative. You don't know how you know this, but you know it. Whatever this says, it was meant to be read."
+      }
+    },
+    "sleep-temple-intro": {
+      "start": {
+        "text": "The rule here is silence, or whispers. You knew this before you were told. The space makes it obvious."
+      },
+      "start2": {
+        "text": "Small circular beds arranged in a pattern across the floor. The ceiling glows amber. You feel something — not sleep, exactly. Like the beginning of sleep. Like the possibility of it."
+      }
+    },
+    "examine-circular-beds": {
+      "start": {
+        "text": "The beds are carved from the same stone as the floor. Circular. Low. The arrangement isn't random — each one sits at an intersection of faint lines carved into the floor."
+      },
+      "start2": {
+        "text": "Someone laid them out the way a bridge builder lays supports. Not for comfort. For position."
+      }
+    },
+    "examine-temple-crystals": {
+      "start": {
+        "text": "The ceiling crystals cast amber light across the room. Not warm amber like a fire — different. Calmer. The color the large moon goes just after rising."
+      },
+      "start2": {
+        "text": "Your grandmother brought you here as a child. You always slept well. You didn't think to ask why."
+      }
+    },
+    "examine-temple-floor": {
+      "start": {
+        "text": "Near the entrance, carved into the stone — a small symbol. Circle inside a circle. You've seen this before. On the moon chart in the museum."
       }
     },
     "lix-default": {
@@ -368,6 +505,27 @@ export default {
       "description": "A breathtaking view of the ocean and distant islands",
       "hotspots": {
         "telescope": "Look through the telescope"
+      }
+    },
+    "museum": {
+      "name": "The Museum",
+      "description": "A new building over an old site — Verdium geology, island history, and a mythology section nobody fully understands",
+      "hotspots": {
+        "curator-valdin": "Valdin",
+        "curator-aosse": "Aosse",
+        "cracked-exhibit": "Cracked exhibit sign",
+        "moon-chart": "Twin-moon chart",
+        "crystal-ceiling": "Crystal ceiling panels",
+        "unreadable-script": "Unreadable inscription"
+      }
+    },
+    "sleep-temple": {
+      "name": "Sleep Temple",
+      "description": "The village sleep temple — circular beds, amber crystal ceiling, and a silence that asks nothing of you",
+      "hotspots": {
+        "circular-beds": "The circular beds",
+        "temple-crystals": "Amber crystal ceiling",
+        "temple-floor": "Carved floor symbol"
       }
     },
     "forest-path": {

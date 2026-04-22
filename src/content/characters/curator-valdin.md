@@ -1,0 +1,1 @@
+portrait_prompt: Luminari museum curator, scholarly and precise, bioluminescent blue-violet patterns along their temples, neat dark robes, holding a small crystal tablet, expression of careful scrutiny, warm amber-lit museum interior background
