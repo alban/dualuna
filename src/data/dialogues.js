@@ -476,7 +476,7 @@ export const DIALOGUES = {
           discoverIslands: ['spark-cove', 'luminara'],
           setFlags: { 'brin-approved-journey': true },
         },
-        next: null,
+        next: 'temple',
       },
     },
   },

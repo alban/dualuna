@@ -9,6 +9,7 @@ export const QUESTS = {
       { id: 'consult-lix', description: 'Consult Lix the engineer on Spark Cove' },
       { id: 'consult-mossa', description: 'Consult Elder Mossa on Green Root' },
       { id: 'research-archives', description: 'Research cliff geology in the Luminara archives' },
+      { id: 'notice-the-pattern', description: 'Connect the museum and the sleep temple' },
     ],
     onComplete: {
       setFlags: { 'ch1-investigation-complete': true },
