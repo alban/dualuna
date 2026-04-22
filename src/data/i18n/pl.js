@@ -1,325 +1,599 @@
-// Polish — TODO: translate
-// Copy of English, replace values with Polish translations
+// Polish — translated by Claude Sonnet 4.6, 2026-04-22
 export default {
   "ui": {
-    "newGame": "New Game",
-    "continue": "Continue",
-    "save": "💾 Save",
-    "map": "🗺 Map",
-    "back": "← Back",
-    "close": "▸ Close",
-    "continueDialogue": "▸ Continue",
-    "goTo": "Go to:",
+    "newGame": "Nowa Gra",
+    "continue": "Kontynuuj",
+    "save": "💾 Zapisz",
+    "map": "🗺 Mapa",
+    "back": "← Wróć",
+    "close": "▸ Zamknij",
+    "continueDialogue": "▸ Dalej",
+    "goTo": "Idź do:",
     "verdium": "Verdium",
-    "gameSaved": "Game saved!",
-    "found": "Found:",
-    "current": "Current:",
-    "sailingTo": "Sailing to",
-    "loading": "Loading Dualuna...",
-    "chooseLanguage": "Choose your language",
-    "subtitle": "The Verdium Collector",
-    "tagline": "A world of islands above, mysteries below",
-    "phase": "Phase 1 — Chapter 1: The Mine Problem",
-    "worldMapTitle": "The Islands of Dualuna"
+    "gameSaved": "Gra zapisana!",
+    "found": "Znaleziono:",
+    "current": "Aktualne:",
+    "sailingTo": "Płyniesz do",
+    "loading": "Ładowanie Dualuny...",
+    "chooseLanguage": "Wybierz język",
+    "subtitle": "Zbieraczka Verdium",
+    "tagline": "Świat wysp na powierzchni, tajemnice w głębi",
+    "phase": "Faza 1 — Rozdział 1: Problem z kopalnią",
+    "worldMapTitle": "Wyspy Dualuny",
+    "fullscreen": "⛶",
+    "exitFullscreen": "⛶",
+    "github": "Źródło",
+    "fullscreenLabel": "Pełny ekran",
+    "exitFullscreenLabel": "Wyjdź z pełnego ekranu",
+    "saveLabel": "Zapisz",
+    "languageLabel": "Język",
+    "exportLabel": "Eksportuj zapis",
+    "importLabel": "Importuj zapis",
+    "importSuccess": "Zapis wczytany!",
+    "importError": "Nieprawidłowy plik zapisu",
+    "restart": "Zacznij od nowa"
+  },
+  "quests": {
+    "tremors-in-the-deep": "Wstrząsy w głębi",
+    "the-deep-response": "Odpowiedź z głębin"
   },
   "dialogues": {
-    "intro-mine": {
-      "start": {
-        "text": "Dawn tremor. Third one this week."
-      },
-      "start2": {
-        "text": "Verdium glints at the tunnel mouth. Without it, Dualuna dies."
-      }
-    },
-    "foreman-gael-default": {
-      "start": {
-        "text": "Third tremor this week. Thirty tides in these mines, never felt anything like it.",
-        "choices": [
-          "What's causing them?",
-          "Should we stop mining?",
-          "Anyone hurt?"
-        ]
-      },
-      "cause": {
-        "text": "That's what worries me. Lower shaft's changed — wetter, new cracks. Tap the rock and it sounds... hollow. Something's behind there.",
-        "choices": [
-          "I'll check the shaft myself.",
-          "Could it be natural?"
-        ]
-      },
-      "stop": {
-        "text": "Stop? Everything needs Verdium. Brin won't allow it without proof. All we've got is shaky ground and worried faces."
-      },
-      "hurt": {
-        "text": "Not yet. But a support beam cracked yesterday. Léra patched it. If these tremors get worse..."
-      },
-      "natural": {
-        "text": "Thought so at first. Twin moons pull the earth, sure. But this is different. Rhythmic. Almost... deliberate."
-      },
-      "examine": {
-        "text": "Get down to the lower shaft. See those cracks. Check the water pooling down there. And talk to Léra — she noticed things I missed."
-      }
-    },
     "lera-default": {
       "start": {
-        "text": "Hey! Feel that one at dawn? Nearly fell off the rope ladder! My Heights-sense went crazy!",
+        "text": "Hej! Czułaś ten o świcie? Prawie spadłam z drabiny sznurowej! Mój Zmysł Wysokości oszalał!",
         "choices": [
-          "Gaël says the lower shaft's bad.",
-          "What do you think it is?",
-          "You okay?"
+          "Gaël mówi, że dolny szyb jest w złym stanie.",
+          "Co twoim zdaniem to jest?",
+          "Wszystko dobrze?"
         ]
       },
       "shaft": {
-        "text": "Worse than bad! I pressed my ear to the far wall down there. Heard something. Not rock. Not water. A low hum. Alive.",
+        "text": "Gorzej niż w złym! Przyłożyłam ucho do ściany w głębi. Coś usłyszałam. Nie skałę. Nie wodę. Niski brzęk. Żywy.",
         "choices": [
-          "Alive?!",
-          "We should consult other islands."
+          "Żywy?!",
+          "Powinnyśmy skonsultować się z innymi wyspami."
         ]
       },
       "theory": {
-        "text": "Okay, this'll sound crazy. The cliffs go way deeper than we mine. What if something's down there? Something that doesn't like the digging?"
+        "text": "Dobra, to brzmi jak szaleństwo. Klify sięgają dużo głębiej niż kopiemy. A co jeśli jest tam coś na dole? Coś, czemu nie podoba się wydobycie?"
       },
       "okay": {
-        "text": "Ha! Takes more than a quake to shake a Heights-born! But... something feels wrong in the rock. Can't explain it."
+        "text": "Ha! Trzęsienie ziemi mnie nie pokona! Ale... coś jest nie tak ze skałą. Nie potrafię tego wytłumaczyć."
       },
       "alive": {
-        "text": "Like a heartbeat! Deep, slow, from the sea side. Never heard anything like it. I wasn't imagining it."
+        "text": "Jak bicie serca! Głębokie, powolne, od strony morza. Nigdy czegoś takiego nie słyszałam. Nie wyobrażałam sobie tego."
       },
       "consult": {
-        "text": "We're miners, not scholars! We need help. Lix on Spark Cove knows geology. Elder Mossa on Green Root can sense things we can't. And the Luminari might have records.",
+        "text": "Jesteśmy górnikami, nie uczonymi! Potrzebujemy pomocy. Lix z Zatoki Iskier zna się na geologii. Starszy Mossa z Zielonego Korzenia wyczuwa rzeczy, których my nie możemy. A Luminari mogą mieć zapiski.",
         "choices": [
-          "Good idea. I'll visit them all.",
-          "That's a lot of sailing."
+          "Dobry pomysł. Odwiedzę ich wszystkich.",
+          "To dużo żeglowania."
         ]
       },
       "govisit": {
-        "text": "Be careful! And come back with answers. I don't wanna be here when whatever's down there pushes harder."
+        "text": "Uważaj! I wróć z odpowiedziami. Nie chcę tu być, gdy cokolwiek jest tam na dole, zacznie naciskać mocniej."
       },
       "sailing": {
-        "text": "Ha! Sea air'll do you good, cave-dweller! Use the harbor. Brin can arrange boats. Go talk to everyone!"
-      }
-    },
-    "examine-verdium-crate": {
-      "start": {
-        "text": "Crates of fresh Verdium, glinting green. Powers the lamps, feeds the soil, keeps Dualuna alive."
-      }
-    },
-    "examine-cracks": {
-      "start": {
-        "text": "Wide cracks across the tunnel wall. The rock feels warm. Through the biggest crack... a faint, rhythmic sound. Like breathing."
-      }
-    },
-    "examine-water": {
-      "start": {
-        "text": "Salt water. Sea water. Deep in the cliff, far from the ocean. It shimmers strangely in the lantern light."
-      }
-    },
-    "examine-vein": {
-      "start": {
-        "text": "A thick Verdium vein pulses green. Near the cracks, the glow flickers. Something's drawing energy from the other side."
+        "text": "Ha! Morskie powietrze dobrze ci zrobi, jaskiniowcu! Skorzystaj z portu. Brin może załatwić łodzie. Idź porozmawiać ze wszystkimi!"
       }
     },
     "brin-default": {
       "start": {
-        "text": "There you are. Felt the tremor too. Whole village is worried. What does Gaël say?",
+        "text": "Jesteś tu. Też poczułam wstrząs. Cała wioska jest zaniepokojona. Co mówi Gaël?",
         "choices": [
-          "Cracks and salt water in the lower shaft.",
-          "He's worried. We need to investigate.",
-          "Haven't talked to him yet."
+          "Pęknięcia i słona woda w dolnym szybie.",
+          "Jest zaniepokojony. Musimy zbadać sprawę.",
+          "Jeszcze z nim nie rozmawiałam."
         ]
       },
       "report": {
-        "text": "Salt water? In the deep shaft? We've mined these cliffs for generations. Never hit seawater. If the rock between us and the ocean is cracking...",
+        "text": "Słona woda? W głębokim szybie? Wydobywamy z tych klifów od pokoleń. Nigdy nie trafiliśmy na morską wodę. Jeśli skała między nami a oceanem pęka...",
         "choices": [
-          "Léra says we should consult the other islands.",
-          "Should we stop mining?"
+          "Léra mówi, że powinnyśmy skonsultować się z innymi wyspami.",
+          "Czy powinniśmy zatrzymać wydobycie?"
         ]
       },
       "worried": {
-        "text": "Then go see it yourself. Check the cracks, touch the rock. I need your Tidewatcher instincts on this."
+        "text": "To idź i sama to sprawdź. Zbadaj pęknięcia, dotknij skały. Potrzebuję twojego Zmysłu Obserwatorki Pływów."
       },
       "gofirst": {
-        "text": "Mine first. Talk to Gaël, examine the shaft. I need a report. The village needs Verdium, but not at the cost of lives."
+        "text": "Najpierw kopalnia. Porozmawiaj z Gaëlem, zbadaj szyb. Potrzebuję raportu. Wioska potrzebuje Verdium, ale nie kosztem ludzkich żyć."
       },
       "agree": {
-        "text": "Smart girl. Go — Spark Cove, Green Root, Luminara. Velessi know engineering, Korrim know the earth, Luminari keep the old records. Use the harbor. Tell them Brin sent you."
+        "text": "Mądra dziewczyna. Jedź — Zatoka Iskier, Zielony Korzeń, Luminara. Velessi znają inżynierię, Korrim znają ziemię, Luminari przechowują stare zapiski. Skorzystaj z portu. Powiedz im, że Brin cię posyła."
+      },
+      "temple": {
+        "text": "I odwiedź świątynię snu zanim wyjedziesz. Wiem, że to brzmi dziwnie — ale ten budynek coś wie. Zawsze wiedział. Prześpij się tam choć raz, jeśli możesz."
       },
       "stopmine": {
-        "text": "Can't. Not yet. Village needs Verdium. But I'll have Gaël pull back from the deep shaft. Go consult the other islands. Find out what we're dealing with."
-      }
-    },
-    "harbor-travel": {
-      "start": {
-        "text": "Cliff Haven harbor. Boats rock gently in the swell. You can sail to any known island.",
-        "choices": [
-          "Open the world map",
-          "Not right now"
-        ]
-      },
-      "map": {
-        "text": "You study the sailing charts..."
-      },
-      "end": {
-        "text": ""
-      }
-    },
-    "examine-telescope": {
-      "start": {
-        "text": "Green Root to the north — forests. Spark Cove east — workshop smoke. Luminara south — crystal spires catching both moons."
-      },
-      "start2": {
-        "text": "The ocean between the islands is vast. No one knows what lies beneath. At least... that's what everyone believes."
+        "text": "Nie możemy. Jeszcze nie. Wioska potrzebuje Verdium. Ale każę Gaëlowi wycofać się z głębokiego szybu. Jedź skonsultować się z innymi wyspami. Dowiedz się, z czym mamy do czynienia."
       }
     },
     "roothold-default": {
       "start": {
-        "text": "Halt. Elder Grove is sacred. What brings a Tidewatcher here?",
+        "text": "Stój. Gaj Starszych jest święty. Co sprowadza Obserwatorkę Pływów?",
         "choices": [
-          "I need to see Elder Mossa. About the tremors.",
-          "Our mines are in trouble."
+          "Muszę zobaczyć się ze Starszym Mossą. W sprawie wstrząsów.",
+          "Nasza kopalnia ma kłopoty."
         ]
       },
       "tremors": {
-        "text": "Tremors... We've felt them too. Even the Great Tree's roots are restless. Go. Mossa will want to hear this."
+        "text": "Wstrząsy... My też je czuliśmy. Nawet korzenie Wielkiego Drzewa są niespokojne. Idź. Mossa będzie chciała to usłyszeć."
       },
       "learn": {
-        "text": "The earth's been louder these past days. Speak with Mossa. The Elder knows more."
+        "text": "Ziemia była głośniejsza przez ostatnie dni. Porozmawiaj z Mossą. Starszy wie więcej."
       }
     },
     "elder-mossa-default": {
       "start": {
-        "text": "I felt your footsteps, Tidewatcher. The earth carries all things. Lately... it carries distress.",
+        "text": "Poczułam twoje kroki, Obserwatorko Pływów. Ziemia niesie wszystko. Ostatnio... niesie niepokój.",
         "choices": [
-          "Salt water in our mines. Where it shouldn't be.",
-          "Can you sense what's causing the tremors?"
+          "Słona woda w naszych kopalniach. Tam, gdzie nie powinna być.",
+          "Czy wyczuwasz przyczynę wstrząsów?"
         ]
       },
       "mining": {
-        "text": "Salt water... The Verdium energy I feel through every root — it falters. The earth isn't just shaking. It's resisting."
+        "text": "Słona woda... Energię Verdium, którą czuję poprzez każdy korzeń — ona chwieje się. Ziemia nie tylko się trzęsie. Ona się opiera."
       },
       "sense": {
-        "text": "The tremors don't come from your rock. They come from below. Deeper than the cliffs. Deeper than the ocean floor."
+        "text": "Wstrząsy nie pochodzą z twojej skały. Przychodzą z dołu. Głębiej niż klify. Głębiej niż dno oceanu."
       },
       "deeper": {
-        "text": "The earth beneath Dualuna's oceans... breathes. A slow rhythm, like a sleeping giant. But lately, the breathing quickens. Something stirs.",
+        "text": "Ziemia pod oceanami Dualuny... oddycha. Powolny rytm, jak śpiący olbrzym. Ale ostatnio oddech przyspiesza. Coś się porusza.",
         "choices": [
-          "Could our mining have disturbed it?",
-          "What do you think is down there?"
+          "Czy nasze wydobycie mogło to zakłócić?",
+          "Co twoim zdaniem jest tam na dole?"
         ]
       },
       "mining-cause": {
-        "text": "Perhaps. Verdium veins connect to... something. When you mine, you sever old bonds. What if those bonds matter to something other than us?"
+        "text": "Być może. Żyły Verdium łączą się z... czymś. Gdy wydobywasz, przecinasz stare więzi. Co jeśli te więzi mają znaczenie dla kogoś innego niż my?"
       },
       "whatis": {
-        "text": "Our oldest songs speak of \"the world beneath the water.\" We thought them poetry. What if they were truth?"
+        "text": "Nasze najstarsze pieśni mówią o «świecie pod wodą». Uważałyśmy je za poezję. Co jeśli to była prawda?"
       },
       "advice": {
-        "text": "Try Luminara — their archives hold what we only remember as song. And that Velessi, Lix? Engineer eyes see what spirit ones miss."
+        "text": "Spróbuj Luminary — ich archiwa zawierają to, co my pamiętamy tylko jako pieśń. I ta Velessi, Lix? Oczy inżyniera widzą to, czego duch nie dostrzeże."
       }
     },
     "examine-flora": {
       "start": {
-        "text": "Glowing moss and ferns, green as Verdium. But in places, the glow is fading. The plants look... tired."
+        "text": "Świecący mech i paprocie, zielone jak Verdium. Ale miejscami blask gaśnie. Rośliny wyglądają... zmęczone."
       }
     },
     "examine-great-root": {
       "start": {
-        "text": "The Great Root Tree. Trunk wider than three houses, roots spanning the island. Press your ear to the bark — you hear a slow, steady thrum. A heartbeat."
+        "text": "Wielkie Drzewo Korzeni. Pień szerszy niż trzy domy, korzenie obejmujące całą wyspę. Przyłóż ucho do kory — słyszysz powolne, jednostajne bicie. Serce."
       }
     },
-    "lix-default": {
+    "foreman-gael-default": {
+      "museum": {
+        "text": "I muzeum — Valdin i Aosse otworzyli je dzisiaj. Prywatna wizyta. To przyjaciele. Wpadnij, jak będziesz miała chwilę. Mam przeczucie, że dział geologii może cię zainteresować."
+      },
       "start": {
-        "text": "A Tidewatcher! Been dying to study your cliff Verdium — totally different crystal structure! Wait. You've got that worried look. What broke?",
+        "text": "Trzeci wstrząs w tym tygodniu. Trzydzieści przypływów w tych kopalniach, nigdy czegoś takiego nie czułem.",
         "choices": [
-          "Mine's cracking. Filling with seawater.",
-          "Strange tremors on Cliff Haven."
+          "Co jest przyczyną?",
+          "Powinniśmy zatrzymać wydobycie?",
+          "Ktoś ucierpiał?"
         ]
       },
-      "problem": {
-        "text": "Seawater?! That's forty meters of solid basalt! If water's getting through, something breached the barrier from the OTHER side. Not your mining."
-      },
-      "tremors": {
-        "text": "Tremors! Periodic? ...Periodic! That rules out tectonics. Periodic means a SOURCE. Something generating them. Hmm..."
-      },
-      "analysis": {
-        "text": "I've got a half-built resonance sensor! Measures rock vibrations. The periodicity, the salt water, the cracking — something's pushing against your cliff from the ocean side!",
+      "cause": {
+        "text": "To właśnie mnie niepokoi. Dolny szyb się zmienił — mokrzej, nowe pęknięcia. Stuknij w skałę — brzmi... pusto. Coś jest po drugiej stronie.",
         "choices": [
-          "Could something alive cause this?",
-          "Can you build something to help?"
+          "Sam sprawdzę szyb.",
+          "Czy to mogło być naturalne?"
         ]
       },
-      "alive": {
-        "text": "I'm an engineer, not a storyteller! But... pressure doesn't pulse. Water doesn't intrude rhythmically. Something's either pushing or trying to get through. The physics says it's not random."
+      "stop": {
+        "text": "Zatrzymać? Wszystko potrzebuje Verdium. Brin nie pozwoli bez dowodów. Mamy tylko trzęsącą się ziemię i zatroskane twarze."
       },
-      "build": {
-        "text": "Already on it! Calibrate my sensor to Verdium frequencies and — YES! — I can trace the vibrations to their source! Give me a few days. Check the Luminari archives in the meantime!"
+      "hurt": {
+        "text": "Na razie nie. Ale wczoraj pękła belka podporowa. Léra ją załatała. Jeśli te wstrząsy będą się nasilać..."
+      },
+      "natural": {
+        "text": "Tak myślałem na początku. Dwa księżyce przyciągają ziemię, pewnie. Ale to jest inne. Rytmiczne. Niemal... zamierzone."
+      },
+      "examine": {
+        "text": "Zejdź do dolnego szybu. Obejrzyj te pęknięcia. Sprawdź wodę zbierającą się na dole. I porozmawiaj z Lérą — zauważyła rzeczy, których ja przeoczyłem."
       }
     },
-    "examine-machinery": {
+    "intro-mine": {
       "start": {
-        "text": "Half-finished inventions everywhere. A wind-mill, a twin-moon tide clock, self-mending nets, and... a brass octopus. Sign says: \"Don't touch. ESPECIALLY the octopus.\""
+        "text": "Wstrząs o świcie. Trzeci w tym tygodniu."
+      },
+      "start2": {
+        "text": "Verdium błyszczy przy wejściu do tunelu. Bez niego Dualuna umiera."
       }
     },
-    "examine-blueprints": {
+    "examine-verdium-crate": {
       "start": {
-        "text": "Cliff Haven cross-section on the wall. Lix's notes: \"Veins extend below sea level. How deep?\" And smaller: \"Why do the deepest veins curve toward the ocean?\""
+        "text": "Skrzynie świeżego Verdium, mieniącego się zielenią. Zasila lampy, użyźnia ziemię, utrzymuje Dualunę przy życiu."
       }
     },
-    "examine-prototype": {
+    "examine-cracks": {
       "start": {
-        "text": "Crystal probes, a Verdium oscillator. Label: \"Resonance Sensor v3 — CLIFF HAVEN.\" Tiny gears, hand-wound coils. Lix's already on it."
+        "text": "Szerokie pęknięcia na ścianie tunelu. Skała wydaje się ciepła. Przez największe pęknięcie... słaby, rytmiczny dźwięk. Jak oddech."
+      }
+    },
+    "examine-water": {
+      "start": {
+        "text": "Słona woda. Morska woda. Głęboko w klifie, daleko od oceanu. Mieni się dziwnie w świetle latarni."
+      }
+    },
+    "examine-vein": {
+      "start": {
+        "text": "Gruba żyła Verdium pulsuje zielenią. Przy pęknięciach blask miga. Coś wyciąga energię z drugiej strony."
+      }
+    },
+    "harbor-travel": {
+      "start": {
+        "text": "Port Klifowej Przystani. Łodzie kołyszą się łagodnie na falach. Możesz odpłynąć na dowolną znaną wyspę.",
+        "choices": [
+          "Otwórz mapę świata",
+          "Nie teraz"
+        ]
+      },
+      "map": {
+        "text": "Studiujesz mapy żeglarskie..."
+      },
+      "end": {}
+    },
+    "examine-telescope": {
+      "start": {
+        "text": "Zielony Korzeń na północy — lasy. Zatoka Iskier na wschodzie — dym z warsztatów. Luminara na południu — kryształowe iglice łapiące oba księżyce."
+      },
+      "start2": {
+        "text": "Ocean między wyspami jest rozległy. Nikt nie wie, co kryje się pod powierzchnią. Przynajmniej... tak wszyscy sądzą."
       }
     },
     "scholar-eline-default": {
       "start": {
-        "text": "Your bioluminescence betrays your worry, Tidewatcher. What brings you to the Crystal Plaza?",
+        "text": "Twoja bioluminescencja zdradza twój niepokój, Obserwatorko Pływów. Co sprowadza cię na Kryształowy Plac?",
         "choices": [
-          "Tremors in our mines. I need answers.",
-          "I need the archives. Geological records."
+          "Wstrząsy w naszych kopalniach. Potrzebuję odpowiedzi.",
+          "Potrzebuję archiwów. Zapisków geologicznych."
         ]
       },
       "research": {
-        "text": "Tremors near the Verdium mines... I've seen records of this before. Crystal tablets from the first settlers — they mention \"the voice of the deep.\" We called it mythology."
+        "text": "Wstrząsy przy kopalniach Verdium... Widziałam takie zapiski wcześniej. Kryształowe tabliczki pierwszych osadników — wspominają «głos z głębin». Nazwałyśmy to mitologią."
       },
       "archives": {
-        "text": "The archives are open. But let me guide you — I've been cross-referencing geological surveys with old myths. I found correlations that shouldn't exist."
+        "text": "Archiwa są otwarte. Ale pozwól, że cię poprowadzę — porównuję badania geologiczne ze starymi mitami. Znalazłam korelacje, które nie powinny istnieć."
       },
       "reveal": {
-        "text": "The first settlers described Verdium as \"bridges between worlds.\" Surface to something below. We assumed metaphor. But what if it's literal?",
+        "text": "Pierwsi osadnicy opisywali Verdium jako «mosty między światami». Od powierzchni do czegoś poniżej. Zakładałyśmy metaforę. Ale co jeśli to dosłowne?",
         "choices": [
-          "Something exists beneath the ocean?!",
-          "Are we severing those connections by mining?"
+          "Coś istnieje pod oceanem?!",
+          "Czy przecinamy te połączenia wydobywając?",
+          "W muzeum w Klifowej Przystani jest mapa — wyrównania dwóch księżyców."
         ]
       },
+      "moonchart": {
+        "text": "Znam tę mapę. Od trzech lat proszę o porządną kopię. Te symbole wyrównań — pojawiają się też w naszych najstarszych badaniach geologicznych. Ktoś używał ich jako punktów odniesienia. Do czego, nie wiemy."
+      },
+      "moonscript": {
+        "text": "I inskrypcja w dziale mitologii — ta nieczytelna. W naszych głębokich archiwach jest fragment używający tego samego pisma. Nigdy nie znalazłam nikogo, kto potrafiłby przeczytać którekolwiek z nich. To najstarsze teksty, jakie znamy."
+      },
       "beneath": {
-        "text": "One damaged tablet speaks of \"those who build below the water\" and \"cities where no moon shines.\" Filed under mythology. But your tremors, the seawater, the pulsing sounds... what if it's real?"
+        "text": "Jedna uszkodzona tabliczka mówi o «tych, którzy budują pod wodą» i «miastach, gdzie nie świeci żaden księżyc». Zakatalogowana pod mitologią. Ale twoje wstrząsy, morska woda, pulsujące dźwięki... co jeśli to prawda?"
       },
       "severing": {
-        "text": "Exactly what I fear. If Verdium connects surface and depth, we've been severing it for generations. And if something intelligent lives below... they might see our mining as an attack."
+        "text": "Dokładnie tego się boję. Jeśli Verdium łączy powierzchnię z głębią, to przecinamy te połączenia od pokoleń. A jeśli pod spodem żyją inteligentne istoty... mogą postrzegać nasze wydobycie jako atak."
       },
       "conclude": {
-        "text": "Take this knowledge to Cliff Haven. But tread carefully. The idea that our Verdium harvest harms someone we didn't know existed... not everyone will accept that."
+        "text": "Zabierz tę wiedzę do Klifowej Przystani. Ale stąpaj ostrożnie. Myśl, że nasze wydobycie Verdium krzywdzi kogoś, o czyjej istnieniu nie wiedzieliśmy... nie wszyscy to zaakceptują."
       }
     },
     "examine-mural": {
       "start": {
-        "text": "A crystal mural — four races arriving, Verdium discovered, villages built. But in the corner... shapes beneath waves, glowing in the dark ocean."
+        "text": "Kryształowy fresk — cztery rasy przybyły, odkryto Verdium, zbudowano wioski. Ale w rogu... kształty pod falami, świecące w ciemnym oceanie."
       }
     },
     "examine-geology-archives": {
       "start": {
-        "text": "Centuries of geological surveys. The oldest note: \"Veins originate from beneath the ocean floor, not from the island rock itself.\" Someone underlined it in luminescent ink."
+        "text": "Stulecia badań geologicznych. Najstarsza notatka: «Żyły wywodzą się spod dna oceanu, nie ze skały wyspy.» Ktoś podkreślił to luminescencyjnym atramentem."
       }
     },
     "examine-ancient-records": {
       "start": {
-        "text": "The oldest records. One fragment: \"...heard again the singing from below. A planet does not sing in harmonies. Only thinking beings sing in harmonies...\""
+        "text": "Najstarsze zapiski. Fragment: «...znów usłyszałam śpiew z dołu. Planeta nie śpiewa w harmoniach. Tylko myślące istoty śpiewają w harmoniach...»"
       }
     },
     "examine-pedestal": {
       "start": {
-        "text": "A reading pedestal, humming with Verdium energy. Even here, far from the mines — everything on Dualuna is connected."
+        "text": "Pulpit do czytania, brzęczący energią Verdium. Nawet tutaj, daleko od kopalni — wszystko na Dualunie jest połączone."
       }
+    },
+    "museum-intro": {
+      "start": {
+        "text": "Muzeum jest nowe. Zbudowane na miejscu czegoś starszego — czujesz to w kamiennej podłodze, choć nie potrafiłabyś powiedzieć dlaczego."
+      },
+      "start2": {
+        "text": "To prywatna wizyta przed publicznym otwarciem. Aosse spotkała cię przy drzwiach, podekscytowana. Valdin już sprawdza, czy każda etykieta jest dokładnie na swoim miejscu."
+      }
+    },
+    "curator-valdin-default": {
+      "start": {
+        "text": "Ah — dobrze, że przyszłaś. Mam dla ciebie trzy rzeczy zanim otworzymy. Twoje górnicze oko na wystawę geologiczną i pomoc w znalezieniu zaginionego okazu Verdium.",
+        "choices": [
+          "Co z pęknięciem na tablicy wystawy?",
+          "Wystawa geologiczna — zajmę się tym.",
+          "Kto wziął okaz Verdium?"
+        ]
+      },
+      "crack": {
+        "text": "Stało się o świcie. Wstrząs. Tablica mówi «Periodyczne wstrząsy — całkowicie naturalne. Nie ma powodów do niepokoju.» Pęknięcie pojawiło się przez słowo «naturalne». Aosse uważa, że to śmieszne. Ja nie.",
+        "choices": [
+          "Wstrząsy nasilają się.",
+          "To trochę śmieszne."
+        ]
+      },
+      "worse": {
+        "text": "Wiem. Czytałem badania geologiczne. Nasze wyjaśnienie jest poprawne — periodyczne wstrząsy są znane na tych wyspach. Ale... częstotliwość jest nowa. Odnotowałem to."
+      },
+      "funny": {
+        "text": "To nie jest śmieszne. To kwestia wiarygodności instytucji. Wystawa, która zaprzecza sobie w dniu otwarcia — odnotowałem anomalię częstotliwości, jeśli to pomaga."
+      },
+      "geology": {
+        "text": "Wystawa Verdium. Chcę wiedzieć, czy rozmieszczenie okazów ma sens dla kogoś, kto naprawdę pracuje w kopalni. Etykiety są dokładne — ale czy są prawdziwe?"
+      },
+      "sample": {
+        "text": "Nikt go nie wziął. Był tu wczoraj. Teraz go nie ma. Zapytaj wokół — przyjaciół, którzy przyszli wcześnie. Ktoś go przesunął bez powiedzenia mi."
+      }
+    },
+    "curator-aosse-default": {
+      "start": {
+        "text": "Też to poczułaś, prawda? Gdy weszłaś. Coś w podłodze.",
+        "choices": [
+          "Ja... tak, właściwie. Co to jest?",
+          "Masz na myśli wstrząs? O świcie?",
+          "Opowiedz mi o dziale mitologii."
+        ]
+      },
+      "floor": {
+        "text": "Brzęczenie. Bardzo ciche. Tylko gdy stoisz nieruchomo. Valdin mówi, że to rezonans z klifu. Ja sądzę, że to sam budynek — był czymś, zanim stał się muzeum."
+      },
+      "tremor": {
+        "text": "To też. Ale miałam na myśli pokój. Nie dźwięk — uczucie. Jakby budynek był starszy niż myślimy. Gdy kopaliśmy fundamenty, znaleźliśmy trzy warstwy. Nikt nie wie, czym jest ta najniższa."
+      },
+      "mythology": {
+        "text": "To mój dział. Valdin jest tym zawstydzony — «mitologia» brzmi nieakademicko. Ale stare pieśni pamiętają rzeczy, które dokumenty zapominają. Ta inskrypcja — ta, której nikt nie może odczytać — ma gramatykę. To jest język.",
+        "choices": [
+          "Skąd pochodzi?",
+          "Co pokazuje mapa księżyców?"
+        ]
+      },
+      "inscription": {
+        "text": "Nie mam pojęcia. Wysłałam kopie do Luminary, do starszych Korrim. Nikt jej nie rozpoznaje. Ale spójrz na sufit — te kryształowe panele. I spójrz na inskrypcję. Ten sam symbol pojawia się w obu. To nie jest dekoracja. To system."
+      },
+      "moons": {
+        "text": "Valdin nazywa to «dekoracyjnym zapisem astronomicznym». Ale te symbole się powtarzają. A odstępy między powtórzeniami — odpowiadają konkretnym wyrównaniom dwóch księżyców. Czuję to, nawet jeśli jeszcze nie mogę tego udowodnić."
+      }
+    },
+    "examine-cracked-exhibit": {
+      "start": {
+        "text": "«Periodyczne wstrząsy — całkowicie naturalne. Nie ma powodów do niepokoju.» Pęknięcie biegnie dokładnie przez słowo «naturalne». Ktoś zaśmiał się za głośno, a potem zamilkł."
+      }
+    },
+    "examine-moon-chart": {
+      "start": {
+        "text": "Duża mapa astronomiczna. Dwa księżyce — jeden bursztynowy, jeden srebrny — pokazane w dziesiątkach pozycji przez różne cykle. Mapa jest opisana jako «Dekoracyjny zapis astronomiczny, era przedscjentyczna»."
+      },
+      "start2": {
+        "text": "Ale niektóre pozycje są oznaczone małym symbolem — jak okrąg w okręgu. Ten sam symbol jest wyryty w podłodze tego pokoju, przy drzwiach. Prawie go nie zauważyłaś."
+      }
+    },
+    "examine-crystal-ceiling": {
+      "start": {
+        "text": "Panele sufitowe są stare — dużo starsze niż ściany muzeum. Cięty kryształ, ułożony w precyzyjnej siatce. W porannym świetle rzucają ciepłe bursztynowe cienie."
+      },
+      "start2": {
+        "text": "Są nastrojone na coś. Można to poznać po kolorze — ten sam bursztyn co większy księżyc. Nie przypadek. Ktoś celowo wybrał ten kolor dawno temu."
+      }
+    },
+    "examine-unreadable-script": {
+      "start": {
+        "text": "Kamienna płyta z działu mitologii. Inskrypcja w nieznanym piśmie — pętle i krzywe, które przypominają słowa, nie wzory. Muzealny opis nazywa to «dekoracyjnym»."
+      },
+      "start2": {
+        "text": "To nie jest dekoracja. Nie wiesz jak to wiesz, ale wiesz. Cokolwiek to mówi, zostało napisane po to, żeby było czytane."
+      }
+    },
+    "sleep-temple-intro": {
+      "start": {
+        "text": "Zasada tutaj to cisza albo szept. Wiedziałaś o tym zanim ci powiedziano. Przestrzeń sama to tłumaczy."
+      },
+      "start2": {
+        "text": "Małe okrągłe łóżka ułożone we wzór na podłodze. Sufit świeci bursztynowo. Czujesz coś — nie dokładnie sen. Jakby początek snu. Jak jego możliwość."
+      }
+    },
+    "examine-circular-beds": {
+      "start": {
+        "text": "Łóżka są wyrzeźbione z tej samej skały co podłoga. Okrągłe. Niskie. Układ nie jest przypadkowy — każde stoi na przecięciu słabych linii wyrzeźbionych w podłodze."
+      },
+      "start2": {
+        "text": "Ktoś je rozłożył tak, jak budowniczy mostów układa podpory. Nie dla wygody. Dla pozycji."
+      }
+    },
+    "examine-temple-crystals": {
+      "start": {
+        "text": "Kryształy sufitu rzucają bursztynowe światło na pokój. Nie ciepły bursztyn jak ogień — inny. Spokojniejszy. Kolor, który przybiera duży księżyc tuż po wschodzie."
+      },
+      "start2": {
+        "text": "Twoja babcia przyprowadziła cię tu jako dziecko. Zawsze dobrze spałaś. Nie pomyślałaś, żeby zapytać dlaczego."
+      }
+    },
+    "examine-temple-floor": {
+      "start": {
+        "text": "Przy wejściu, wyryty w kamieniu — mały symbol. Okrąg w okręgu. Widziałaś to już wcześniej. Na mapie księżyców w muzeum."
+      }
+    },
+    "lix-default": {
+      "start": {
+        "text": "Obserwatorka Pływów! Od dawna chciałem zbadać wasze klifowe Verdium — zupełnie inna struktura kryształu! Poczekaj. Masz tę zatrwożoną minę. Co się popsuło?",
+        "choices": [
+          "Kopalnia pęka. Wypełnia się morską wodą.",
+          "Dziwne wstrząsy na Klifowej Przystani."
+        ]
+      },
+      "problem": {
+        "text": "Morska woda?! To czterdzieści metrów litego bazaltu! Jeśli woda się przez to przebija, coś sforsowało barierę od DRUGIEJ strony. Nie wasze wydobycie."
+      },
+      "tremors": {
+        "text": "Wstrząsy! Periodyczne? ...Periodyczne! To wyklucza tektonikę. Periodyczne oznacza ŹRÓDŁO. Coś je generuje. Hmm..."
+      },
+      "analysis": {
+        "text": "Mam na wpół zbudowany sensor rezonansu! Mierzy wibracje skały. Periodyczność, słona woda, pęknięcia — coś naciska na wasz klif od strony oceanu!",
+        "choices": [
+          "Czy coś żywego mogłoby to powodować?",
+          "Czy możesz zbudować coś, co pomoże?"
+        ]
+      },
+      "alive": {
+        "text": "Jestem inżynierem, nie gawędziarzem! Ale... ciśnienie nie pulsuje. Woda nie wdziera się rytmicznie. Coś albo naciska, albo próbuje się przedostać. Fizyka mówi, że to nie jest przypadkowe."
+      },
+      "build": {
+        "text": "Już nad tym pracuję! Skalibruję sensor na częstotliwości Verdium i — TAK! — mogę śledzić wibracje do ich źródła! Daj mi kilka dni. W międzyczasie sprawdź archiwa Luminari!"
+      }
+    },
+    "examine-machinery": {
+      "start": {
+        "text": "Pół-skończone wynalazki wszędzie. Wiatrak, zegar pływów dwóch księżyców, samonaprawiające się sieci i... mosiężna ośmiornica. Tabliczka: «Nie dotykać. SZCZEGÓLNIE ośmiornicy»."
+      }
+    },
+    "examine-blueprints": {
+      "start": {
+        "text": "Przekrój Klifowej Przystani na ścianie. Notatki Lix: «Żyły sięgają poniżej poziomu morza. Jak głęboko?» I mniejszym pismem: «Dlaczego najgłębsze żyły skręcają w stronę oceanu?»"
+      }
+    },
+    "examine-prototype": {
+      "start": {
+        "text": "Kryształowe sondy, oscylator Verdium. Tabliczka: «Sensor Rezonansu v3 — KLIFOWA PRZYSTAŃ». Maleńkie tryby, ręcznie nawijane cewki. Lix już pracuje."
+      }
+    }
+  },
+  "locations": {
+    "mine-entrance": {
+      "name": "Wejście do Kopalni Verdium",
+      "description": "Główne wejście do kopalni w klifie",
+      "hotspots": {
+        "gael": "Sztygar Gaël",
+        "lera": "Léra",
+        "mine-entry": "Wejdź do kopalni",
+        "verdium-crate": "Skrzynia z Verdium"
+      }
+    },
+    "mine-shaft": {
+      "name": "Dolny Szyb Kopalni",
+      "description": "Głęboko w klifie — tunele wydobycia Verdium",
+      "hotspots": {
+        "cracks": "Zbadaj pęknięcia",
+        "water-puddle": "Dziwna woda",
+        "verdium-vein": "Świecąca żyła Verdium"
+      }
+    },
+    "tidewatcher-village": {
+      "name": "Wioska Obserwatorów Pływów",
+      "description": "Przytulna wioska zawieszona między szczytami klifów a morzem",
+      "hotspots": {
+        "brin": "Starszy Brin",
+        "harbor": "Port (podróż na inne wyspy)"
+      }
+    },
+    "cliff-overlook": {
+      "name": "Punkt Widokowy na Klifie",
+      "description": "Zapierający dech widok na ocean i odległe wyspy",
+      "hotspots": {
+        "telescope": "Spójrz przez teleskop"
+      }
+    },
+    "museum": {
+      "name": "Muzeum",
+      "description": "Nowy budynek na starym miejscu — geologia Verdium, historia wysp i dział mitologii, którego nikt do końca nie rozumie",
+      "hotspots": {
+        "curator-valdin": "Valdin",
+        "curator-aosse": "Aosse",
+        "cracked-exhibit": "Pęknięta tabliczka wystawy",
+        "moon-chart": "Mapa dwóch księżyców",
+        "crystal-ceiling": "Kryształowe panele sufitu",
+        "unreadable-script": "Nieczytelna inskrypcja"
+      }
+    },
+    "sleep-temple": {
+      "name": "Świątynia Snu",
+      "description": "Wioskowa świątynia snu — okrągłe łóżka, bursztynowy sufit z kryształów i cisza, która niczego od ciebie nie wymaga",
+      "hotspots": {
+        "circular-beds": "Okrągłe łóżka",
+        "temple-crystals": "Bursztynowy sufit z kryształów",
+        "temple-floor": "Wyryty symbol na podłodze"
+      }
+    },
+    "forest-path": {
+      "name": "Leśna Ścieżka",
+      "description": "Kręta ścieżka przez pradawne lasy karmione Verdium",
+      "hotspots": {
+        "roothold": "Roothold, Strażnik",
+        "flora": "Zbadaj florę"
+      }
+    },
+    "elder-grove": {
+      "name": "Gaj Starszych",
+      "description": "Święte miejsce zgromadzeń starszych Korrim, pod Wielkim Drzewem Korzeni",
+      "hotspots": {
+        "mossa": "Starszy Mossa",
+        "great-root": "Wielkie Drzewo Korzeni"
+      }
+    },
+    "harbor-workshop": {
+      "name": "Warsztat Portowy",
+      "description": "Tętniący życiem port pełen wynalazków Velessi i niedokończonych projektów",
+      "hotspots": {
+        "lix": "Lix, Wynalazca",
+        "machinery": "Zbadaj maszyny"
+      }
+    },
+    "inventors-lab": {
+      "name": "Laboratorium Lix",
+      "description": "Chaotyczny, lecz błyskotliwy warsztat pełen prototypów i planów",
+      "hotspots": {
+        "blueprints": "Zbadaj plany",
+        "prototype": "Dziwny prototyp"
+      }
+    },
+    "crystal-plaza": {
+      "name": "Kryształowy Plac",
+      "description": "Świetliste serce kultury Luminari, roziskrzone bioluminescencyjnymi wzorami",
+      "hotspots": {
+        "eline": "Uczona Éline",
+        "mural": "Starożytny fresk"
+      }
+    },
+    "archive-hall": {
+      "name": "Sala Archiwum",
+      "description": "Rzędy kryształowych tabliczek zawierające zebraną wiedzę Dualuny",
+      "hotspots": {
+        "geology-section": "Archiwa geologiczne",
+        "ancient-section": "Starożytne zapiski",
+        "pedestal": "Pulpit do czytania"
+      }
+    }
+  },
+  "islands": {
+    "cliff-haven": {
+      "name": "Klifowa Przystań",
+      "description": "Dom Obserwatorów Pływów i kopalń Verdium"
+    },
+    "green-root": {
+      "name": "Zielony Korzeń",
+      "description": "Pradawne lasy pielęgnowane przez Korrim"
+    },
+    "spark-cove": {
+      "name": "Zatoka Iskier",
+      "description": "Wyspa-warsztat Velessi, wynalazców"
+    },
+    "luminara": {
+      "name": "Luminara",
+      "description": "Kulturalne serce Luminari"
     }
   }
 };

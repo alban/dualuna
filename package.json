@@ -13,7 +13,8 @@
     "generate-art": "node scripts/generate-backgrounds.js",
     "screenshots": "node scripts/screenshots.js",
     "screenshots:quick": "node scripts/screenshots.js --quick",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate-audio": "node scripts/generate-audio.js"
   },
   "keywords": [],
   "author": "",

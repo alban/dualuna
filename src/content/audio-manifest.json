@@ -1,0 +1,79 @@
+{
+  "audio": {
+    "foreman-gael-default.start.fr": {
+      "hash": "436941fa0d2c154a",
+      "file": "fr/foreman-gael-default/start.mp3",
+      "emotion": "worried"
+    },
+    "foreman-gael-default.cause.fr": {
+      "hash": "7a3884c8f9be1e41",
+      "file": "fr/foreman-gael-default/cause.mp3",
+      "emotion": "worried"
+    },
+    "foreman-gael-default.stop.fr": {
+      "hash": "cb8dc687b16c4610",
+      "file": "fr/foreman-gael-default/stop.mp3",
+      "emotion": "default"
+    },
+    "foreman-gael-default.hurt.fr": {
+      "hash": "e0fbedab3556b531",
+      "file": "fr/foreman-gael-default/hurt.mp3",
+      "emotion": "default"
+    },
+    "foreman-gael-default.natural.fr": {
+      "hash": "2eea5950689f6e9a",
+      "file": "fr/foreman-gael-default/natural.mp3",
+      "emotion": "default"
+    },
+    "foreman-gael-default.examine.fr": {
+      "hash": "df837921fc02e966",
+      "file": "fr/foreman-gael-default/examine.mp3",
+      "emotion": "default"
+    },
+    "foreman-gael-default.museum.fr": {
+      "hash": "1976d30c5d90ac18",
+      "file": "fr/foreman-gael-default/museum.mp3",
+      "emotion": "warm"
+    },
+    "lera-default.start.fr": {
+      "hash": "12ea7a66a8eab710",
+      "file": "fr/lera-default/start.mp3",
+      "emotion": "excited"
+    },
+    "lera-default.shaft.fr": {
+      "hash": "fd7f0bb1bb61ccd7",
+      "file": "fr/lera-default/shaft.mp3",
+      "emotion": "default"
+    },
+    "lera-default.theory.fr": {
+      "hash": "de0bffa6900a26fd",
+      "file": "fr/lera-default/theory.mp3",
+      "emotion": "default"
+    },
+    "lera-default.okay.fr": {
+      "hash": "7241f1cced29c0fd",
+      "file": "fr/lera-default/okay.mp3",
+      "emotion": "default"
+    },
+    "lera-default.alive.fr": {
+      "hash": "88d7058835e57b82",
+      "file": "fr/lera-default/alive.mp3",
+      "emotion": "awed"
+    },
+    "lera-default.consult.fr": {
+      "hash": "caa2ed8878273ac8",
+      "file": "fr/lera-default/consult.mp3",
+      "emotion": "default"
+    },
+    "lera-default.govisit.fr": {
+      "hash": "d298c36980461306",
+      "file": "fr/lera-default/govisit.mp3",
+      "emotion": "default"
+    },
+    "lera-default.sailing.fr": {
+      "hash": "d6bf62882b67878e",
+      "file": "fr/lera-default/sailing.mp3",
+      "emotion": "default"
+    }
+  }
+}

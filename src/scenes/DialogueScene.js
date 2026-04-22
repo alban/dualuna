@@ -98,12 +98,27 @@ export class DialogueScene extends Phaser.Scene {
     }
 
     this.updatePortrait(node.speaker);
+    this.playNodeAudio(this.dialogueId, nodeId);
 
     const localizedText = I18n.dialogue(this.dialogueId, nodeId, 'text') || node.text || '';
     this.dialogueText.setText('');
     this.typeText(localizedText, () => {
       this.showChoices(node, nodeId);
     });
+  }
+
+  playNodeAudio(dialogueId, nodeId) {
+    if (this._audio) {
+      this._audio.pause();
+      this._audio.src = '';
+      this._audio = null;
+    }
+    const lang = I18n.currentLanguage || 'en';
+    const path = `assets/audio/${lang}/${dialogueId}/${nodeId}.mp3`;
+    const audio = new Audio(path);
+    audio.volume = 0.85;
+    audio.play().catch(() => {}); // silently skip if file not found
+    this._audio = audio;
   }
 
   updatePortrait(speakerId) {
@@ -279,6 +294,11 @@ export class DialogueScene extends Phaser.Scene {
   }
 
   closeDialogue() {
+    if (this._audio) {
+      this._audio.pause();
+      this._audio.src = '';
+      this._audio = null;
+    }
     const state = this.registry.get('gameState');
 
     if (state.questFlags['open-map']) {

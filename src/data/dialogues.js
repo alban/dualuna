@@ -24,6 +24,7 @@ export const DIALOGUES = {
     nodes: {
       start: {
         speaker: 'foreman-gael',
+        emotion: 'worried',
         text: 'Third tremor this week. Thirty tides in these mines, never felt anything like it.',
         choices: [
           { text: 'What\'s causing them?', next: 'cause' },
@@ -33,6 +34,7 @@ export const DIALOGUES = {
       },
       cause: {
         speaker: 'foreman-gael',
+        emotion: 'worried',
         text: 'That\'s what worries me. Lower shaft\'s changed — wetter, new cracks. Tap the rock and it sounds... hollow. Something\'s behind there.',
         choices: [
           { text: 'I\'ll check the shaft myself.', next: 'examine' },
@@ -66,6 +68,7 @@ export const DIALOGUES = {
       },
       museum: {
         speaker: 'foreman-gael',
+        emotion: 'warm',
         text: 'And the museum — Valdin and Aosse opened it today. Private visit. They\'re friends. Go when you have a moment. I have a feeling the geology section might interest you.',
         next: null,
       },
@@ -78,6 +81,7 @@ export const DIALOGUES = {
     nodes: {
       start: {
         speaker: 'lera',
+        emotion: 'excited',
         text: 'Hey! Feel that one at dawn? Nearly fell off the rope ladder! My Heights-sense went crazy!',
         choices: [
           { text: 'Gaël says the lower shaft\'s bad.', next: 'shaft', requireFlag: 'talked-to-gael' },
@@ -105,6 +109,7 @@ export const DIALOGUES = {
       },
       alive: {
         speaker: 'lera',
+        emotion: 'awed',
         text: 'Like a heartbeat! Deep, slow, from the sea side. Never heard anything like it. I wasn\'t imagining it.',
         next: 'consult',
       },
@@ -277,6 +282,7 @@ export const DIALOGUES = {
       },
       mythology: {
         speaker: 'curator-aosse',
+        emotion: 'warm',
         text: 'That\'s my section. Valdin is embarrassed by it — "mythology" sounds unscholarly. But old songs remember things that documents forget. That inscription — the one nobody can read — it has grammar. It\'s a language.',
         choices: [
           { text: 'Where is it from?', next: 'inscription' },
@@ -466,6 +472,7 @@ export const DIALOGUES = {
       },
       temple: {
         speaker: 'village-elder-brin',
+        emotion: 'solemn',
         text: 'And visit the sleep temple before you go. I know it sounds strange — but the building knows things. It\'s always known. Sleep there once if you can.',
         next: null,
       },
@@ -555,6 +562,7 @@ export const DIALOGUES = {
     nodes: {
       start: {
         speaker: 'elder-mossa',
+        emotion: 'solemn',
         text: 'I felt your footsteps, Tidewatcher. The earth carries all things. Lately... it carries distress.',
         choices: [
           { text: 'Salt water in our mines. Where it shouldn\'t be.', next: 'mining' },
@@ -633,6 +641,7 @@ export const DIALOGUES = {
     nodes: {
       start: {
         speaker: 'lix',
+        emotion: 'excited',
         text: 'A Tidewatcher! Been dying to study your cliff Verdium — totally different crystal structure! Wait. You\'ve got that worried look. What broke?',
         choices: [
           { text: 'Mine\'s cracking. Filling with seawater.', next: 'problem' },
@@ -668,6 +677,7 @@ export const DIALOGUES = {
       },
       build: {
         speaker: 'lix',
+        emotion: 'very_excited',
         text: 'Already on it! Calibrate my sensor to Verdium frequencies and — YES! — I can trace the vibrations to their source! Give me a few days. Check the Luminari archives in the meantime!',
         effects: {
           completeObjective: { quest: 'tremors-in-the-deep', objective: 'consult-lix' },
@@ -735,6 +745,7 @@ export const DIALOGUES = {
       },
       reveal: {
         speaker: 'scholar-eline',
+        emotion: 'thoughtful',
         text: 'The first settlers described Verdium as "bridges between worlds." Surface to something below. We assumed metaphor. But what if it\'s literal?',
         choices: [
           { text: 'Something exists beneath the ocean?!', next: 'beneath' },

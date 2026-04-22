@@ -2,7 +2,7 @@ import Phaser from 'phaser';
 import { I18n } from '../systems/I18n.js';
 import { BASE_W, BASE_H } from '../utils/layout.js';
 
-const TRANSLATED_LANGUAGES = ['en', 'fr'];
+const TRANSLATED_LANGUAGES = ['en', 'fr', 'pl'];
 
 export class LanguageScene extends Phaser.Scene {
   constructor() {

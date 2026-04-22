@@ -1,0 +1,103 @@
+{
+  "_comment": "Voice profiles for ElevenLabs TTS. model: eleven_multilingual_v2 handles EN+FR with the same voice_id.",
+  "_voices_list": "Run: node scripts/generate-audio.js --list-voices  to see available voices on your account.",
+
+  "foreman-gael": {
+    "description": "Deep, weathered, slow. Like stone that learned to speak. Calm under pressure but carrying decades of worry.",
+    "voice_id": "pNInz6obpgDQGcFmaJgB",
+    "voice_name": "Adam (ElevenLabs pre-built)",
+    "model_id": "eleven_multilingual_v2",
+    "stability": 0.80,
+    "similarity_boost": 0.75,
+    "style": 0.25,
+    "use_speaker_boost": true
+  },
+
+  "lera": {
+    "description": "Young, fast, warm. Finishes thoughts mid-sentence. Ha! as punctuation. Heights-born energy.",
+    "voice_id": "FGY2WhTYpPnrIDTdsKH5",
+    "voice_name": "Laura (ElevenLabs pre-built)",
+    "model_id": "eleven_multilingual_v2",
+    "stability": 0.45,
+    "similarity_boost": 0.80,
+    "style": 0.55,
+    "use_speaker_boost": true
+  },
+
+  "village-elder-brin": {
+    "description": "Elder, pragmatic, community-rooted. Plain speech. Carries authority without drama.",
+    "voice_id": "pqHfZKP75CvOlQylNhV4",
+    "voice_name": "Bill (ElevenLabs pre-built)",
+    "model_id": "eleven_multilingual_v2",
+    "stability": 0.75,
+    "similarity_boost": 0.75,
+    "style": 0.20,
+    "use_speaker_boost": true
+  },
+
+  "elder-mossa": {
+    "description": "Ancient, deliberate, full of silence. Speaks in images. Pauses before answering as if listening to something else.",
+    "voice_id": "XrExE9yKIg1WjnnlVkGX",
+    "voice_name": "Matilda (ElevenLabs pre-built)",
+    "model_id": "eleven_multilingual_v2",
+    "stability": 0.90,
+    "similarity_boost": 0.70,
+    "style": 0.10,
+    "use_speaker_boost": false
+  },
+
+  "korrim-guard": {
+    "description": "Terse, vigilant, flat affect. Short sentences. Not unfriendly but economical.",
+    "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+    "voice_name": "Harry (ElevenLabs pre-built)",
+    "model_id": "eleven_multilingual_v2",
+    "stability": 0.85,
+    "similarity_boost": 0.70,
+    "style": 0.15,
+    "use_speaker_boost": true
+  },
+
+  "lix": {
+    "description": "Breathless, fast, exclamation-point energy. Thinks out loud. Only slows for genuine puzzlement.",
+    "voice_id": "N2lVS1w4EtoT3dr4eOWO",
+    "voice_name": "Callum (ElevenLabs pre-built)",
+    "model_id": "eleven_multilingual_v2",
+    "stability": 0.35,
+    "similarity_boost": 0.80,
+    "style": 0.65,
+    "use_speaker_boost": true
+  },
+
+  "scholar-eline": {
+    "description": "Precise, warm, scholarly. Bioluminescent Luminari — voice has a subtle depth. Thoughtful pauses.",
+    "voice_id": "Xb7hH8MSUJpSbSDYk0k2",
+    "voice_name": "Alice (ElevenLabs pre-built)",
+    "model_id": "eleven_multilingual_v2",
+    "stability": 0.72,
+    "similarity_boost": 0.78,
+    "style": 0.30,
+    "use_speaker_boost": true
+  },
+
+  "curator-valdin": {
+    "description": "Meticulous, precise, evidence-driven. Bioluminescent patterns flicker when challenged. Composed authority.",
+    "voice_id": "onwK4e9ZLuTAKqWW03F9",
+    "voice_name": "Daniel (ElevenLabs pre-built)",
+    "model_id": "eleven_multilingual_v2",
+    "stability": 0.80,
+    "similarity_boost": 0.75,
+    "style": 0.20,
+    "use_speaker_boost": true
+  },
+
+  "curator-aosse": {
+    "description": "Patient, open, drawn to what doesn't fit. Spring-aspect Korrim — warmth in the voice, unhurried.",
+    "voice_id": "pFZP5JQG7iQjIQuC4Bku",
+    "voice_name": "Lily (ElevenLabs pre-built)",
+    "model_id": "eleven_multilingual_v2",
+    "stability": 0.75,
+    "similarity_boost": 0.78,
+    "style": 0.35,
+    "use_speaker_boost": false
+  }
+}
