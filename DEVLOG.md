@@ -10,8 +10,8 @@
 ## Inspirations
 - a 1990s adventure-strategy game — travel between locations, community
   relationships, resource management, strategy map feeling,
-  sietch-to-sietch structure, indirect influence not command
-- Myst — graphic style, pre-rendered atmospheric visuals,
+  location-to-location structure, indirect influence not command
+- a 1990s graphic adventure — visual style, pre-rendered atmospheric visuals,
   stillness, world that exists without you
 - a 1990s island RPG — island world with distinct
   civilisations, warm quirky characters, non-combat progression,
@@ -548,7 +548,7 @@ You are not the author of events. You are a participant.
 ## CULTURAL AUTHORSHIP
 
 Core principle: not translation but original imagination.
-Games from the 90s that resonated most because conceived from French sensibility.
+Games from the 90s that resonated most were conceived from a French sensibility.
 Dualuna should think in French, not translate from English.
 
 ### What to Preserve

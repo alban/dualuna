@@ -1,7 +1,7 @@
 # AI Art Prompts for Dualuna Backgrounds
 
 Style prefix for all prompts:
-> Pre-rendered 3D scene in the contemplative pre-rendered 3D style. First-person viewpoint. Static scene, no characters visible. Rich textures on all surfaces — weathered wood, mossy stone, oxidized metal. Atmospheric lighting with fog or haze. Muted earthy color palette. Painterly but semi-realistic. 1024x768 resolution, landscape orientation.
+> Pre-rendered 3D scene. First-person viewpoint. Static scene, no characters visible. Rich textures on all surfaces — weathered wood, mossy stone, oxidized metal. Atmospheric lighting with soft haze. Muted earthy color palette with selective warm highlights. Painterly but semi-realistic. Detailed, immersive, contemplative atmosphere. 1024x768 resolution, landscape orientation.
 
 ---
 

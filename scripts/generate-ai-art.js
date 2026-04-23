@@ -13,7 +13,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT_DIR = join(__dirname, '..', 'public', 'assets', 'backgrounds');
 mkdirSync(OUT_DIR, { recursive: true });
 
-const STYLE = 'Pre-rendered 3D scene in the style of retro graphic adventure. First-person viewpoint. Static scene, no characters visible. Rich textures on all surfaces. Atmospheric lighting with fog or haze. Muted earthy color palette. Painterly but semi-realistic.';
+const STYLE = 'Pre-rendered 3D scene. First-person viewpoint. Static scene, no characters visible. Rich textures on all surfaces — weathered wood, mossy stone, oxidized metal. Atmospheric lighting with soft haze. Muted earthy color palette with selective warm highlights. Painterly but semi-realistic. Detailed, immersive, contemplative atmosphere.';
 
 const PROMPTS = {
   'mine-entrance': `${STYLE} A mine entrance carved into a massive sea cliff face. Weathered wooden support beams frame a dark tunnel opening in the rock. The cliff is layered sedimentary rock with thin glowing green veins of mineral running through it. On the left, a view of the ocean far below. Wooden crates with faintly green-glowing ore stacked near the entrance. A dirt path leads along the cliff edge. Rope pulleys and mining tools hang from iron hooks. Late morning light, sea mist rising from below.`,
